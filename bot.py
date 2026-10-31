@@ -42,7 +42,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     try:
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-3.8-flash",
             contents=f"Mavzu: {topic}. Yuqoridagi ko'rsatma bo'yicha tayyor Reels shablonini ber.",
             config=types.GenerateContentConfig(
                 system_instruction=system_instruction,
