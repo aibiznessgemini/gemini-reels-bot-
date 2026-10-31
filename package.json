@@ -1,0 +1,11 @@
+{
+  "name": "ai-video-studio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "render": "hyperframes render"
+  },
+  "dependencies": {
+    "hyperframes": "latest"
+  }
+}
