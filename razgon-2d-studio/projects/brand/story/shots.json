@@ -1,0 +1,33 @@
+{
+ "title": "The You Experiment",
+ "duration": 3.0,
+ "shots": [
+  {
+   "id": "b001",
+   "start": 0,
+   "end": 1.5,
+   "line": "banner",
+   "scene": "channel banner",
+   "set": "street",
+   "in": {
+    "type": "cut"
+   },
+   "bars": "none",
+   "vignette": true
+  },
+  {
+   "id": "b002",
+   "start": 1.5,
+   "end": 3.0,
+   "line": "avatar",
+   "scene": "avatar face",
+   "set": "street",
+   "in": {
+    "type": "cut"
+   },
+   "bars": "none",
+   "vignette": true
+  }
+ ],
+ "music": []
+}

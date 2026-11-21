@@ -1,0 +1,58 @@
+[
+ {
+  "i": 0,
+  "start": 0.0,
+  "speechStart": 0.25,
+  "speechEnd": 2.57,
+  "text": "Imagine you could stop time.",
+  "end": 2.69
+ },
+ {
+  "i": 1,
+  "start": 2.69,
+  "speechStart": 2.84,
+  "speechEnd": 6.68,
+  "text": "You snap your fingers, and the whole world freezes.",
+  "end": 6.8
+ },
+ {
+  "i": 2,
+  "start": 6.8,
+  "speechStart": 6.95,
+  "speechEnd": 9.11,
+  "text": "The rain hangs in the air.",
+  "end": 9.28
+ },
+ {
+  "i": 3,
+  "start": 9.28,
+  "speechStart": 9.43,
+  "speechEnd": 11.91,
+  "text": "The cars stop in the middle of the street.",
+  "end": 12.03
+ },
+ {
+  "i": 4,
+  "start": 12.03,
+  "speechStart": 12.18,
+  "speechEnd": 14.26,
+  "text": "Everyone around you is frozen.",
+  "end": 14.75
+ },
+ {
+  "i": 5,
+  "start": 14.75,
+  "speechStart": 14.9,
+  "speechEnd": 16.98,
+  "text": "Everyone, except you.",
+  "end": 17.1
+ },
+ {
+  "i": 6,
+  "start": 17.1,
+  "speechStart": 17.25,
+  "speechEnd": 19.33,
+  "text": "So what would you do first?",
+  "end": 20.83
+ }
+]

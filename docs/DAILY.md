@@ -1,99 +1,110 @@
-# DAILY RUNBOOK — one film per day, fully automatic
+# DAILY RUNBOOK — one Razgon 2D "What if…?" film per day, fully automatic
 
 You were started by the daily schedule (00:00 Asia/Tashkent). Nobody is watching.
-Make today's film, send it to the owner's Telegram, archive it, and stop.
-Read `CLAUDE.md` first. Work in `film/`. Never upload anything to YouTube.
+**Rule: a new idea and a new script every day.** Make today's film, send it to the owner's
+Telegram, update the history, and stop. Read `CLAUDE.md` first. Never upload to YouTube.
 
-If any step fails and you cannot fix it in 2 tries: run
-`pipeline/notify.sh "❌ Daily film failed at <step>: <short reason>"` and stop.
+The studio is `razgon-2d-studio/` (the owner's Razgon 2D plugin). Its rules are in
+`razgon-2d-studio/references/` — `PIPELINE.md`, `style-bible.md`, `director-pass.md`,
+`story-breakdown.md`, `engine-api.md`, `sound-design.md`, `render-qc.md`. Read them in step 4.
+The reference projects to learn the API from: `examples/reaction-time` and `projects/style-demo`.
 
-## 0. Setup (2 min)
+If any step fails and you cannot fix it in 2 tries:
+`(cd film && pipeline/notify.sh "❌ Daily film failed at <step>: <short reason>")` and stop.
+
+Time budget: about 2.5 hours in total (final render ≈ 25 min for 150 s).
+
+## 0. Setup
 ```bash
-cd film
-[ -d node_modules ] || npm ci --no-audit --no-fund
+cd razgon-2d-studio
+npm ci --no-audit --no-fund
+python3 -c "import numpy, scipy" 2>/dev/null || pip install --quiet numpy scipy
 TODAY=$(TZ=Asia/Tashkent date +%F)
-[ -n "${TELEGRAM_BOT_TOKEN:-}" ] && [ -n "${TELEGRAM_CHAT_ID:-}" ] || echo "STOP: Telegram variables missing (owner must set them)"
+[ -n "${TELEGRAM_BOT_TOKEN:-}" ] && [ -n "${TELEGRAM_CHAT_ID:-}" ] || echo "STOP: Telegram variables missing"
 ```
+Self-test (10 s): `node render.mjs --project examples/reaction-time --sheet --scale 0.3`.
 
-## 1. History (never repeat a story)
-The history lives in ONE pinned bot message in the owner's Telegram chat:
+## 1. History (never repeat an idea)
 ```bash
-pipeline/history.sh get        # → films/history.json, prints every past film
+(cd ../film && pipeline/history.sh get)      # → film/films/history.json, prints every past film
 ```
-- If today's date (`$TODAY`) is already in the list, stop (the film was already made).
-- (Optional) If Google Drive tools are available, the archive folder
-  `1OTtd9yEUQuRM0kivIKE2N-zItR4eYU2D` holds one sub-folder per film as a backup.
+If `$TODAY` is already in the list, stop (the film was already made today).
 
-## 2. Researcher — pick today's topic
-Niche: **"What if…" + psychology**, told to the viewer as "you", grounded in real research.
-- Pick from `docs/topics.md` (first unused idea that fits), or a new idea of the same kind.
-- It must be different from every history entry (not just a new slug for the same study).
-- Verify with WebSearch: the study/phenomenon, authors, year, journal, and 3–5 concrete findings.
-  Prefer the paper itself, PubMed, university news. **Only use facts you found. Never invent
-  numbers, percentages or quotes.** If a number is not in a source, don't say it.
-- Keep 2–4 sources (title + URL) for `film.json` → `sources`.
+## 2. Researcher — today's idea
+- Niche: **"What if…?"** in any field (space, body, brain, history, physics, nature, tech,
+  society), told to the viewer as **"you"**. Pick from `docs/topics.md` or invent a new one.
+- It must differ from every history entry and from every "Already made" line in topics.md.
+- Verify with WebSearch: 4–6 concrete facts/numbers the story will use, from reliable sources
+  (papers, NASA/NIH/university pages, encyclopaedias). **Only use facts you found; never
+  invent numbers or quotes.** Keep 2–4 sources (title + URL).
+- Choose the palette by topic: `dusk` (default, curious), `midnight` (space, night, mystery,
+  danger), `golden` (warm, hopeful, human), `neon` (tech, future, the internet), `storybook`
+  (gentle, childhood, nature). Choose a music plan from: mystery, tension, action, wonder,
+  hopeful, sad, triumph, playful, calm, dark, epic.
 
-## 3. Writer — `films/<slug>/film.json`
-Copy the structure of `films/the-liking-gap/film.json` (schema: `src/engine/types.ts`).
-- `slug`: lowercase-with-dashes, new. `mood`: curious | tense | warm | sad | wonder.
-- Cast: always `you` (amber hoodie `#F2A541`); 1–3 named friends, each a different hoodie
-  colour + hair (`bowl`, `bob`, `cap`, `beanie`, `none`). Do not reuse maya/jake every day.
-- **24–32 scenes, 330–420 words total**, each `line` 6–30 words (one or two sentences).
-- Arc: hook ("Imagine… / What if you…", 2–3 scenes) → the everyday feeling → the study
-  (who, when, what they did) → the surprising finding → why it happens → what it means for you
-  → a closing question to the viewer.
-- Pictures follow the words. Vary shots: no set+shot repeated more than twice in a row; use
-  each shot type at least once; `lineup` on `void` for "explainer" beats with a `label`.
-  Badges only for real numbers/names from sources (≤ 4 words). Counter only when it tells the story.
-- `thumbnail`: a close-up scene + ≤ 3 words. `titles`: 5 options (curiosity, no clickbait lies).
-  `description`: 2–3 sentences + the study citation (sources and the channel footer are
-  added automatically). `tags`: 6–10. `pinnedComment`: one short question to the viewers
-  that invites a personal answer (e.g. "Would you want to know your secret score? Why?").
+## 3. Writer — narration
+Write `voice_work/<slug>-lines.txt`: **one narration line per line, 26–36 lines,
+330–420 words in total** (≈ 2–2.5 min). Second person ("you"). Arc:
+cold-open hook (2–3 lines, a vivid moment) → the title line ("What if you…?") → normal life
+and the change → escalation with concrete numbers → the cost or twist → climax → resolution →
+"Is any of this real?" short science segment (the facts) → a closing question to the viewer.
+No line longer than ~25 words. Plain spoken English, no symbols the voice would misread.
 
-## 4. Auditor
+## 4. Voice + project + story
 ```bash
-node --no-warnings pipeline/validate.ts <slug>
+node tools/eleven_voice.mjs --name <slug> --lines voice_work/<slug>-lines.txt --title "<Title>" --style <palette>
+python3 tools/beats.py --project projects/<slug>
+cp templates/cast.js projects/<slug>/scenes/cast.js           # YOU = amber hoodie, hood up — always
+cp templates/sets/*.js projects/<slug>/scenes/sets/ 2>/dev/null || true   # reuse sets if they fit
 ```
-Fix every ERROR. Then re-read the script against the sources: every factual claim must be
-in a source. Max 2 rounds.
+Voice is Victor (`GoV1V2hQd1doxcYR2SuA`, `eleven_v4`) through the ElevenLabs API; the key is
+injected by the network proxy. Clips are cached in `voice_work/<slug>/`, so re-running after a
+line edit only pays for changed lines. Duration must be 110–200 s.
 
-## 5. Voice (ElevenLabs — voice only)
-The ElevenLabs API key is injected by the environment's network proxy for
-`api.elevenlabs.io` (never put a key anywhere). One take per scene, Victor
-(`GoV1V2hQd1doxcYR2SuA`), `eleven_v4`:
+Then follow `references/PIPELINE.md` **stage 4** (story breakdown): `story/bible.md`, rewrite
+`story/shots.json` (contiguous shots, median 2–3.5 s, 15–25 shots per minute, a concrete
+`scene` per shot, designed transitions, `bars`, `sfx`, `amb`, and the `music` plan).
+The hero is always `YOU` from cast.js; side characters only from cast.js (SAM, DR) or plain
+ink extras. Write `story/meta.json`:
+```json
+{ "titles": ["5 options, curiosity, no lies"], "description": "2–3 sentences",
+  "tags": ["6–12"], "pinnedComment": "one question to the viewers",
+  "thumbnailText": "≤ 3 words", "sources": [{ "title": "…", "url": "…" }] }
+```
+
+## 5. Build every shot (stage 6 of PIPELINE.md)
+Read `references/engine-api.md`, `director-pass.md`, `style-bible.md` and the example scenes once.
+Write `scenes/sets/<location>.js` and `scenes/shots/NN_<name>.js` in batches of 8–12 shots.
+After each batch:
 ```bash
-node --no-warnings pipeline/voice.ts <slug>              # downloads clips, writes durations
-node --no-warnings pipeline/validate.ts <slug> --timed   # must be 110–200 s
+node render.mjs --project projects/<slug> --sheet --scale 0.5
 ```
-If too long/short, edit those lines, delete only their `public/voice/<slug>/<id>.mp3`
-and run `voice.ts` again (existing clips are kept, so credits are not wasted).
+Open every `build/sheets/sheet_XX.png` and fix MISSING shots, red error text, empty or
+unreadable frames, faces covered by foregrounds. Use `--stills t1,t2` to check transitions.
+Non-negotiables: rim light on every lit figure, colours from `mood()`/`S()`, a motivated camera
+move in every shot, weight on arrivals, graphics synced with `wordTime()`, no Math.random/Date.now.
 
-## 6. Render (~60–70 min) — run in the background and wait
+## 6. Check, render, mix
 ```bash
-pipeline/render.sh <slug>
+python3 tools/check.py <slug>                                   # fix every ERROR first
+node render.mjs --project projects/<slug> --crf 22 > build.log 2>&1   # background; ~25 min
+python3 audio/mix.py --project projects/<slug>                  # music + SFX + voice → out/<Title>.mp4
 ```
-Output: `out/<slug>/<slug>.mp4` (≤ 48 MB), `thumbnail.jpg`, `qa/contact.png`.
 
-## 7. QA
-Look at `out/<slug>/qa/contact.png` and `out/<slug>/thumbnail.jpg`. Check: no black/empty
-frames, characters in frame, text readable and not overlapping heads, thumbnail text readable.
-If something is clearly broken, fix `film.json` and re-render once.
-
-## 8. Send to Telegram
+## 7. QA + thumbnail
 ```bash
-pipeline/telegram.sh <slug>
+ffmpeg -loglevel error -y -i projects/<slug>/out/*.mp4 -vf "fps=1/8,scale=480:-1,tile=4x5:padding=4" -frames:v 1 projects/<slug>/build/final_contact.png
+node render.mjs --project projects/<slug> --stills <t of the best bigFace/hero moment> --scale 1
+node tools/thumbnail.mjs --still projects/<slug>/build/stills/<file>.png --text "<meta.thumbnailText>" --out projects/<slug>/out/thumbnail.jpg
+python3 tools/check.py <slug> --final
 ```
+Look at `final_contact.png` and `thumbnail.jpg`. If something is clearly broken, fix and
+re-render once.
 
-## 9. History + archive
+## 8. Deliver + history
 ```bash
-pipeline/history.sh add "$TODAY" <slug> "<titles[0]>"
+tools/deliver.sh <slug>                                         # video + thumbnail + titles/description/tags
+(cd ../film && pipeline/history.sh add "$TODAY" <slug> "<meta.titles[0]>")
+(cd ../film && pipeline/notify.sh "✅ $TODAY: <title> — sent")
 ```
-(Optional, only if Google Drive tools are available) create folder
-`"<TODAY> — <slug> — <short topic>"` in `1OTtd9yEUQuRM0kivIKE2N-zItR4eYU2D` and upload
-`out/<slug>/thumbnail.jpg` + `films/<slug>/film.json` with file references
-(`base64Content` = `sha256:<sha256sum>:<absolute path>`, `disableConversionToGoogleType: true`).
-The Drive connector cannot upload files over 10 MB, so the video lives in Telegram.
-
-## 10. Done
-`pipeline/notify.sh "✅ <TODAY>: <title> — sent and archived"` and stop.
 Do not commit or push anything.

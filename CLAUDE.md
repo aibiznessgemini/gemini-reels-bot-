@@ -1,9 +1,9 @@
-# CLAUDE.md — Daily Animated Film Agent
+# CLAUDE.md — The You Experiment: daily "What if…?" film agent
 
-> **O'zbekcha qisqacha:** Bu loyiha har kuni avtomatik ravishda 2–3 daqiqalik
-> animatsion film (16:9, ingliz tilida) tayyorlab, Telegram bot orqali egasiga
-> yuboradi. Videoni YouTube'ga egasi o'zi yuklaydi. Barcha ish Claude ichida
-> bajariladi. ElevenLabs FAQAT ovoz uchun ishlatiladi.
+> **O'zbekcha qisqacha:** Har kuni avtomatik ravishda yangi g'oya va yangi ssenariy bo'yicha
+> 2–3 daqiqalik **Razgon 2D** uslubidagi "What if…?" animatsion film (16:9, ingliz tilida)
+> tayyorlanadi va Telegram bot orqali egasiga yuboriladi. YouTube'ga egasi o'zi yuklaydi.
+> Barcha ish Claude ichida. ElevenLabs FAQAT ovoz uchun.
 
 This file is the rule book. Read it fully before doing any work in this repo.
 
@@ -14,130 +14,99 @@ This file is the rule book. Read it fully before doing any work in this repo.
 | Item | State |
 |---|---|
 | Phase | **PRODUCTION** — daily automation (`docs/DAILY.md`) |
-| Animation style | 3D "round heads", our own palette (section 3) |
-| Voice | ElevenLabs API (key injected by the network proxy), Victor `GoV1V2hQd1doxcYR2SuA`, `eleven_v4`, one take per scene |
-| Niche | **"What if…" + psychology**, told to "you", grounded in real studies (`docs/topics.md`) |
+| Channel | **The You Experiment** — "What if…? Starring you." (`docs/CHANNEL.md`, art in `docs/brand/`) |
+| Engine | **Razgon 2D Studio** (owner's plugin) in `razgon-2d-studio/` |
+| Hero | **YOU** — black stick figure, **amber hoodie `#F2A541`, hood up** (`razgon-2d-studio/templates/cast.js`) |
+| Palette | Chosen per topic by the agent; `dusk` is the default |
+| Niche | **"What if…?"** in any field, told to "you" (`docs/topics.md`) |
+| Voice | ElevenLabs API with character timestamps, Victor `GoV1V2hQd1doxcYR2SuA`, `eleven_v4` |
 | Length | 2–3 minutes (110–200 s) |
-| Telegram | Owner's personal chat. `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` are environment variables the owner sets |
-| History | One pinned bot message in the owner's Telegram chat (`pipeline/history.sh`); videos live in Telegram |
-| Archive (optional) | Google Drive folder `1OTtd9yEUQuRM0kivIKE2N-zItR4eYU2D`, when the Drive connector is available |
-| Schedule | Every day 00:00 Asia/Tashkent, fresh cloud session, runs `docs/DAILY.md` |
+| Telegram | Owner's personal chat. `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` are environment variables |
+| History | One pinned bot message in the owner's Telegram chat (`film/pipeline/history.sh`) |
+| Schedule | Every day ~00:10 Asia/Tashkent, fresh cloud session, runs `docs/DAILY.md` |
+
+The first two films (2026-11-21/22) were made with the older 3D engine in `film/`; that engine
+is kept for reference. `film/pipeline/history.sh` and `notify.sh` are still used.
 
 ---
 
 ## 1. Owner's decisions (do not change without asking)
 
-- **Format:** 16:9, 1920×1080, 30 fps, **2–3 minutes** per film.
-- **Language:** English.
-- **Storytelling:** an English **narrator voiceover** from ElevenLabs, talking
-  to the viewer as "you" (like the owner's style reference). On screen: only
-  short labels, number badges and a small counter — no full subtitles.
-  ElevenLabs is used **only for voice**, never for images, video or music.
-- **Music:** written in code and matched to the film. **SFX:** synthesised in
-  code. No stock or sample audio (so Content ID cannot claim anything).
-- **Visuals:** everything drawn in code in Remotion. No AI video, no stock footage.
-- **Topics:** chosen by the agent.
-- **Automation:** fully automatic. The film is sent to Telegram as soon as it
-  is ready. **Never upload to YouTube** — the owner uploads manually.
+- **Rule: every day a new idea and a new script.** Never repeat an idea or a close variant.
+- **Style:** Razgon 2D (cinematic stick figures, rim light, moody 2.5D sets, giant faces,
+  freeze-frames, data cards, blueprints, low-poly 3D) — **but the hero is always our own
+  character YOU** (amber hoodie, hood up). Side characters: SAM, DR from cast.js, or ink extras.
+- **Palette:** the agent picks it per topic (dusk default; midnight, golden, neon, storybook).
+- **Format:** 16:9, 1080p, 24 fps, **2–3 minutes**, English narration to "you".
+- **Music + SFX:** generated in code by the studio (`audio/`). No stock audio.
+- **Visuals:** drawn by code. No AI images or video.
+- **ElevenLabs only for voice.**
+- **Fully automatic.** The film goes to Telegram as soon as it is ready. **Never upload to YouTube.**
 
-## 2. Originality rules
+## 2. Originality and facts
 
-- Learn the *format* from the reference tutorial
-  (`docs/reference/tutorial-breakdown.md`), never copy another channel's
-  characters, palette, title cards or branding one-for-one.
-- Every film must be a genuinely different topic. History lives in a pinned
-  Telegram message (`pipeline/history.sh get` → `films/history.json`);
-  `validate.ts` blocks repeated slugs. Mass-produced, repetitive videos risk YouTube's
-  "inauthentic content" policy.
-- Every factual claim must come from a source found online that day. Never
-  invent numbers, percentages or quotes. Sources go in `film.json` → `sources`.
+- Every film is a new "what if" scenario with new sets, new actions and new pictures; only the
+  style and the hero stay the same. Repetitive template videos risk YouTube's "inauthentic
+  content" policy.
+- Every factual claim must come from a source found online that day. Never invent numbers,
+  percentages or quotes. Sources go in `story/meta.json` → `sources`.
+- Do not copy other channels' characters, titles or branding.
 
-## 3. Visual style: 3D "round heads"
+## 3. How a film is made (roles)
 
-Learned from the owner's style reference, made our own:
-- Real 3D in Remotion (`@remotion/three`), rendered with SwiftShader (`swangle`).
-- Characters (`film/src/style3d/Character.tsx`): huge sphere head with a thin
-  dark outline, face drawn as a 2D decal (dot eyes, line brows, simple mouth,
-  rosy cheeks when happy), thin neck, hoodie body with drawstrings, noodle
-  arms with ball hands, thin legs with ball feet, soft contact shadow.
-- **Our lead character always wears an amber hoodie (`#F2A541`).**
-- **Our palette:** deep teal night + warm amber practical lights
-  (`film/src/style3d/Set.tsx` → `LOOK`). Do NOT use the reference's
-  purple/pink look, pink "laser" lines or heart counter.
-- Depth of field: each shot is two canvases sharing one camera; the background
-  canvas gets a CSS blur in close-ups.
-- Overlays: thin black cinematic bars, soft vignette, cream serif small-caps
-  badges on a dark pill with an amber border, a small counter top-left.
-- Music: soft felt piano + warm pad, synthesised in code, ducked under the
-  voice (ffmpeg sidechain), final mix -16 LUFS.
-- Render speed here: ~26 s of rendering per 1 s of film (4 CPU cores).
+The full step-by-step runbook is **`docs/DAILY.md`**; the studio's own rules are in
+`razgon-2d-studio/references/` (PIPELINE, style-bible, director-pass, story-breakdown,
+engine-api, sound-design, render-qc).
 
-Older 2D samples (paper, woodcut, pixel, chalk, puppet) stay in
-`film/src/test/` for reference only.
-
-Shared rules:
-- Shots hold 3–8 s (one narration line each); hard cuts between shots.
-- On-screen text only as: `label` (small-caps title, ≤ 6 words), `badge`
-  (number/name pill, ≤ 4 words), `counter` (top-left), `nameTags` (lineups).
-- Thumbnail: a close-up frame + ≤ 3 big words (Fredoka, cream with amber shadow).
-
-## 4. Daily pipeline (multi-agent)
-
-The full step-by-step runbook is **`docs/DAILY.md`**. The agents are roles the
-daily session plays in order; everything mechanical is a script.
-
-| # | Agent | Does | Tool / output |
+| # | Role | Does | Tool / output |
 |---|---|---|---|
-| 1 | **Researcher** | Reads history from Drive, picks a new topic, verifies facts online | WebSearch → sources |
-| 2 | **Writer** | Writes the whole film as data: 24–32 scenes (line, set, shot, cast, expressions, badges) | `films/<slug>/film.json` |
-| 3 | **Auditor** | Mechanical checks + fact check against sources (max 2 rounds) | `pipeline/validate.ts` |
-| 4 | **Voice** | One ElevenLabs API take per scene, real durations measured | `pipeline/voice.ts` |
-| 5 | **Animator** | The engine turns film.json into 3D shots — no new code per film | `src/engine/*` → `pipeline/render.sh` |
-| 6 | **Sound** | Mood-based music + SFX on cuts/badges, ducked under the voice, -16 LUFS | `pipeline/music.ts` (inside render.sh) |
-| 7 | **QA** | Looks at the contact sheet + thumbnail, fixes and re-renders once if broken | `out/<slug>/qa/contact.png` |
-| 8 | **Messenger** | Video + thumbnail + 5 titles/description/tags to Telegram; history update | `pipeline/telegram.sh`, `pipeline/history.sh` |
+| 1 | **Researcher** | Reads history, picks a new "what if", verifies facts online | WebSearch → sources |
+| 2 | **Writer** | 26–36 narration lines, 330–420 words, hook → title → … → science → question | `voice_work/<slug>-lines.txt` |
+| 3 | **Voice** | One ElevenLabs call per line with exact word timings → voiceover + timeline | `tools/eleven_voice.mjs` |
+| 4 | **Director** | Story bible, shot list with scenes/transitions/sound, meta.json | `story/bible.md`, `story/shots.json`, `story/meta.json` |
+| 5 | **Animator** | Writes sets and shots in code, checks contact sheets in batches | `scenes/sets/*.js`, `scenes/shots/*.js` |
+| 6 | **Auditor** | Mechanical checks before and after render | `tools/check.py` |
+| 7 | **Render + Sound** | Final render (~25 min for 150 s), music + SFX + voice mix | `render.mjs`, `audio/mix.py` |
+| 8 | **Packager** | Thumbnail (≤ 3 words), Telegram delivery, history update | `tools/thumbnail.mjs`, `tools/deliver.sh` |
 
-**Hybrid rule:** numbers, timings, frame cues, file handling and loudness are
-done by scripts. The LLM only decides, writes and judges.
+**Hybrid rule:** timings, word sync, audio, encoding and delivery are scripts; the LLM decides,
+writes, directs and judges.
 
-## 5. Project layout
+## 4. Project layout
 
 ```
-CLAUDE.md                    this rule book
-docs/DAILY.md                daily runbook (what the scheduled session does)
-docs/topics.md               topic bank
-docs/reference/              analysis of the reference tutorial
-film/                        Remotion project
-  films/<slug>/film.json     one film = one data file (+ voice-urls.json)
-  src/engine/                film engine: types, sets, SceneView (shots), Film + Thumbnail
-  src/style3d/               characters, faces, lights, the 3D style test
-  src/test/                  old 2D style samples (reference only)
-  pipeline/                  validate, voice, music, render.sh, telegram.sh, notify.sh
-  public/voice/<slug>/       downloaded voice clips
-  out/                       renders (git-ignored)
+CLAUDE.md                     this rule book
+docs/DAILY.md                 daily runbook (what the scheduled session does)
+docs/topics.md                "What if…?" topic bank (+ already made)
+docs/CHANNEL.md               YouTube channel setup guide (Uzbek) + copy
+docs/brand/                   avatar, banner, watermark, description footer, palette grid
+razgon-2d-studio/             the Razgon 2D studio (owner's plugin kit, installed)
+  references/                 the plugin's rules (read before building shots)
+  templates/cast.js           YOU / SAM / DR — copy into every project
+  templates/sets/             reusable sets we made (street.js …)
+  tools/eleven_voice.mjs      our add-on: ElevenLabs voice + exact word timings
+  tools/thumbnail.mjs         our add-on: 1280×720 thumbnail from a still + ≤ 3 words
+  tools/check.py              our add-on: mechanical audit
+  tools/deliver.sh            our add-on: Telegram delivery (≤ 48 MB, size metadata)
+  projects/style-demo/        reference project (time-freeze demo)
+  projects/brand/             channel art project
+film/                         the older 3D engine (reference) + history.sh / notify.sh
 ```
 
-## 6. Environment notes (cloud session)
+## 5. Environment notes (cloud session)
 
-- `remotion.media` is blocked, so Remotion cannot download its browser.
-  `film/remotion.config.ts` uses `/opt/pw-browsers/chromium_headless_shell`.
-- The headless browser has no network: **all fonts must be local files** in
-  `film/public/fonts/` loaded via `@remotion/fonts`.
-- Voice: `pipeline/voice.ts` calls `api.elevenlabs.io` directly; the key is a
-  network secret the proxy injects (send `xi-api-key: proxy-injected`).
-  Scheduled sessions have no connectors, so nothing in the daily run may
-  depend on the ElevenLabs or Drive connector tools.
-- `api.telegram.org` is allowed. The bot token sits in the URL, so it must be an
-  environment variable (network secrets only inject headers).
-- Google Drive uploads: pass `base64Content` as a file reference
-  `sha256:<hex>:<absolute path>` — never paste base64. Limit 10 MB per file, so
-  videos are not archived to Drive (they stay in Telegram).
-- WebGL runs on SwiftShader (`Config.setChromiumOpenGlRenderer("swangle")`).
-- Run TypeScript scripts with `node --no-warnings pipeline/<name>.ts`
-  (use `import { type X }` for type-only imports).
-- Test renders: add `--is-production=false`.
+- Scheduled sessions start **without the repository and without connectors**: the trigger
+  prompt clones the repo first. Nothing in the daily run may depend on connector tools.
+- Chromium: Playwright 1.56's own browser is absent; `render.mjs` and `thumbnail.mjs` fall
+  back to `/opt/pw-browsers/chromium` (local patch, override with `RAZGON_CHROMIUM`).
+- Whisper's model host is blocked, so timings come from ElevenLabs `/with-timestamps`
+  (`tools/eleven_voice.mjs`), which is exact.
+- ElevenLabs key: a network secret injected for `api.elevenlabs.io` (send `xi-api-key: proxy-injected`).
+- `api.telegram.org` is allowed; the bot token is an environment variable.
+- Python needs numpy + scipy for `audio/` (`pip install numpy scipy`).
+- Render speed here: ~2.5 frames/s at 1080p (150 s film ≈ 25 min). Sheets/stills take seconds.
 
-## 7. Safety
+## 6. Safety
 
-- Secrets only in environment variables (never in code, never in chat, never committed).
+- Secrets only in environment variables or network secrets (never in code, chat or commits).
 - Do not post, upload or message anyone other than the owner's Telegram chat.

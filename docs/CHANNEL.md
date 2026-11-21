@@ -14,8 +14,8 @@ Rasmlar: `docs/brand/avatar.png`, `docs/brand/banner.png`, `docs/brand/watermark
 | **Nomi** | `The You Experiment` |
 | **Handle** | `@TheYouExperiment` (band bo'lsa: `@YouExperiment`, `@TheYouExperimentTV`, `@YouExperimentFilms`) |
 
-Nima uchun shu nom: har bir film psixologik **tajriba** (experiment) haqida, diktor esa
-tomoshabinga doim **"you"** deb murojaat qiladi. Qisqa va eslab qolish oson.
+Nima uchun shu nom: har bir film bitta **"what if" tajribasi** (experiment) va bosh qahramon
+doim **"you"** — tomoshabin. Qisqa va eslab qolish oson.
 
 **Qayerda o'zgartiriladi:** YouTube Studio → **Customization** → **Basic info** → Name / Handle.
 
@@ -24,14 +24,13 @@ tomoshabinga doim **"you"** deb murojaat qiladi. Qisqa va eslab qolish oson.
 ## 2. Kanal tavsifi (Description) — nusxalang
 
 ```
-What if you could see what people really think of you?
-What if your brain is lying to you right now?
+What if you could stop time? What if the Moon disappeared tonight? What if you never needed to sleep?
 
-The You Experiment turns real psychology research into short animated films — and you are the main character. Every film takes one published study or well-known effect and shows what it means for your everyday life: conversations, decisions, memory, confidence, relationships and the strange habits of your own mind.
+The You Experiment turns the biggest "what if" questions into short animated films — and you are the main character. Space, the human body, your brain, history, physics, nature and technology: every film imagines one wild scenario, then shows what science actually says would happen to you.
 
-🧪 A new film every day
-🎬 2–3 minute animated stories
-📚 Every fact comes from published research (sources in each description)
+🎬 A new animated "What if…?" film every day
+⏱ 2–3 minute cinematic stories
+📚 Real facts from real sources (listed in every description)
 
 Subscribe and become part of the experiment.
 ```
@@ -43,7 +42,7 @@ Subscribe and become part of the experiment.
 **Qayerda:** YouTube Studio → **Settings** → **Channel** → **Basic info** → Keywords. Nusxalang:
 
 ```
-psychology, psychology facts, social psychology, what if, human behavior, cognitive biases, psychology experiments, animated psychology, self improvement, social anxiety, confidence, how the brain works, mind tricks, the you experiment
+what if, what if videos, animated what if, science what if, hypothetical, space, human body, psychology, history, physics, animation, stick figure animation, the you experiment, explained
 ```
 
 ---
@@ -54,7 +53,7 @@ psychology, psychology facts, social psychology, what if, human behavior, cognit
 
 | Joy | Fayl | O'lcham |
 |---|---|---|
-| **Picture** (avatar) | `avatar.png` | 800×800 |
+| **Picture** (avatar) | `avatar.png` | 800×800. Bosh qahramon: sariq kapyushonli xudi, Razgon 2D uslubida |
 | **Banner image** | `banner.png` | 2560×1440. Matn hamma qurilmada ko'rinadigan xavfsiz zonada |
 | **Video watermark** | `watermark.png` | 150×150. Display time: **Entire video** |
 
@@ -71,7 +70,7 @@ YouTube Studio → **Settings**:
 
 **Channel → Advanced settings**
 - **Audience:** `No, set this channel as not made for kids`. Mavzular kattalar va o'smirlar uchun
-  psixologiya. Personajlar multfilm uslubida bo'lsa ham kontent bolalarga mo'ljallanmagan.
+  fan va psixologiya. Personajlar multfilm uslubida bo'lsa ham kontent bolalarga mo'ljallanmagan.
 
 **Upload defaults → Basic info** (har yangi videoga avtomatik qo'yiladi)
 - **Title:** bo'sh qoldiring, har kuni Telegramdan keladi
@@ -94,18 +93,18 @@ bo'lmasa, **"Yes"** ni tanlang: bu video reytingiga ta'sir qilmaydi.
 
 ---
 
-## 6. Pleylistlar (3 ta)
+## 6. Pleylistlar (4 ta)
 
 **Qayerda:** YouTube Studio → **Content** → **Playlists** → **New playlist**.
 
 | Nomi | Tavsif |
 |---|---|
-| `What If…? — Your Mind, Explained` | `Animated "what if" stories about your brain, built on real psychology research.` |
-| `People & Conversations` | `Why people like you more than you think, and other surprises about how we connect.` |
-| `Mind Tricks & Biases` | `The shortcuts and glitches your brain uses every day without telling you.` |
+| `What If… Space & Earth` | `Black holes, the Moon, Mars and our own planet — what would happen to you?` |
+| `What If… Your Body & Brain` | `Sleep, memory, senses and superpowers: what your body would really do.` |
+| `What If… History & Time` | `Wake up in another century, stop time, or live forever.` |
+| `What If… The World Changed` | `The internet, the bees, the ice — what if one thing disappeared?` |
 
-Har bir filmni mavzusiga qarab bitta pleylistga qo'shing. "The Liking Gap" filmi
-→ `People & Conversations`.
+Eski 3D filmlar (birinchi ikkitasi) uchun: `What If… Your Body & Brain`.
 
 ---
 

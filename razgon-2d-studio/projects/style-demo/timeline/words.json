@@ -1,0 +1,220 @@
+{
+ "source": "script:script.json",
+ "words": [
+  {
+   "word": "Imagine",
+   "start": 0.25,
+   "end": 0.81
+  },
+  {
+   "word": "you",
+   "start": 0.97,
+   "end": 1.05
+  },
+  {
+   "word": "could",
+   "start": 1.13,
+   "end": 1.29
+  },
+  {
+   "word": "stop",
+   "start": 1.37,
+   "end": 1.69
+  },
+  {
+   "word": "time.",
+   "start": 1.77,
+   "end": 2.57
+  },
+  {
+   "word": "You",
+   "start": 2.84,
+   "end": 3.0
+  },
+  {
+   "word": "snap",
+   "start": 3.08,
+   "end": 3.32
+  },
+  {
+   "word": "your",
+   "start": 3.4,
+   "end": 3.48
+  },
+  {
+   "word": "fingers,",
+   "start": 3.56,
+   "end": 4.28
+  },
+  {
+   "word": "and",
+   "start": 4.36,
+   "end": 4.44
+  },
+  {
+   "word": "the",
+   "start": 4.48,
+   "end": 4.52
+  },
+  {
+   "word": "whole",
+   "start": 4.76,
+   "end": 5.08
+  },
+  {
+   "word": "world",
+   "start": 5.16,
+   "end": 5.56
+  },
+  {
+   "word": "freezes.",
+   "start": 5.72,
+   "end": 6.68
+  },
+  {
+   "word": "The",
+   "start": 6.95,
+   "end": 7.11
+  },
+  {
+   "word": "rain",
+   "start": 7.19,
+   "end": 7.51
+  },
+  {
+   "word": "hangs",
+   "start": 7.67,
+   "end": 8.07
+  },
+  {
+   "word": "in",
+   "start": 8.15,
+   "end": 8.23
+  },
+  {
+   "word": "the",
+   "start": 8.27,
+   "end": 8.31
+  },
+  {
+   "word": "air.",
+   "start": 8.47,
+   "end": 9.11
+  },
+  {
+   "word": "The",
+   "start": 9.43,
+   "end": 9.51
+  },
+  {
+   "word": "cars",
+   "start": 9.59,
+   "end": 9.91
+  },
+  {
+   "word": "stop",
+   "start": 9.99,
+   "end": 10.39
+  },
+  {
+   "word": "in",
+   "start": 10.43,
+   "end": 10.47
+  },
+  {
+   "word": "the",
+   "start": 10.55,
+   "end": 10.63
+  },
+  {
+   "word": "middle",
+   "start": 10.71,
+   "end": 10.87
+  },
+  {
+   "word": "of",
+   "start": 10.95,
+   "end": 11.03
+  },
+  {
+   "word": "the",
+   "start": 11.07,
+   "end": 11.11
+  },
+  {
+   "word": "street.",
+   "start": 11.19,
+   "end": 11.91
+  },
+  {
+   "word": "Everyone",
+   "start": 12.18,
+   "end": 12.66
+  },
+  {
+   "word": "around",
+   "start": 12.74,
+   "end": 13.06
+  },
+  {
+   "word": "you",
+   "start": 13.14,
+   "end": 13.3
+  },
+  {
+   "word": "is",
+   "start": 13.38,
+   "end": 13.54
+  },
+  {
+   "word": "frozen.",
+   "start": 13.62,
+   "end": 14.26
+  },
+  {
+   "word": "Everyone,",
+   "start": 14.9,
+   "end": 15.7
+  },
+  {
+   "word": "except",
+   "start": 15.94,
+   "end": 16.34
+  },
+  {
+   "word": "you.",
+   "start": 16.42,
+   "end": 16.98
+  },
+  {
+   "word": "So",
+   "start": 17.25,
+   "end": 17.57
+  },
+  {
+   "word": "what",
+   "start": 17.89,
+   "end": 18.05
+  },
+  {
+   "word": "would",
+   "start": 18.13,
+   "end": 18.21
+  },
+  {
+   "word": "you",
+   "start": 18.29,
+   "end": 18.37
+  },
+  {
+   "word": "do",
+   "start": 18.49,
+   "end": 18.61
+  },
+  {
+   "word": "first?",
+   "start": 18.85,
+   "end": 19.33
+  }
+ ]
+}
