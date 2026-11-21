@@ -18,3 +18,6 @@ const LOCAL_SHELL = process.env.REMOTION_BROWSER ?? "/opt/pw-browsers/chromium_h
 if (fs.existsSync(LOCAL_SHELL)) {
   Config.setBrowserExecutable(LOCAL_SHELL);
 }
+
+// No GPU in the cloud container: render WebGL with SwiftShader through ANGLE.
+Config.setChromiumOpenGlRenderer("swangle");

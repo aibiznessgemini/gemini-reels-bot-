@@ -14,8 +14,9 @@ This file is the rule book. Read it fully before doing any work in this repo.
 | Item | State |
 |---|---|
 | Phase | **SETUP** (one-time choices with the owner) |
-| Animation style | **Not chosen yet.** 5 samples rendered: `paper`, `woodcut`, `pixel`, `chalk`, `puppet` |
-| Niche | Proposed: **true animal stories** (waiting for the owner's OK) |
+| Animation style | **Chosen: 3D "round heads"** (owner's reference video, our own palette). Test: `film/src/style3d/Test3D.tsx` |
+| Voice | ElevenLabs narrator. Test voice: Victor `GoV1V2hQd1doxcYR2SuA`, model `eleven_v4` (waiting for the owner's OK) |
+| Niche | Open. Animal stories no longer fit human characters; options sent to the owner |
 | Telegram bot | Not created yet |
 | Daily schedule | Not created yet. Target: every day at 00:00 Asia/Tashkent |
 
@@ -28,10 +29,10 @@ delete the other styles from the rules, and set Phase to **PRODUCTION**.
 
 - **Format:** 16:9, 1920×1080, 30 fps, **2–3 minutes** per film.
 - **Language:** English.
-- **Storytelling:** like the reference tutorial — the story is told with
-  **short on-screen text** (max 8 words per line), no continuous voiceover.
-  ElevenLabs is used **only for voice** (e.g. a few short narrator lines),
-  never for images, video or music.
+- **Storytelling:** an English **narrator voiceover** from ElevenLabs, talking
+  to the viewer as "you" (like the owner's style reference). On screen: only
+  short labels, number badges and a small counter — no full subtitles.
+  ElevenLabs is used **only for voice**, never for images, video or music.
 - **Music:** written in code and matched to the film. **SFX:** synthesised in
   code. No stock or sample audio (so Content ID cannot claim anything).
 - **Visuals:** everything drawn in code in Remotion. No AI video, no stock footage.
@@ -50,9 +51,30 @@ delete the other styles from the rules, and set Phase to **PRODUCTION**.
 - True stories must be fact-checked online before writing. Record sources in
   the film's `story.json`.
 
-## 3. Visual style (to be finalised after the owner picks one)
+## 3. Visual style: 3D "round heads"
 
-Shared rules for every style:
+Learned from the owner's style reference, made our own:
+- Real 3D in Remotion (`@remotion/three`), rendered with SwiftShader (`swangle`).
+- Characters (`film/src/style3d/Character.tsx`): huge sphere head with a thin
+  dark outline, face drawn as a 2D decal (dot eyes, line brows, simple mouth,
+  rosy cheeks when happy), thin neck, hoodie body with drawstrings, noodle
+  arms with ball hands, thin legs with ball feet, soft contact shadow.
+- **Our lead character always wears an amber hoodie (`#F2A541`).**
+- **Our palette:** deep teal night + warm amber practical lights
+  (`film/src/style3d/Set.tsx` → `LOOK`). Do NOT use the reference's
+  purple/pink look, pink "laser" lines or heart counter.
+- Depth of field: each shot is two canvases sharing one camera; the background
+  canvas gets a CSS blur in close-ups.
+- Overlays: thin black cinematic bars, soft vignette, cream serif small-caps
+  badges on a dark pill with an amber border, a small counter top-left.
+- Music: soft felt piano + warm pad, synthesised in code, ducked under the
+  voice (ffmpeg sidechain), final mix -16 LUFS.
+- Render speed here: ~26 s of rendering per 1 s of film (4 CPU cores).
+
+Older 2D samples (paper, woodcut, pixel, chalk, puppet) stay in
+`film/src/test/` for reference only.
+
+Shared rules:
 - Smooth motion on every frame (except deliberate "on twos" stop-motion styles).
 - Squash and stretch, locked camera, slow push-ins on emotional moments,
   hard cuts to close-ups. Calm shots hold 4–8 s, montage shots ~1 s.
@@ -100,9 +122,12 @@ film/                      Remotion project
   `film/remotion.config.ts` uses `/opt/pw-browsers/chromium_headless_shell`.
 - The headless browser has no network: **all fonts must be local files** in
   `film/public/fonts/` loaded via `@remotion/fonts`.
-- `api.telegram.org` and `api.elevenlabs.io` are currently blocked for direct
-  calls. Voice goes through the ElevenLabs connector; Telegram needs the host
-  allowed in the environment (or a connector) before the Messenger can work.
+- Voice: generate with the ElevenLabs connector (`creative_generate_speech`,
+  1 take), then download the mp3 from `elevenlabsusercontent.com` (allowed in
+  this environment). Find sentence pauses with ffmpeg `silencedetect` and cut
+  shots on them.
+- `api.telegram.org` is still blocked; it must be allowed in the environment
+  before the Messenger can work.
 - Run TypeScript scripts with `node --no-warnings scripts/<name>.ts`.
 - Test renders: add `--is-production=false`.
 

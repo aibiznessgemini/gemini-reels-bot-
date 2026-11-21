@@ -2,6 +2,8 @@ import { Composition } from "remotion";
 import { StyleScene } from "./test/Scene";
 import { STYLE_IDS, THEMES, StyleId } from "./test/themes";
 import { DURATION, FPS, H, W } from "./test/timeline";
+import { Probe } from "./style3d/Probe";
+import { Test3D, TEST3D_FRAMES } from "./style3d/Test3D";
 
 const StyleTest: React.FC<{ style: StyleId }> = ({ style }) => <StyleScene t={THEMES[style]} />;
 
@@ -19,5 +21,7 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={{ style: id }}
       />
     ))}
+    <Composition id="Test3D" component={Test3D} durationInFrames={TEST3D_FRAMES} fps={30} width={1920} height={1080} />
+    <Composition id="Probe3D" component={Probe} durationInFrames={60} fps={30} width={1920} height={1080} />
   </>
 );
