@@ -50,6 +50,8 @@ export type FilmSpec = {
   /** YouTube packaging written by the Packager agent */
   titles?: string[];
   description?: string;
+  /** a question for the viewers, to pin as the first comment */
+  pinnedComment?: string;
   tags?: string[];
   sources?: { title: string; url: string }[];
 };

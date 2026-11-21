@@ -10,11 +10,16 @@ OUT=out/$SLUG
 : "${TELEGRAM_CHAT_ID:?TELEGRAM_CHAT_ID is not set}"
 API="https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}"
 CAPTION=$(node -e "const s=require('./films/$SLUG/film.json');console.log('🎬 '+(s.titles?.[0]??s.title))")
+# Everything the owner pastes into YouTube Studio, ready to copy:
+# description = story text + sources + the channel footer (docs/brand/footer.txt).
 META=$(node -e "
+const fs=require('fs');
 const s=require('./films/$SLUG/film.json');
+const footer=fs.existsSync('../docs/brand/footer.txt')?fs.readFileSync('../docs/brand/footer.txt','utf8').trim():'';
 const t=(s.titles??[s.title]).map((x,i)=>(i+1)+'. '+x).join('\n');
 const src=(s.sources??[]).map(x=>'• '+x.title+' — '+x.url).join('\n');
-console.log('📝 TITLES\n'+t+'\n\n📄 DESCRIPTION\n'+(s.description??'')+'\n\n🏷 TAGS\n'+(s.tags??[]).join(', ')+(src?'\n\n🔎 SOURCES\n'+src:''));
+const desc=[s.description??'', src?'Sources:\n'+src:'', footer].filter(Boolean).join('\n\n');
+console.log('📝 TITLES (pick one)\n'+t+'\n\n📄 DESCRIPTION (copy all)\n'+desc+'\n\n🏷 TAGS\n'+(s.tags??[]).join(', ')+(s.pinnedComment?'\n\n📌 PINNED COMMENT\n'+s.pinnedComment:''));
 ")
 send() { curl -sS --fail --retry 3 --retry-all-errors "$@" > /dev/null; }
 # Telegram needs the real size, or it may show the player in the wrong shape;

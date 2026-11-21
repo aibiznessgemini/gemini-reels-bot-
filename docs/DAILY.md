@@ -46,7 +46,9 @@ Copy the structure of `films/the-liking-gap/film.json` (schema: `src/engine/type
   each shot type at least once; `lineup` on `void` for "explainer" beats with a `label`.
   Badges only for real numbers/names from sources (≤ 4 words). Counter only when it tells the story.
 - `thumbnail`: a close-up scene + ≤ 3 words. `titles`: 5 options (curiosity, no clickbait lies).
-  `description`: 2–3 sentences + the study citation. `tags`: 6–10.
+  `description`: 2–3 sentences + the study citation (sources and the channel footer are
+  added automatically). `tags`: 6–10. `pinnedComment`: one short question to the viewers
+  that invites a personal answer (e.g. "Would you want to know your secret score? Why?").
 
 ## 4. Auditor
 ```bash
