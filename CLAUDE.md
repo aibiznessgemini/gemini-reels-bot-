@@ -91,11 +91,11 @@ daily session plays in order; everything mechanical is a script.
 | 1 | **Researcher** | Reads history from Drive, picks a new topic, verifies facts online | WebSearch → sources |
 | 2 | **Writer** | Writes the whole film as data: 24–32 scenes (line, set, shot, cast, expressions, badges) | `films/<slug>/film.json` |
 | 3 | **Auditor** | Mechanical checks + fact check against sources (max 2 rounds) | `pipeline/validate.ts` |
-| 4 | **Voice** | One ElevenLabs take per scene, real durations measured | connector + `pipeline/voice.ts` |
+| 4 | **Voice** | One ElevenLabs API take per scene, real durations measured | `pipeline/voice.ts` |
 | 5 | **Animator** | The engine turns film.json into 3D shots — no new code per film | `src/engine/*` → `pipeline/render.sh` |
 | 6 | **Sound** | Mood-based music + SFX on cuts/badges, ducked under the voice, -16 LUFS | `pipeline/music.ts` (inside render.sh) |
 | 7 | **QA** | Looks at the contact sheet + thumbnail, fixes and re-renders once if broken | `out/<slug>/qa/contact.png` |
-| 8 | **Messenger** | Video + thumbnail + 5 titles/description/tags to Telegram; archive to Drive | `pipeline/telegram.sh`, Drive connector |
+| 8 | **Messenger** | Video + thumbnail + 5 titles/description/tags to Telegram; history update | `pipeline/telegram.sh`, `pipeline/history.sh` |
 
 **Hybrid rule:** numbers, timings, frame cues, file handling and loudness are
 done by scripts. The LLM only decides, writes and judges.
