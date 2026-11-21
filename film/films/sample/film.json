@@ -1,0 +1,21 @@
+{
+  "slug": "sample",
+  "title": "Engine sample",
+  "mood": "curious",
+  "cast": {
+    "you": { "hoodie": "#F2A541", "name": "you" },
+    "maya": { "hoodie": "#D9667A", "hair": "bob", "hairColor": "#6B4A2E", "name": "maya" },
+    "jake": { "hoodie": "#5DA06F", "hair": "cap", "hairColor": "#2F6B4F", "name": "jake" }
+  },
+  "thumbnail": { "scene": "s4", "text": "Nobody knows you" },
+  "scenes": [
+    { "id": "s1", "line": "", "duration": 3, "set": "hall", "shot": "follow", "crowd": 40, "action": { "you": "walk" }, "expression": { "you": "nervous" }, "sfx": ["whoosh"] },
+    { "id": "s2", "line": "", "duration": 2.5, "set": "hall", "shot": "overhead", "crowd": 40, "badge": "100 strangers", "sfx": ["pop"] },
+    { "id": "s3", "line": "", "duration": 2.5, "set": "classroom", "shot": "wide", "others": ["maya", "jake"], "crowd": 12, "expression": { "you": "neutral>happy", "maya": "happy", "jake": "smug" }, "counter": { "label": "friends", "value": 0 } },
+    { "id": "s4", "line": "", "duration": 2.5, "set": "street", "shot": "closeup", "crowd": 10, "expression": { "you": "surprised" }, "counter": { "label": "friends", "value": 1 }, "sfx": ["chime"] },
+    { "id": "s5", "line": "", "duration": 2.5, "set": "void", "shot": "lineup", "others": ["jake", "maya"], "nameTags": true, "label": "the three people", "sfx": ["riser"] },
+    { "id": "s6", "line": "", "duration": 2.5, "set": "bedroom", "shot": "twoshot", "others": ["maya"], "expression": { "you": "happy", "maya": "smug" }, "action": { "maya": "wave" } },
+    { "id": "s7", "line": "", "duration": 2.5, "set": "hall", "shot": "ots", "others": ["maya"], "crowd": 30, "expression": { "you": "surprised", "maya": "neutral>happy" }, "action": { "maya": "wave" } },
+    { "id": "s8", "line": "", "duration": 2.5, "set": "hall", "shot": "dolly", "crowd": 46, "action": { "crowd": "cheer" } }
+  ]
+}

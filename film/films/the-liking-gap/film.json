@@ -1,0 +1,485 @@
+{
+  "slug": "the-liking-gap",
+  "title": "What If You Could See What People Really Think of You?",
+  "mood": "warm",
+  "cast": {
+    "you": {
+      "hoodie": "#F2A541",
+      "name": "you"
+    },
+    "maya": {
+      "hoodie": "#D9667A",
+      "hair": "bob",
+      "hairColor": "#6B4A2E",
+      "name": "maya"
+    },
+    "jake": {
+      "hoodie": "#5DA06F",
+      "hair": "cap",
+      "hairColor": "#2F6B4F",
+      "name": "jake"
+    }
+  },
+  "thumbnail": {
+    "scene": "s10",
+    "text": "They Like You"
+  },
+  "titles": [
+    "What If You Could See What People Really Think of You?",
+    "People Like You More Than You Think (Science Proves It)",
+    "The Liking Gap: Why Every Conversation Went Better Than You Think",
+    "Why Your Brain Lies to You After Every Conversation",
+    "You're Wrong About What People Think of You"
+  ],
+  "description": "You walk away from a conversation and your brain starts the replay: did I talk too much? In 2018, psychologists tested this across five studies and found the 'liking gap': people consistently underestimate how much others like them. Here's what they found, and why your brain gets it wrong.",
+  "tags": [
+    "psychology",
+    "liking gap",
+    "social anxiety",
+    "conversation",
+    "what if",
+    "self confidence",
+    "animation",
+    "science"
+  ],
+  "sources": [
+    {
+      "title": "Boothby, Cooney, Sandstrom & Clark (2018), The Liking Gap in Conversations, Psychological Science 29(11)",
+      "url": "https://journals.sagepub.com/doi/abs/10.1177/0956797618783714"
+    },
+    {
+      "title": "PubMed record",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30183512/"
+    },
+    {
+      "title": "Yale News: After a first meeting, people like you more than you think",
+      "url": "https://news.yale.edu/2018/09/04/first-meeting-people-you-more-you-think"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01",
+      "line": "You just had a conversation with someone new. And now, as you walk away, your brain starts the replay.",
+      "set": "hall",
+      "shot": "follow",
+      "crowd": 40,
+      "action": {
+        "you": "walk"
+      },
+      "expression": {
+        "you": "nervous"
+      },
+      "audio": "voice/the-liking-gap/s01.mp3",
+      "duration": 7.57
+    },
+    {
+      "id": "s02",
+      "line": "Did I talk too much? Was that joke weird? Do they think I'm boring?",
+      "set": "hall",
+      "shot": "closeup",
+      "crowd": 30,
+      "expression": {
+        "you": "nervous"
+      },
+      "audio": "voice/the-liking-gap/s02.mp3",
+      "duration": 5.56
+    },
+    {
+      "id": "s03",
+      "line": "Now imagine you could see exactly what they were thinking about you.",
+      "set": "hall",
+      "shot": "ots",
+      "others": [
+        "maya"
+      ],
+      "crowd": 30,
+      "expression": {
+        "you": "surprised",
+        "maya": "neutral"
+      },
+      "sfx": [
+        "sparkle"
+      ],
+      "audio": "voice/the-liking-gap/s03.mp3",
+      "duration": 5.01
+    },
+    {
+      "id": "s04",
+      "line": "Say every person you met gave you a secret score, from one to ten.",
+      "set": "void",
+      "shot": "lineup",
+      "others": [
+        "maya"
+      ],
+      "nameTags": true,
+      "label": "a secret score",
+      "counter": {
+        "label": "your guess",
+        "value": "?"
+      },
+      "audio": "voice/the-liking-gap/s04.mp3",
+      "duration": 5.98
+    },
+    {
+      "id": "s05",
+      "line": "Right now, you'd probably guess something low. A four. Maybe a five, if you were lucky.",
+      "set": "void",
+      "shot": "lineup",
+      "others": [
+        "maya"
+      ],
+      "nameTags": true,
+      "label": "a secret score",
+      "expression": {
+        "you": "nervous"
+      },
+      "counter": {
+        "label": "your guess",
+        "value": 4
+      },
+      "audio": "voice/the-liking-gap/s05.mp3",
+      "duration": 6.92
+    },
+    {
+      "id": "s06",
+      "line": "But in 2018, a group of psychologists decided to actually check.",
+      "set": "classroom",
+      "shot": "wide",
+      "crowd": 10,
+      "badge": "2018",
+      "expression": {
+        "you": "neutral"
+      },
+      "audio": "voice/the-liking-gap/s06.mp3",
+      "duration": 5.64
+    },
+    {
+      "id": "s07",
+      "line": "They brought strangers into a lab, paired them up, and simply let them talk.",
+      "set": "classroom",
+      "shot": "twoshot",
+      "others": [
+        "jake"
+      ],
+      "expression": {
+        "you": "nervous>happy",
+        "jake": "neutral>happy"
+      },
+      "action": {
+        "jake": "nod"
+      },
+      "audio": "voice/the-liking-gap/s07.mp3",
+      "duration": 5.56
+    },
+    {
+      "id": "s08",
+      "line": "Afterwards, each person answered two questions.",
+      "set": "void",
+      "shot": "lineup",
+      "others": [
+        "jake"
+      ],
+      "nameTags": true,
+      "label": "two questions",
+      "sfx": [
+        "pop"
+      ],
+      "audio": "voice/the-liking-gap/s08.mp3",
+      "duration": 4.12
+    },
+    {
+      "id": "s09",
+      "line": "How much did you like your partner? And how much do you think they liked you?",
+      "set": "void",
+      "shot": "lineup",
+      "others": [
+        "jake"
+      ],
+      "nameTags": true,
+      "label": "two questions",
+      "expression": {
+        "you": "smug>nervous"
+      },
+      "audio": "voice/the-liking-gap/s09.mp3",
+      "duration": 5.56
+    },
+    {
+      "id": "s10",
+      "line": "And almost everyone made the same mistake.",
+      "set": "hall",
+      "shot": "closeup",
+      "crowd": 30,
+      "expression": {
+        "you": "surprised"
+      },
+      "sfx": [
+        "thud"
+      ],
+      "audio": "voice/the-liking-gap/s10.mp3",
+      "duration": 3.81
+    },
+    {
+      "id": "s11",
+      "line": "People consistently underestimated how much their partner actually liked them.",
+      "set": "void",
+      "shot": "lineup",
+      "crowd": 8,
+      "label": "the liking gap",
+      "sfx": [
+        "riser"
+      ],
+      "audio": "voice/the-liking-gap/s11.mp3",
+      "duration": 5.72
+    },
+    {
+      "id": "s12",
+      "line": "Their partner had enjoyed the conversation far more than they realised.",
+      "set": "classroom",
+      "shot": "ots",
+      "others": [
+        "jake"
+      ],
+      "crowd": 10,
+      "expression": {
+        "you": "nervous",
+        "jake": "happy"
+      },
+      "action": {
+        "jake": "wave"
+      },
+      "audio": "voice/the-liking-gap/s12.mp3",
+      "duration": 5.09
+    },
+    {
+      "id": "s13",
+      "line": "The researchers called it the liking gap. And it didn't just happen once.",
+      "set": "hall",
+      "shot": "overhead",
+      "crowd": 40,
+      "badge": "the liking gap",
+      "audio": "voice/the-liking-gap/s13.mp3",
+      "duration": 5.98
+    },
+    {
+      "id": "s14",
+      "line": "It showed up across five different studies.",
+      "set": "hall",
+      "shot": "dolly",
+      "crowd": 46,
+      "badge": "5 studies",
+      "audio": "voice/the-liking-gap/s14.mp3",
+      "duration": 3.42
+    },
+    {
+      "id": "s15",
+      "line": "In short chats of just two minutes. And in long ones of forty-five.",
+      "set": "street",
+      "shot": "wide",
+      "others": [
+        "maya",
+        "jake"
+      ],
+      "crowd": 10,
+      "badge": "2 to 45 minutes",
+      "expression": {
+        "maya": "happy",
+        "jake": "smug"
+      },
+      "audio": "voice/the-liking-gap/s15.mp3",
+      "duration": 5.64
+    },
+    {
+      "id": "s16",
+      "line": "It even showed up in first-year college students getting to know their new dorm mates.",
+      "set": "classroom",
+      "shot": "overhead",
+      "crowd": 20,
+      "audio": "voice/the-liking-gap/s16.mp3",
+      "duration": 5.17
+    },
+    {
+      "id": "s17",
+      "line": "Men or women, it made no difference. The gap was there for both.",
+      "set": "void",
+      "shot": "lineup",
+      "others": [
+        "maya",
+        "jake"
+      ],
+      "crowd": 4,
+      "label": "men and women",
+      "audio": "voice/the-liking-gap/s17.mp3",
+      "duration": 5.25
+    },
+    {
+      "id": "s18",
+      "line": "So why does your brain get this so wrong?",
+      "set": "bedroom",
+      "shot": "closeup",
+      "expression": {
+        "you": "sleepy>nervous"
+      },
+      "sfx": [
+        "whoosh"
+      ],
+      "audio": "voice/the-liking-gap/s18.mp3",
+      "duration": 3.73
+    },
+    {
+      "id": "s19",
+      "line": "Because after a conversation, you replay your own worst moments.",
+      "set": "bedroom",
+      "shot": "wide",
+      "expression": {
+        "you": "nervous"
+      },
+      "audio": "voice/the-liking-gap/s19.mp3",
+      "duration": 5.33
+    },
+    {
+      "id": "s20",
+      "line": "The awkward pause. The joke that didn't land. The thing you wish you hadn't said.",
+      "set": "bedroom",
+      "shot": "closeup",
+      "expression": {
+        "you": "nervous"
+      },
+      "counter": {
+        "label": "bad moments",
+        "value": 3
+      },
+      "sfx": [
+        "tick"
+      ],
+      "audio": "voice/the-liking-gap/s20.mp3",
+      "duration": 7
+    },
+    {
+      "id": "s21",
+      "line": "In the studies, the more negative thoughts people had about a conversation, the bigger their liking gap.",
+      "set": "void",
+      "shot": "lineup",
+      "crowd": 6,
+      "label": "negative thoughts",
+      "expression": {
+        "you": "nervous"
+      },
+      "audio": "voice/the-liking-gap/s21.mp3",
+      "duration": 7.18
+    },
+    {
+      "id": "s22",
+      "line": "But the other person never saw those moments the way you did.",
+      "set": "hall",
+      "shot": "twoshot",
+      "others": [
+        "maya"
+      ],
+      "crowd": 20,
+      "expression": {
+        "you": "nervous",
+        "maya": "happy"
+      },
+      "audio": "voice/the-liking-gap/s22.mp3",
+      "duration": 4.44
+    },
+    {
+      "id": "s23",
+      "line": "And chances are, they were walking away doing the exact same thing.",
+      "set": "street",
+      "shot": "follow",
+      "crowd": 8,
+      "action": {
+        "you": "walk"
+      },
+      "expression": {
+        "you": "neutral"
+      },
+      "audio": "voice/the-liking-gap/s23.mp3",
+      "duration": 4.86
+    },
+    {
+      "id": "s24",
+      "line": "The researchers called it a rare kind of pessimism. We're usually confident about ourselves... but not in conversation.",
+      "set": "street",
+      "shot": "closeup",
+      "crowd": 8,
+      "expression": {
+        "you": "neutral>surprised"
+      },
+      "audio": "voice/the-liking-gap/s24.mp3",
+      "duration": 9.17
+    },
+    {
+      "id": "s25",
+      "line": "So the next time you walk away from a chat, convinced it went badly...",
+      "set": "hall",
+      "shot": "wide",
+      "others": [
+        "maya",
+        "jake"
+      ],
+      "crowd": 30,
+      "expression": {
+        "you": "nervous",
+        "maya": "happy",
+        "jake": "happy"
+      },
+      "audio": "voice/the-liking-gap/s25.mp3",
+      "duration": 5.25
+    },
+    {
+      "id": "s26",
+      "line": "remember: they probably liked you a lot more than you think.",
+      "set": "hall",
+      "shot": "ots",
+      "others": [
+        "maya"
+      ],
+      "crowd": 30,
+      "expression": {
+        "you": "surprised>happy",
+        "maya": "happy"
+      },
+      "action": {
+        "maya": "wave"
+      },
+      "sfx": [
+        "chime"
+      ],
+      "audio": "voice/the-liking-gap/s26.mp3",
+      "duration": 4.93
+    },
+    {
+      "id": "s27",
+      "line": "And if you really could see their secret score...",
+      "set": "hall",
+      "shot": "dolly",
+      "crowd": 46,
+      "action": {
+        "crowd": "wave"
+      },
+      "audio": "voice/the-liking-gap/s27.mp3",
+      "duration": 3.81
+    },
+    {
+      "id": "s28",
+      "line": "would you even want to know?",
+      "set": "void",
+      "shot": "lineup",
+      "others": [
+        "maya",
+        "jake"
+      ],
+      "crowd": 2,
+      "label": "would you want to know?",
+      "expression": {
+        "you": "smug",
+        "maya": "happy",
+        "jake": "smug"
+      },
+      "audio": "voice/the-liking-gap/s28.mp3",
+      "duration": 2.61
+    }
+  ]
+}
