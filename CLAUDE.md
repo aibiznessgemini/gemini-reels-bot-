@@ -13,15 +13,14 @@ This file is the rule book. Read it fully before doing any work in this repo.
 
 | Item | State |
 |---|---|
-| Phase | **SETUP** (one-time choices with the owner) |
-| Animation style | **Chosen: 3D "round heads"** (owner's reference video, our own palette). Test: `film/src/style3d/Test3D.tsx` |
-| Voice | ElevenLabs narrator. Test voice: Victor `GoV1V2hQd1doxcYR2SuA`, model `eleven_v4` (waiting for the owner's OK) |
-| Niche | Open. Animal stories no longer fit human characters; options sent to the owner |
-| Telegram bot | Not created yet |
-| Daily schedule | Not created yet. Target: every day at 00:00 Asia/Tashkent |
-
-When the owner picks a style, rewrite section 3 around that style only,
-delete the other styles from the rules, and set Phase to **PRODUCTION**.
+| Phase | **PRODUCTION** — daily automation (`docs/DAILY.md`) |
+| Animation style | 3D "round heads", our own palette (section 3) |
+| Voice | ElevenLabs, Victor `GoV1V2hQd1doxcYR2SuA`, model `eleven_v4`, one take per scene |
+| Niche | **"What if…" + psychology**, told to "you", grounded in real studies (`docs/topics.md`) |
+| Length | 2–3 minutes (110–200 s) |
+| Telegram | Owner's personal chat. `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` are environment variables the owner sets |
+| Archive | Google Drive folder `1OTtd9yEUQuRM0kivIKE2N-zItR4eYU2D` ("Daily Films (YouTube agent)") = history |
+| Schedule | Every day 00:00 Asia/Tashkent, fresh cloud session, runs `docs/DAILY.md` |
 
 ---
 
@@ -45,11 +44,12 @@ delete the other styles from the rules, and set Phase to **PRODUCTION**.
 - Learn the *format* from the reference tutorial
   (`docs/reference/tutorial-breakdown.md`), never copy another channel's
   characters, palette, title cards or branding one-for-one.
-- Every film must be a genuinely different story. Keep `film/history.json`
-  (topic, date, slug, title) and never repeat a story or a close variant.
-  Mass-produced, repetitive videos risk YouTube's "inauthentic content" policy.
-- True stories must be fact-checked online before writing. Record sources in
-  the film's `story.json`.
+- Every film must be a genuinely different topic. History lives in the Google
+  Drive archive (one sub-folder per film); `validate.ts` blocks repeats via
+  `films/history.json`. Mass-produced, repetitive videos risk YouTube's
+  "inauthentic content" policy.
+- Every factual claim must come from a source found online that day. Never
+  invent numbers, percentages or quotes. Sources go in `film.json` → `sources`.
 
 ## 3. Visual style: 3D "round heads"
 
@@ -75,29 +75,26 @@ Older 2D samples (paper, woodcut, pixel, chalk, puppet) stay in
 `film/src/test/` for reference only.
 
 Shared rules:
-- Smooth motion on every frame (except deliberate "on twos" stop-motion styles).
-- Squash and stretch, locked camera, slow push-ins on emotional moments,
-  hard cuts to close-ups. Calm shots hold 4–8 s, montage shots ~1 s.
-- On-screen text: top centre, ≤ 8 words, fades in and out.
-- A small story counter top-left (e.g. "MILES TO HOME", "DAYS ALONE") that
-  counts as the story progresses.
-- Title card in the last ~2–12 s: the film's one word types on letter by
-  letter, wavy accent underline, one short line ("A true story."), fade to black.
-
-Style tokens live in `film/src/test/themes.ts`.
+- Shots hold 3–8 s (one narration line each); hard cuts between shots.
+- On-screen text only as: `label` (small-caps title, ≤ 6 words), `badge`
+  (number/name pill, ≤ 4 words), `counter` (top-left), `nameTags` (lineups).
+- Thumbnail: a close-up frame + ≤ 3 big words (Fredoka, cream with amber shadow).
 
 ## 4. Daily pipeline (multi-agent)
 
-| # | Agent | Does | Output |
+The full step-by-step runbook is **`docs/DAILY.md`**. The agents are roles the
+daily session plays in order; everything mechanical is a script.
+
+| # | Agent | Does | Tool / output |
 |---|---|---|---|
-| 1 | **Researcher** | Picks today's story in the niche, checks `history.json`, verifies facts online | `story.json` (facts + sources) |
-| 2 | **Writer** | Turns the story into a scene list: 25–40 scenes, timings, on-screen lines (≤ 8 words), counter values | `scenes.json` |
-| 3 | **Auditor** | Checks scenes against these rules: length 120–180 s, text limits, facts match sources, not a repeat. Sends back to Writer if it fails (max 2 rounds) | pass / fix list |
-| 4 | **Animator** | Writes the Remotion code for the film in `film/src/films/<slug>/` using the chosen style | composition |
-| 5 | **Sound** | Builds music + SFX from the same timeline (script, not LLM) | `audio.wav` |
-| 6 | **QA** | Renders stills every ~5 s, looks at them, fixes overflow, tiny text, overlaps, off-screen elements (max 3 rounds) | QA notes |
-| 7 | **Packager** | Final render + loudness (-16 LUFS, peaks < -1.5 dBTP), 1 thumbnail 1280×720 (≤ 3 words), 5 titles, description, tags | `out/<date>/` |
-| 8 | **Messenger** | Sends the MP4, thumbnail, titles and description to Telegram | message |
+| 1 | **Researcher** | Reads history from Drive, picks a new topic, verifies facts online | WebSearch → sources |
+| 2 | **Writer** | Writes the whole film as data: 24–32 scenes (line, set, shot, cast, expressions, badges) | `films/<slug>/film.json` |
+| 3 | **Auditor** | Mechanical checks + fact check against sources (max 2 rounds) | `pipeline/validate.ts` |
+| 4 | **Voice** | One ElevenLabs take per scene, real durations measured | connector + `pipeline/voice.ts` |
+| 5 | **Animator** | The engine turns film.json into 3D shots — no new code per film | `src/engine/*` → `pipeline/render.sh` |
+| 6 | **Sound** | Mood-based music + SFX on cuts/badges, ducked under the voice, -16 LUFS | `pipeline/music.ts` (inside render.sh) |
+| 7 | **QA** | Looks at the contact sheet + thumbnail, fixes and re-renders once if broken | `out/<slug>/qa/contact.png` |
+| 8 | **Messenger** | Video + thumbnail + 5 titles/description/tags to Telegram; archive to Drive | `pipeline/telegram.sh`, Drive connector |
 
 **Hybrid rule:** numbers, timings, frame cues, file handling and loudness are
 done by scripts. The LLM only decides, writes and judges.
@@ -105,15 +102,18 @@ done by scripts. The LLM only decides, writes and judges.
 ## 5. Project layout
 
 ```
-CLAUDE.md                  this rule book
-docs/reference/            analysis of the reference tutorial
-film/                      Remotion project
-  src/fonts.ts             fonts bundled locally (public/fonts)
-  src/test/                10-second style test (timeline, themes, scene)
-  scripts/make-audio.ts    code-synthesised music + SFX
-  scripts/render-tests.sh  renders all style tests + comparison grid
-  out/                     renders (git-ignored)
-.env.example               secrets template (.env is git-ignored)
+CLAUDE.md                    this rule book
+docs/DAILY.md                daily runbook (what the scheduled session does)
+docs/topics.md               topic bank
+docs/reference/              analysis of the reference tutorial
+film/                        Remotion project
+  films/<slug>/film.json     one film = one data file (+ voice-urls.json)
+  src/engine/                film engine: types, sets, SceneView (shots), Film + Thumbnail
+  src/style3d/               characters, faces, lights, the 3D style test
+  src/test/                  old 2D style samples (reference only)
+  pipeline/                  validate, voice, music, render.sh, telegram.sh, notify.sh
+  public/voice/<slug>/       downloaded voice clips
+  out/                       renders (git-ignored)
 ```
 
 ## 6. Environment notes (cloud session)
@@ -126,12 +126,16 @@ film/                      Remotion project
   1 take), then download the mp3 from `elevenlabsusercontent.com` (allowed in
   this environment). Find sentence pauses with ffmpeg `silencedetect` and cut
   shots on them.
-- `api.telegram.org` is still blocked; it must be allowed in the environment
-  before the Messenger can work.
-- Run TypeScript scripts with `node --no-warnings scripts/<name>.ts`.
+- `api.telegram.org` is allowed. The bot token sits in the URL, so it must be an
+  environment variable (network secrets only inject headers).
+- Google Drive uploads of big files: pass `base64Content` as a file reference
+  `sha256:<hex>:<absolute path>` — never paste base64.
+- WebGL runs on SwiftShader (`Config.setChromiumOpenGlRenderer("swangle")`).
+- Run TypeScript scripts with `node --no-warnings pipeline/<name>.ts`
+  (use `import { type X }` for type-only imports).
 - Test renders: add `--is-production=false`.
 
 ## 7. Safety
 
-- Secrets only in `.env` (never in code, never in chat, never committed).
+- Secrets only in environment variables (never in code, never in chat, never committed).
 - Do not post, upload or message anyone other than the owner's Telegram chat.

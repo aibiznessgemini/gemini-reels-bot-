@@ -25,6 +25,8 @@ export type CharacterProps = {
   /** right arm raise 0..1 (wave) and wave phase */
   wave?: number;
   wavePhase?: number;
+  /** both arms up 0..1 */
+  cheer?: number;
   scale?: number;
 };
 
@@ -49,6 +51,7 @@ export const Character: React.FC<CharacterProps> = ({
   headTilt = 0,
   wave = 0,
   wavePhase = 0,
+  cheer = 0,
   scale = 1,
 }) => {
   const tex = useMemo(() => faceTexture(expression, blink), [expression, blink]);
@@ -94,7 +97,9 @@ export const Character: React.FC<CharacterProps> = ({
   );
 
   // rotating +z swings the right arm outward/up; -z swings the left arm outward
-  const rightZ = 0.12 + wave * 2.35 + Math.sin(wavePhase) * 0.3 * wave;
+  const up = Math.max(wave, cheer);
+  const rightZ = 0.12 + up * 2.35 + Math.sin(wavePhase) * 0.3 * wave + Math.sin(wavePhase) * 0.12 * cheer;
+  const leftZ = -0.12 - cheer * 2.35 - Math.sin(wavePhase + 1) * 0.12 * cheer;
 
   return (
     <group position={[position[0], position[1] + bob, position[2]]} rotation={[0, rotationY, 0]} scale={scale}>
@@ -127,8 +132,8 @@ export const Character: React.FC<CharacterProps> = ({
           <boxGeometry args={[0.52, 0.2, 0.04]} />
           <Std color={new THREE.Color(hoodie).multiplyScalar(0.85).getStyle()} rough={0.85} />
         </mesh>
-        {arm(-1, armSwing, -0.12)}
-        {arm(1, wave > 0 ? 0 : -armSwing, rightZ)}
+        {arm(-1, cheer > 0 ? 0 : armSwing, leftZ)}
+        {arm(1, up > 0 ? 0 : -armSwing, rightZ)}
         {/* neck */}
         <mesh position={[0, neckY + 0.1, 0]}>
           <cylinderGeometry args={[0.06, 0.06, 0.4, 10]} />
@@ -176,12 +181,12 @@ export const Character: React.FC<CharacterProps> = ({
           )}
           {hair === "cap" && (
             <group>
-              <mesh rotation={[-0.35, 0, 0]}>
-                <sphereGeometry args={[headR * 1.045, 40, 20, 0, Math.PI * 2, 0, 1.05]} />
+              <mesh rotation={[-0.12, 0, 0]}>
+                <sphereGeometry args={[headR * 1.045, 40, 20, 0, Math.PI * 2, 0, 1.3]} />
                 <Std color={hairColor} rough={0.8} />
               </mesh>
               {/* brim: a flat disc pushed forward, its back half hidden inside the head */}
-              <mesh position={[0, headR * 0.66, headR * 0.5]} rotation={[0.32, 0, 0]} scale={[1, 0.07, 1]}>
+              <mesh position={[0, headR * 0.5, headR * 0.72]} rotation={[0.22, 0, 0]} scale={[1, 0.07, 1]}>
                 <cylinderGeometry args={[0.6, 0.6, 0.6, 32]} />
                 <Std color={hairColor} rough={0.8} />
               </mesh>
