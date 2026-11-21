@@ -1,0 +1,44 @@
+[
+ {
+  "i": 0,
+  "start": 0.25,
+  "end": 2.57,
+  "text": "Imagine you could stop time."
+ },
+ {
+  "i": 1,
+  "start": 2.84,
+  "end": 6.68,
+  "text": "You snap your fingers, and the whole world freezes."
+ },
+ {
+  "i": 2,
+  "start": 6.95,
+  "end": 9.11,
+  "text": "The rain hangs in the air."
+ },
+ {
+  "i": 3,
+  "start": 9.43,
+  "end": 11.91,
+  "text": "The cars stop in the middle of the street."
+ },
+ {
+  "i": 4,
+  "start": 12.18,
+  "end": 14.26,
+  "text": "Everyone around you is frozen."
+ },
+ {
+  "i": 5,
+  "start": 14.9,
+  "end": 16.98,
+  "text": "Everyone, except you."
+ },
+ {
+  "i": 6,
+  "start": 17.25,
+  "end": 19.33,
+  "text": "So what would you do first?"
+ }
+]

@@ -1,0 +1,123 @@
+{
+ "title": "What If You Could Stop Time?",
+ "duration": 20.83,
+ "shots": [
+  {
+   "id": "s001",
+   "start": 0.0,
+   "end": 2.69,
+   "line": "Imagine you could stop time.",
+   "scene": "Wide rainy night street, YOU under a lamp, crane down",
+   "set": "street",
+   "bars": null,
+   "in": {
+    "type": "fade",
+    "dur": 0.5
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s002",
+   "start": 2.69,
+   "end": 6.8,
+   "line": "You snap your fingers, and the whole world freezes.",
+   "scene": "Medium: YOU raises a hand and snaps; rings; rain freezes on \"freezes\"",
+   "set": "street",
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [
+    {
+     "at": 0.9,
+     "name": "snap",
+     "gain": -6
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "id": "s003",
+   "start": 6.8,
+   "end": 9.28,
+   "line": "The rain hangs in the air.",
+   "scene": "Macro: raindrops hanging in the air in front of the lamp glow; TIME 0.00x badge",
+   "set": "street",
+   "bars": "scope",
+   "in": {
+    "type": "flash",
+    "dur": 0.3
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s004",
+   "start": 9.28,
+   "end": 12.03,
+   "line": "The cars stop in the middle of the street.",
+   "scene": "Wide: car frozen mid-street, headlight cone hanging, 0 KM/H callout",
+   "set": "street",
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s005",
+   "start": 12.03,
+   "end": 14.75,
+   "line": "Everyone around you is frozen.",
+   "scene": "Frozen pedestrians mid-step; only YOU walks through them",
+   "set": "street",
+   "bars": null,
+   "in": {
+    "type": "push",
+    "dir": 1,
+    "dur": 0.5
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s006",
+   "start": 14.75,
+   "end": 17.1,
+   "line": "Everyone, except you.",
+   "scene": "Giant face: YOU, awe then smirk on \"you\"; frozen drops",
+   "set": "street",
+   "bars": "scope",
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s007",
+   "start": 17.1,
+   "end": 20.83,
+   "line": "So what would you do first?",
+   "scene": "End screen question",
+   "set": "void",
+   "bars": null,
+   "in": {
+    "type": "dip",
+    "dur": 0.5
+   },
+   "sfx": [],
+   "notes": ""
+  }
+ ],
+ "music": [
+  {
+   "start": 0,
+   "end": 20.83,
+   "mood": "mystery",
+   "intensity": 0.4
+  }
+ ]
+}
