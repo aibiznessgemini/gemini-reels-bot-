@@ -128,8 +128,9 @@ film/                        Remotion project
   shots on them.
 - `api.telegram.org` is allowed. The bot token sits in the URL, so it must be an
   environment variable (network secrets only inject headers).
-- Google Drive uploads of big files: pass `base64Content` as a file reference
-  `sha256:<hex>:<absolute path>` — never paste base64.
+- Google Drive uploads: pass `base64Content` as a file reference
+  `sha256:<hex>:<absolute path>` — never paste base64. Limit 10 MB per file, so
+  videos are not archived to Drive (they stay in Telegram).
 - WebGL runs on SwiftShader (`Config.setChromiumOpenGlRenderer("swangle")`).
 - Run TypeScript scripts with `node --no-warnings pipeline/<name>.ts`
   (use `import { type X }` for type-only imports).

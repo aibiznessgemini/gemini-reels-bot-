@@ -83,12 +83,13 @@ pipeline/telegram.sh <slug>
 ```
 
 ## 9. Archive to Google Drive
-- `create_file` folder `"<TODAY> — <slug> — <short topic>"` with `parentId` = archive folder.
-- Upload into it (file references, never paste base64 yourself:
-  `base64Content` = `sha256:<sha256sum>:<absolute path>`):
-  - `<slug>.mp4` (`video/mp4`, `disableConversionToGoogleType: true`)
-  - `thumbnail.jpg` (`image/jpeg`)
-  - `film.json` as `textContent` (`application/json`, `disableConversionToGoogleType: true`)
+The Drive connector only uploads files ≤ 10 MB, so the video itself lives in Telegram.
+- `create_file` folder `"<TODAY> — <slug> — <short topic>"` (mimeType folder) with
+  `parentId` = archive folder. **This folder is the history record — always create it.**
+- Upload into it with file references (never paste base64 yourself):
+  `base64Content` = `sha256:<sha256sum>:<absolute path>`, `disableConversionToGoogleType: true`
+  - `out/<slug>/thumbnail.jpg` (`image/jpeg`)
+  - `films/<slug>/film.json` (`application/json`)
 
 ## 10. Done
 `pipeline/notify.sh "✅ <TODAY>: <title> — sent and archived"` and stop.
