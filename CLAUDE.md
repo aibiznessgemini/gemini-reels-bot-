@@ -15,11 +15,12 @@ This file is the rule book. Read it fully before doing any work in this repo.
 |---|---|
 | Phase | **PRODUCTION** — daily automation (`docs/DAILY.md`) |
 | Animation style | 3D "round heads", our own palette (section 3) |
-| Voice | ElevenLabs, Victor `GoV1V2hQd1doxcYR2SuA`, model `eleven_v4`, one take per scene |
+| Voice | ElevenLabs API (key injected by the network proxy), Victor `GoV1V2hQd1doxcYR2SuA`, `eleven_v4`, one take per scene |
 | Niche | **"What if…" + psychology**, told to "you", grounded in real studies (`docs/topics.md`) |
 | Length | 2–3 minutes (110–200 s) |
 | Telegram | Owner's personal chat. `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` are environment variables the owner sets |
-| Archive | Google Drive folder `1OTtd9yEUQuRM0kivIKE2N-zItR4eYU2D` ("Daily Films (YouTube agent)") = history |
+| History | One pinned bot message in the owner's Telegram chat (`pipeline/history.sh`); videos live in Telegram |
+| Archive (optional) | Google Drive folder `1OTtd9yEUQuRM0kivIKE2N-zItR4eYU2D`, when the Drive connector is available |
 | Schedule | Every day 00:00 Asia/Tashkent, fresh cloud session, runs `docs/DAILY.md` |
 
 ---
@@ -44,9 +45,9 @@ This file is the rule book. Read it fully before doing any work in this repo.
 - Learn the *format* from the reference tutorial
   (`docs/reference/tutorial-breakdown.md`), never copy another channel's
   characters, palette, title cards or branding one-for-one.
-- Every film must be a genuinely different topic. History lives in the Google
-  Drive archive (one sub-folder per film); `validate.ts` blocks repeats via
-  `films/history.json`. Mass-produced, repetitive videos risk YouTube's
+- Every film must be a genuinely different topic. History lives in a pinned
+  Telegram message (`pipeline/history.sh get` → `films/history.json`);
+  `validate.ts` blocks repeated slugs. Mass-produced, repetitive videos risk YouTube's
   "inauthentic content" policy.
 - Every factual claim must come from a source found online that day. Never
   invent numbers, percentages or quotes. Sources go in `film.json` → `sources`.
@@ -90,11 +91,11 @@ daily session plays in order; everything mechanical is a script.
 | 1 | **Researcher** | Reads history from Drive, picks a new topic, verifies facts online | WebSearch → sources |
 | 2 | **Writer** | Writes the whole film as data: 24–32 scenes (line, set, shot, cast, expressions, badges) | `films/<slug>/film.json` |
 | 3 | **Auditor** | Mechanical checks + fact check against sources (max 2 rounds) | `pipeline/validate.ts` |
-| 4 | **Voice** | One ElevenLabs take per scene, real durations measured | connector + `pipeline/voice.ts` |
+| 4 | **Voice** | One ElevenLabs API take per scene, real durations measured | `pipeline/voice.ts` |
 | 5 | **Animator** | The engine turns film.json into 3D shots — no new code per film | `src/engine/*` → `pipeline/render.sh` |
 | 6 | **Sound** | Mood-based music + SFX on cuts/badges, ducked under the voice, -16 LUFS | `pipeline/music.ts` (inside render.sh) |
 | 7 | **QA** | Looks at the contact sheet + thumbnail, fixes and re-renders once if broken | `out/<slug>/qa/contact.png` |
-| 8 | **Messenger** | Video + thumbnail + 5 titles/description/tags to Telegram; archive to Drive | `pipeline/telegram.sh`, Drive connector |
+| 8 | **Messenger** | Video + thumbnail + 5 titles/description/tags to Telegram; history update | `pipeline/telegram.sh`, `pipeline/history.sh` |
 
 **Hybrid rule:** numbers, timings, frame cues, file handling and loudness are
 done by scripts. The LLM only decides, writes and judges.
@@ -122,10 +123,10 @@ film/                        Remotion project
   `film/remotion.config.ts` uses `/opt/pw-browsers/chromium_headless_shell`.
 - The headless browser has no network: **all fonts must be local files** in
   `film/public/fonts/` loaded via `@remotion/fonts`.
-- Voice: generate with the ElevenLabs connector (`creative_generate_speech`,
-  1 take), then download the mp3 from `elevenlabsusercontent.com` (allowed in
-  this environment). Find sentence pauses with ffmpeg `silencedetect` and cut
-  shots on them.
+- Voice: `pipeline/voice.ts` calls `api.elevenlabs.io` directly; the key is a
+  network secret the proxy injects (send `xi-api-key: proxy-injected`).
+  Scheduled sessions have no connectors, so nothing in the daily run may
+  depend on the ElevenLabs or Drive connector tools.
 - `api.telegram.org` is allowed. The bot token sits in the URL, so it must be an
   environment variable (network secrets only inject headers).
 - Google Drive uploads: pass `base64Content` as a file reference
