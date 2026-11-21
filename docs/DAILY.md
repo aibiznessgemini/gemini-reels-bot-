@@ -12,15 +12,17 @@ If any step fails and you cannot fix it in 2 tries: run
 cd film
 [ -d node_modules ] || npm ci --no-audit --no-fund
 TODAY=$(TZ=Asia/Tashkent date +%F)
-[ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ] || echo "WARNING: Telegram variables missing"
+[ -n "${TELEGRAM_BOT_TOKEN:-}" ] && [ -n "${TELEGRAM_CHAT_ID:-}" ] || echo "STOP: Telegram variables missing (owner must set them)"
 ```
 
 ## 1. History (never repeat a story)
-Google Drive archive folder: **`1OTtd9yEUQuRM0kivIKE2N-zItR4eYU2D`** ("Daily Films (YouTube agent)").
-- `search_files` with `parentId = '1OTtd9yEUQuRM0kivIKE2N-zItR4eYU2D'` → every sub-folder title is
-  `YYYY-MM-DD — <slug> — <topic>`. Collect them all (paginate).
-- Write them to `films/history.json` as `[{ "date", "slug", "title" }]` so `validate.ts` can block repeats.
-- If today's date already has a folder, stop (the film was already made).
+The history lives in ONE pinned bot message in the owner's Telegram chat:
+```bash
+pipeline/history.sh get        # → films/history.json, prints every past film
+```
+- If today's date (`$TODAY`) is already in the list, stop (the film was already made).
+- (Optional) If Google Drive tools are available, the archive folder
+  `1OTtd9yEUQuRM0kivIKE2N-zItR4eYU2D` holds one sub-folder per film as a backup.
 
 ## 2. Researcher — pick today's topic
 Niche: **"What if…" + psychology**, told to the viewer as "you", grounded in real research.
@@ -53,18 +55,16 @@ node --no-warnings pipeline/validate.ts <slug>
 Fix every ERROR. Then re-read the script against the sources: every factual claim must be
 in a source. Max 2 rounds.
 
-## 5. Voice (ElevenLabs connector — voice only)
-- `creative_create_flow` (name `<slug> voice`).
-- For every scene: `creative_generate_speech` with that `flow_id`, `prompt` = the line,
-  `voice_id` **`GoV1V2hQd1doxcYR2SuA`** (Victor), `model_id` `eleven_v4`, `generations_count` 1.
-  Send 7 calls in parallel per message. Never re-call to retry a running generation.
-- Poll `creative_get_flow_run_status` (≤ 14 session ids per call) until all completed.
-- Write `films/<slug>/voice-urls.json` = `{ "<scene id>": "<content_url>" }`, then:
+## 5. Voice (ElevenLabs — voice only)
+The ElevenLabs API key is injected by the environment's network proxy for
+`api.elevenlabs.io` (never put a key anywhere). One take per scene, Victor
+(`GoV1V2hQd1doxcYR2SuA`), `eleven_v4`:
 ```bash
-node --no-warnings pipeline/voice.ts <slug>
+node --no-warnings pipeline/voice.ts <slug>              # downloads clips, writes durations
 node --no-warnings pipeline/validate.ts <slug> --timed   # must be 110–200 s
 ```
-If too long/short, edit lines and regenerate only those scenes.
+If too long/short, edit those lines, delete only their `public/voice/<slug>/<id>.mp3`
+and run `voice.ts` again (existing clips are kept, so credits are not wasted).
 
 ## 6. Render (~60–70 min) — run in the background and wait
 ```bash
@@ -82,14 +82,15 @@ If something is clearly broken, fix `film.json` and re-render once.
 pipeline/telegram.sh <slug>
 ```
 
-## 9. Archive to Google Drive
-The Drive connector only uploads files ≤ 10 MB, so the video itself lives in Telegram.
-- `create_file` folder `"<TODAY> — <slug> — <short topic>"` (mimeType folder) with
-  `parentId` = archive folder. **This folder is the history record — always create it.**
-- Upload into it with file references (never paste base64 yourself):
-  `base64Content` = `sha256:<sha256sum>:<absolute path>`, `disableConversionToGoogleType: true`
-  - `out/<slug>/thumbnail.jpg` (`image/jpeg`)
-  - `films/<slug>/film.json` (`application/json`)
+## 9. History + archive
+```bash
+pipeline/history.sh add "$TODAY" <slug> "<titles[0]>"
+```
+(Optional, only if Google Drive tools are available) create folder
+`"<TODAY> — <slug> — <short topic>"` in `1OTtd9yEUQuRM0kivIKE2N-zItR4eYU2D` and upload
+`out/<slug>/thumbnail.jpg` + `films/<slug>/film.json` with file references
+(`base64Content` = `sha256:<sha256sum>:<absolute path>`, `disableConversionToGoogleType: true`).
+The Drive connector cannot upload files over 10 MB, so the video lives in Telegram.
 
 ## 10. Done
 `pipeline/notify.sh "✅ <TODAY>: <title> — sent and archived"` and stop.
