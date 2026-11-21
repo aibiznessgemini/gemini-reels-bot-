@@ -15,7 +15,11 @@
     "dur": 0.5
    },
    "sfx": [],
-   "notes": ""
+   "notes": "",
+   "amb": {
+    "name": "rain",
+    "gain": -24
+   }
   },
   {
    "id": "s002",
@@ -31,11 +35,20 @@
    "sfx": [
     {
      "at": 0.9,
-     "name": "snap",
+     "name": "hit",
+     "gain": -8
+    },
+    {
+     "at": 3.0,
+     "name": "freeze",
      "gain": -6
     }
    ],
-   "notes": ""
+   "notes": "",
+   "amb": {
+    "name": "rain",
+    "gain": -24
+   }
   },
   {
    "id": "s003",
@@ -49,7 +62,13 @@
     "type": "flash",
     "dur": 0.3
    },
-   "sfx": [],
+   "sfx": [
+    {
+     "at": 0.1,
+     "name": "shimmer",
+     "gain": -12
+    }
+   ],
    "notes": ""
   },
   {
@@ -63,7 +82,13 @@
    "in": {
     "type": "cut"
    },
-   "sfx": [],
+   "sfx": [
+    {
+     "at": 0.5,
+     "name": "pop",
+     "gain": -10
+    }
+   ],
    "notes": ""
   },
   {
@@ -93,7 +118,13 @@
    "in": {
     "type": "cut"
    },
-   "sfx": [],
+   "sfx": [
+    {
+     "at": 0.0,
+     "name": "swish",
+     "gain": -12
+    }
+   ],
    "notes": ""
   },
   {
@@ -108,7 +139,13 @@
     "type": "dip",
     "dur": 0.5
    },
-   "sfx": [],
+   "sfx": [
+    {
+     "at": 0.6,
+     "name": "pop",
+     "gain": -10
+    }
+   ],
    "notes": ""
   }
  ],
