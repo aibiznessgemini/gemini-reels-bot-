@@ -50,9 +50,10 @@ export function beat(spec) { S.beats.push(Object.assign({ focus: [], fx: [], blu
 export const cue = (t, name, gain = 0, extra = {}) => S.cues.push({ t: +t.toFixed(3), name, gain, ...extra });
 
 // ---------- build ----------
-export async function build(T, film) {
+export async function build(T, film, photos = {}) {
   S.T = T;
-  film({ obj, beat, T, cue });
+  const photo = name => { if (!photos[name]) T.errors.push(`photo missing: ${name}`); return photos[name] || null; };
+  film({ obj, beat, T, cue, photo });
   // resolve appear times
   for (const o of S.list) {
     const a = o.appear;

@@ -16,12 +16,13 @@ import { chromium } from 'playwright';
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const args = {}; { const a = process.argv.slice(2); for (let i = 0; i < a.length; i++) if (a[i].startsWith('--')) { const k = a[i].slice(2); const v = a[i + 1] && !a[i + 1].startsWith('--') ? a[++i] : true; args[k] = v; } }
 if (!args.project) { console.error('usage: node render.mjs --project projects/<slug> [--sheet|--stills ..|--seq a:b:s|--table]'); process.exit(1); }
+const PHOTOS = path.resolve(ROOT, '..', 'photos');
 const PROJECT = path.resolve(args.project), BUILD = path.join(PROJECT, 'build'); fs.mkdirSync(BUILD, { recursive: true });
-const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.json': 'application/json', '.woff2': 'font/woff2', '.woff': 'font/woff', '.png': 'image/png', '.jpg': 'image/jpeg' };
+const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.json': 'application/json', '.woff2': 'font/woff2', '.woff': 'font/woff', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp' };
 const server = http.createServer((req, res) => {
   const url = decodeURIComponent(req.url.split('?')[0]);
-  const p = url.startsWith('/project/') ? path.join(PROJECT, url.slice(9)) : path.join(ROOT, url);
-  if (!(p.startsWith(ROOT) || p.startsWith(PROJECT)) || !fs.existsSync(p) || fs.statSync(p).isDirectory()) { res.writeHead(404); return res.end(); }
+  const p = url.startsWith('/project/') ? path.join(PROJECT, url.slice(9)) : url.startsWith('/photos/') ? path.join(PHOTOS, url.slice(8)) : path.join(ROOT, url);
+  if (!(p.startsWith(ROOT) || p.startsWith(PROJECT) || p.startsWith(PHOTOS)) || !fs.existsSync(p) || fs.statSync(p).isDirectory()) { res.writeHead(404); return res.end(); }
   res.writeHead(200, { 'Content-Type': TYPES[path.extname(p)] || 'application/octet-stream', 'Cache-Control': 'no-store' }); fs.createReadStream(p).pipe(res);
 }).listen(0);
 const PORT = server.address().port;

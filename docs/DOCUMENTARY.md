@@ -7,6 +7,11 @@
 Kod: `documentary/` · Uslub parametrlari: `documentary/STYLE.md` · Namuna videolar: `referenslar/`
 Mavzular tarixi: `mavzular_tarixi.txt` · Tayyor videolar: `output/YYYY-MM-DD_mavzu-nomi.mp4`
 
+## 0. Reja
+Avval `docs/PLAN_10_KUN.md` ni oching. Bugungi sanaga mos papka bo'lsa (`documentary/projects/<sana>_<slug>/`:
+`brief.md`, `script.txt` qoralamasi, `plan.json`), o'shani oling: 1-bosqichda faqat `brief.md` dagi
+"tekshirilsin" bandlarini qayta tekshirasiz. Reja tugagan bo'lsa, quyidagi 1-bosqich bo'yicha yangi mavzu tanlang.
+
 ## 1. Mavzu
 1. `mavzular_tarixi.txt` ni o'qing. Takror yoki juda o'xshash mavzu tanlanmaydi.
 2. Viral hujjatli hikoya tanlang: aniq sana, aniq odamlar, kutilmagan burilish, hujjatlar/xaritalar bilan
@@ -56,3 +61,24 @@ joylarni tuzating. So'nggi so'zga tushgan effekt ko'rinmay qolsa — beatga `lin
 yoki qadamma-qadam: `node render.mjs --project P` (≈ 13 daqiqa / 150 s, 3 worker) →
 `python3 audio/mix.py --project P --out ../output/<sana>_<slug>.mp4` → `python3 tools/check.py ...`.
 Natija: 1920×1080, 30 fps, uzunligi ovoz bilan kadrgacha bir xil.
+
+## 7. Suratlar (ixtiyoriy)
+`photos/<sana>_<slug>/` dagi Public Domain / CC0 suratlar `film.js` da shunday ishlatiladi:
+```js
+export const photos = ['2026-11-23_eiffel-tower-con/01_lustig.jpg'];      // player oldindan yuklaydi
+// film({ obj, beat, T, cue, photo }) ichida:
+const im = D.photoPrint(photo(photos[0]), 520 * 1.4, 640 * 1.4, { focus: [0.5, 0.35] });
+obj({ id: 'lustig', ..., draw: (g, _w, _h, o) => D.polaroid(g, o.w, o.h, im, { caption: 'VICTOR LUSTIG' }) });
+```
+Avtomatik yuklash: `python3 tools/fetch_photos.py --out ../photos/<papka> --q "..."` (litsenziyasi va muallifi
+`CREDITS.md` ga yoziladi; ularni `meta.json` → `description` ga qo'shing). Pinterest va boshqa egasi noma'lum
+manbalar ishlatilmaydi.
+
+## 8. Muqova va Telegram
+```bash
+node tools/thumbnail.mjs --still build/stills/<kadr>.jpg --word "SOLD" --tag "1925" --side right --out projects/P/thumbnail.jpg
+tools/deliver.sh projects/<sana>_<slug>
+```
+`meta.json` da `titles` (5 ta), `description`, `tags`, `sources` bo'lsin. Telegram'ga video ≤ 48 MB nusxa (ikki
+bosqichli kodlash, 1080p saqlanadi), muqova va YouTube matnlari yuboriladi. Oxirida `mavzular_tarixi.txt` ga
+qator qo'shing va `plan.json` → `"status": "done"`.

@@ -3,7 +3,11 @@
   "slug": "mona-lisa-heist",
   "title": "The Empty Wall: How a Theft Made the Mona Lisa Famous",
   "format": "16:9, 1920x1080, 30 fps, one continuous camera move",
-  "voice": { "provider": "ElevenLabs", "voice_id": "GoV1V2hQd1doxcYR2SuA", "model": "eleven_v4" },
+  "voice": {
+    "provider": "ElevenLabs",
+    "voice_id": "GoV1V2hQd1doxcYR2SuA",
+    "model": "eleven_v4"
+  },
   "facts": [
     "Stolen Monday 21 August 1911 while the Louvre was closed; thief wore a white worker's smock",
     "Glass case and frame removed on a service staircase; panel hidden under the smock",
@@ -31,5 +35,27 @@
     "https://www.historyhit.com/theft-mona-lisa/",
     "https://www.britannica.com/topic/Mona-Lisa-painting"
   ],
-  "notes": "Newspaper mastheads and headlines on screen are illustrative, not reproductions of real 1911 front pages. Portraits are stylised drawings, not likenesses."
+  "notes": "Newspaper mastheads and headlines on screen are illustrative, not reproductions of real 1911 front pages. Portraits are stylised drawings, not likenesses.",
+  "titles": [
+    "The Theft That Made the Mona Lisa Famous",
+    "Why Is the Mona Lisa So Famous? Blame a Thief",
+    "The Empty Wall That Made the Mona Lisa a Superstar",
+    "Picasso Was Questioned. The Real Thief Walked Free.",
+    "How a Handyman Stole the Mona Lisa (1911)"
+  ],
+  "description": "On Monday, 21 August 1911, a man in a white worker's smock walked out of the Louvre with the Mona Lisa under his coat. Nobody noticed for a day. Police arrested a poet, questioned Picasso, and interviewed the real thief — then let him go. For two years the painting lay in a trunk in a Paris room, until the thief tried to sell it in Florence.\n\nThis is how an empty wall turned a quiet portrait into the most famous painting on Earth.\n\nEverything in this video is drawn in code on a single board, filmed with one continuous camera move. Newspaper mastheads and portraits are illustrations, not historical reproductions.",
+  "tags": [
+    "mona lisa",
+    "mona lisa stolen",
+    "louvre heist",
+    "1911",
+    "vincenzo peruggia",
+    "art theft",
+    "history documentary",
+    "picasso",
+    "apollinaire",
+    "kafka",
+    "true crime history",
+    "art history"
+  ]
 }

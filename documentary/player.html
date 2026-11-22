@@ -17,9 +17,11 @@ const fonts = [
 try {
   for (const [fam, url, d] of fonts) { const f = new FontFace(fam, `url(${url})`, d); await f.load(); document.fonts.add(f); }
   const tm = await fetch('/project/timings.json').then(r => r.json());
-  const film = (await import('/project/film.js')).default;
+  const mod = await import('/project/film.js'), film = mod.default;
+  const photos = {};
+  for (const f of mod.photos || []) photos[f] = await new Promise((ok, no) => { const im = new Image(); im.onload = () => ok(im); im.onerror = () => no(new Error('cannot load photo ' + f)); im.src = '/photos/' + f; });
   const T = E.makeTimeline(tm);
-  await E.build(T, film);
+  await E.build(T, film, photos);
   E.init(document.getElementById('c'));
   window.DURATION = tm.duration;
   window.TOTAL_FRAMES = Math.round(tm.duration * E.FPS);

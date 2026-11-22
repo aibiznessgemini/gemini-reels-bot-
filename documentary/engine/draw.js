@@ -75,6 +75,15 @@ export function bwPhoto(w, h, drawFn, o = {}) {
   g2.putImageData(id, 0, 0);
   return c2;
 }
+// a real archive photo (HTMLImageElement) as an old B&W print: cover-cropped, grain, soft, warm paper tint.
+//   focus: [fx, fy] 0..1 point of the image to keep in the crop centre
+export function photoPrint(img, w, h, o = {}) {
+  return bwPhoto(w, h, (g, W2, H2) => {
+    const k = Math.max(W2 / img.width, H2 / img.height) * (o.zoom || 1), iw = img.width * k, ih = img.height * k;
+    const [fx, fy] = o.focus || [0.5, 0.5];
+    g.drawImage(img, clamp(W2 / 2 - iw * fx, W2 - iw, 0), clamp(H2 / 2 - ih * fy, H2 - ih, 0), iw, ih);
+  }, { seed: o.seed ?? 5, soft: o.soft ?? 0.6, grain: o.grain ?? 26, contrast: o.contrast ?? 1.1, tint: o.tint });
+}
 // stylised bust portrait (drawn in grays; pass to bwPhoto). opts: hat 'bowler'|'cap'|'beret'|'homburg', mustache, beard, hair, glasses, coat, bg, light
 export function portrait(g, w, h, o = {}) {
   const bgc = o.bg || ['#8c8c88', '#3a3a38'];
