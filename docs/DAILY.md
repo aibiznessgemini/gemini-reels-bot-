@@ -30,17 +30,23 @@ Self-test (10 s): `node render.mjs --project examples/reaction-time --sheet --sc
 ```
 If `$TODAY` is already in the list, stop (the film was already made today).
 
-## 2. Researcher — today's idea
-- Niche: **"What if…?"** in any field (space, body, brain, history, physics, nature, tech,
-  society), told to the viewer as **"you"**. Pick from `docs/topics.md` or invent a new one.
-- It must differ from every history entry and from every "Already made" line in topics.md.
+## 2. Researcher — today's idea (must feel NEW)
+The owner's complaint to avoid: "the topics are starting to look the same". So:
+- Read `docs/topics.md` fully: the **category rotation**, the **already made** list and the
+  **scoring table**.
+- Work out the category of each of the last 3 films (history titles start with `[CATEGORY]`;
+  for older entries use the "Already made" list). **Today's category must be different from all 3.**
+- Write 3 candidate ideas in that category (from the bank or your own), score each on
+  Hook / Visual / Stakes / Twist / Fresh (1–5). Pick the best one with total ≥ 20 and no score
+  below 4. Prefer big, dramatic, visual scenarios over quiet lectures.
+- It must differ from every history entry in idea, setting and kind of twist.
 - Verify with WebSearch: 4–6 concrete facts/numbers the story will use, from reliable sources
-  (papers, NASA/NIH/university pages, encyclopaedias). **Only use facts you found; never
+  (papers, NASA/NIH/USGS/university pages, encyclopaedias). **Only use facts you found; never
   invent numbers or quotes.** Keep 2–4 sources (title + URL).
 - Choose the palette by topic: `dusk` (default, curious), `midnight` (space, night, mystery,
-  danger), `golden` (warm, hopeful, human), `neon` (tech, future, the internet), `storybook`
-  (gentle, childhood, nature). Choose a music plan from: mystery, tension, action, wonder,
-  hopeful, sad, triumph, playful, calm, dark, epic.
+  danger), `golden` (warm, hopeful, human, history), `neon` (tech, future, the internet),
+  `storybook` (gentle, nature, animals). Choose a music plan from: mystery, tension, action,
+  wonder, hopeful, sad, triumph, playful, calm, dark, epic.
 
 ## 3. Writer — narration
 Write `voice_work/<slug>-lines.txt`: **one narration line per line, 26–36 lines,
@@ -61,7 +67,8 @@ Voice is Victor (`GoV1V2hQd1doxcYR2SuA`, `eleven_v4`) through the ElevenLabs API
 injected by the network proxy. Clips are cached in `voice_work/<slug>/`, so re-running after a
 line edit only pays for changed lines. Duration must be 110–200 s.
 
-Then follow `references/PIPELINE.md` **stage 4** (story breakdown): `story/bible.md`, rewrite
+Then follow `references/PIPELINE.md` **stage 4** (story breakdown): `story/bible.md` (start it with
+the 3 scored candidates and today's category), rewrite
 `story/shots.json` (contiguous shots, median 2–3.5 s, 15–25 shots per minute, a concrete
 `scene` per shot, designed transitions, `bars`, `sfx`, `amb`, and the `music` plan).
 The hero is always `YOU` from cast.js; side characters only from cast.js (SAM, DR) or plain
@@ -104,7 +111,7 @@ re-render once.
 ## 8. Deliver + history
 ```bash
 tools/deliver.sh <slug>                                         # video + thumbnail + titles/description/tags
-(cd ../film && pipeline/history.sh add "$TODAY" <slug> "<meta.titles[0]>")
+(cd ../film && pipeline/history.sh add "$TODAY" <slug> "[<CATEGORY>] <meta.titles[0]>")
 (cd ../film && pipeline/notify.sh "✅ $TODAY: <title> — sent")
 ```
 Do not commit or push anything.

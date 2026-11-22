@@ -1,53 +1,73 @@
-# Topic bank — "What if…?" (any field, starring you)
+# Topic bank — "What if…?" (starring you)
 
-The channel is now **"What if…?"** across every field: space, the human body, the brain,
-history, physics, nature, technology, society. The viewer is always "you".
-Each idea still needs fact-checking online on the day it is used (WebSearch).
-History (Telegram pinned message) decides what was already made — never repeat an idea
-or a close variant.
+## The owner's rule
+**Every film must feel different from the last ones.** Big, dramatic, visual "what if"s — not
+quiet psychology lectures. The viewer should think "wait, WHAT?" from the title alone.
 
-## Already made
-- What if you could see what people really think of you? (liking gap) — 2026-11-21, 3D
-- What if nobody was actually watching you? (spotlight effect) — 2026-11-22, 3D
+## Category rotation (mandatory)
+Every idea belongs to ONE category. **Today's category must differ from the categories of the
+last 3 films in the history.** Go round the list; don't pick the same corner twice in a row.
 
-## Ideas
-1. What if you could stop time for 10 seconds?
-2. What if you never needed to sleep?
-3. What if your reaction time was 10× faster?
-4. What if you fell into a black hole?
-5. What if the Moon disappeared tonight?
-6. What if you could hear other people's thoughts for one day?
-7. What if you lived on Mars for a year?
-8. What if you stopped eating sugar for 30 days?
-9. What if you were the last person on Earth?
-10. What if you could remember everything you have ever seen?
-11. What if you woke up 1,000 years in the future?
-12. What if you lived in ancient Rome for a week?
-13. What if Earth stopped spinning for one second?
-14. What if you were shrunk to the size of an ant?
-15. What if you drank only water for a month?
-16. What if the internet disappeared for a week?
-17. What if you could breathe underwater?
-18. What if you never felt fear?
-19. What if you swallowed a piece of the Sun?
-20. What if you could talk to animals?
-21. What if you lived inside the International Space Station?
-22. What if every lie you told made your nose grow (and what lying does to your brain)?
-23. What if you could see in the dark like a cat?
-24. What if you stood on Jupiter?
-25. What if you walked every single day for a year?
-26. What if your phone could read your mind?
-27. What if you were born in the Middle Ages?
-28. What if you could run as fast as a cheetah?
-29. What if you stopped using your phone for 30 days?
-30. What if you were frozen and woken up 100 years later (cryonics)?
-31. What if all the ice on Earth melted?
-32. What if you could live forever?
-33. What if gravity was twice as strong?
-34. What if you had a twin you never met?
-35. What if you could feel time slow down like an athlete in "the zone"?
-36. What if you were struck by lightning?
-37. What if you lived in total silence (anechoic chamber)?
-38. What if the bees disappeared?
-39. What if you could fly like a bird?
-40. What if you only told the truth for a week?
+| Code | Category | Feel |
+|---|---|---|
+| SPACE | Space & the universe | awe, scale, danger |
+| EARTH | Earth & disasters | catastrophe, survival |
+| BODY | Your body pushed to the limit | visceral, "what happens to you" |
+| POWER | Superpowers & impossible abilities | fun, fantasy with real science |
+| TIME | Time travel & history | adventure, "you wake up in…" |
+| SURVIVE | Extreme survival scenarios | tension, countdown |
+| FUTURE | Tech, AI & the future | wonder, a little scary |
+| ANIMAL | Animals & nature | surprising, cute or terrifying |
+| MIND | Your brain & psychology (max 1 in every 8 films) | twist about yourself |
+
+## Already made (never repeat, never a close variant)
+- 2026-11-21 MIND — What if you could see what people really think of you? (liking gap)
+- 2026-11-22 MIND — What if nobody was actually watching you? (spotlight effect)
+- 2026-11-22 SPACE — What if the Moon disappeared tonight? (first Razgon film)
+
+## Score every candidate (pick only if total ≥ 20 / 25 and no score below 4)
+| Test | 5 points when… |
+|---|---|
+| **Hook** | A 14-year-old would click the title without knowing anything else |
+| **Visual** | We can SHOW it big: explosions, scale, freeze-frames, transformations, crowds, space |
+| **Stakes** | Your life, your body or the whole world changes |
+| **Twist** | Science gives a surprising answer most people don't know |
+| **Fresh** | Nothing like the last 7 films (category, setting, mood, kind of twist) |
+
+Write the 3 best candidates with their scores into `story/bible.md` before choosing.
+
+## Ideas (fact-check on the day; add your own in the same spirit)
+**SPACE** — What if you fell into a black hole? · What if the Sun went out for one minute? ·
+What if you were stranded on the Moon? · What if Earth had rings like Saturn? · What if a
+neutron star flew past Earth? · What if you sneezed in space? · What if you stood on Jupiter?
+
+**EARTH** — What if Earth stopped spinning for one second? · What if all the ice melted
+tonight? · What if a supervolcano erupted? · What if it never stopped raining? · What if
+the oceans disappeared? · What if Earth's magnetic field switched off?
+
+**BODY** — What if you never slept again? · What if you drank only coffee for a week? · What
+if you were struck by lightning? · What if you stayed awake in zero gravity for a year? ·
+What if you held your breath for 10 minutes? · What if you ate only one food forever?
+
+**POWER** — What if you could stop time? · What if you could become invisible? · What if you
+could run at the speed of light? · What if you could breathe underwater? · What if you could
+read minds for one day? · What if you could shrink to the size of an ant? · What if you could fly?
+
+**TIME** — What if you woke up in ancient Rome? · What if you travelled 1,000 years into the
+future? · What if dinosaurs never went extinct? · What if you lived through the Black Death? ·
+What if you met yourself from 10 years ago?
+
+**SURVIVE** — What if you were the last person on Earth? · What if you were lost at sea for
+100 days? · What if you were trapped in an elevator for a week? · What if you were stranded
+in Antarctica? · What if your plane landed on a deserted island?
+
+**FUTURE** — What if AI ran your whole life for a week? · What if the internet vanished
+forever? · What if you uploaded your brain to a computer? · What if robots did every job? ·
+What if you lived on Mars for a year?
+
+**ANIMAL** — What if the bees disappeared? · What if you could talk to animals? · What if
+dinosaurs lived in your city? · What if you were bitten by the world's deadliest snake? ·
+What if insects were the size of dogs?
+
+**MIND** (rarely) — What if you never felt fear? · What if you remembered everything? ·
+What if you only told the truth for a week?
