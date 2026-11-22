@@ -77,3 +77,10 @@ const py = process.env.PYTHON || 'python3';
 execFileSync(py, ['tools/new_project.py', '--name', args.name, '--voice', voice, '--script', wordsFile, '--aspect', args.aspect || '16:9',
   '--resolution', args.resolution || '1080p', '--title', args.title || args.name, '--style', args.style || 'dusk'], { stdio: 'inherit' });
 execFileSync(py, ['tools/parse_script.py', '--project', `projects/${args.name}`, '--script', `projects/${args.name}/input/script.json`], { stdio: 'inherit' });
+// Owner's decision: burned-in word-by-word subtitles on every film (amber = the word being spoken).
+const cfgPath = `projects/${args.name}/config.json`;
+const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
+cfg.captions = args.captions !== 'off';
+cfg.captionStyle = { max: 4, size: 60, hi: '#F2A541' };
+fs.writeFileSync(cfgPath, JSON.stringify(cfg, null, 1));
+console.log(`captions: ${cfg.captions ? 'on' : 'off'}`);
