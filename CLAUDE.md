@@ -33,6 +33,9 @@ is kept for reference. `film/pipeline/history.sh` and `notify.sh` are still used
 ## 1. Owner's decisions (do not change without asking)
 
 - **Rule: every day a new idea and a new script.** Never repeat an idea or a close variant.
+- **Topics must feel different every day** (owner's feedback: "they start to look the same"):
+  rotate categories (SPACE, EARTH, BODY, POWER, TIME, SURVIVE, FUTURE, ANIMAL, MIND — never the
+  same as the last 3 films), prefer big dramatic visual scenarios, score candidates (`docs/topics.md`).
 - **Style:** Razgon 2D (cinematic stick figures, rim light, moody 2.5D sets, giant faces,
   freeze-frames, data cards, blueprints, low-poly 3D) — **but the hero is always our own
   character YOU** (amber hoodie, hood up). Side characters: SAM, DR from cast.js, or ink extras.
