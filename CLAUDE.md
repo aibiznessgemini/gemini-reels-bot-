@@ -41,6 +41,8 @@ is kept for reference. `film/pipeline/history.sh` and `notify.sh` are still used
   character YOU** (amber hoodie, hood up). Side characters: SAM, DR from cast.js, or ink extras.
 - **Palette:** the agent picks it per topic (dusk default; midnight, golden, neon, storybook).
 - **Format:** 16:9, 1080p, 24 fps, **2–3 minutes**, English narration to "you".
+- **Subtitles on every film:** burned-in, word by word, the spoken word highlighted in amber
+  (`config.captions = true`; off only on the title card and end screen).
 - **Music + SFX:** generated in code by the studio (`audio/`). No stock audio.
 - **Visuals:** drawn by code. No AI images or video.
 - **ElevenLabs only for voice.**

@@ -63,6 +63,9 @@ python3 tools/beats.py --project projects/<slug>
 cp templates/cast.js projects/<slug>/scenes/cast.js           # YOU = amber hoodie, hood up — always
 cp templates/sets/*.js projects/<slug>/scenes/sets/ 2>/dev/null || true   # reuse sets if they fit
 ```
+**Subtitles are always on**: `eleven_voice.mjs` sets `captions: true` (word-by-word, amber highlight).
+In `shots.json` set `"captions": false` only on the title card and the end screen (they already show text).
+Keep on-screen labels/data cards out of the bottom 25% of the frame so they don't collide with subtitles.
 Voice is Victor (`GoV1V2hQd1doxcYR2SuA`, `eleven_v4`) through the ElevenLabs API; the key is
 injected by the network proxy. Clips are cached in `voice_work/<slug>/`, so re-running after a
 line edit only pays for changed lines. Duration must be 110–200 s.

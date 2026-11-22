@@ -81,9 +81,17 @@ export function endScreen(g, t, o = {}) {
 }
 // Word-level captions (great for 9:16). Shows a 3–4 word phrase, current word highlighted.
 export function captions(g, globalT, o = {}) {
-  const words = E.words; if (!words.length) return; const { y = V(E.H - 150, E.H * 0.79), size = V(58, 74), max = 4, color = '#ffffff', hi = S().ui.gold } = o;
+  // Local patch (The You Experiment): phrases break at sentence/comma ends as well as every `max` words,
+  // and the default 16:9 position sits above the 2.39:1 letterbox bar.
+  const words = E.words; if (!words.length) return; const { y = V(E.H - 205, E.H * 0.79), size = V(58, 74), max = 4, color = '#ffffff', hi = S().ui.gold } = o;
+  if (!E._capGroups || E._capGroups.n !== words.length || E._capGroups.max !== max) {
+    const starts = []; let c = 0;
+    words.forEach((w, k) => { if (c === 0) starts.push(k); c++; if (c >= max || /[.!?,;:]["')]*$/.test(w.word.trim())) c = 0; });
+    E._capGroups = { n: words.length, max, starts };
+  }
   let i = -1; for (let k = words.length - 1; k >= 0; k--) if (globalT >= words[k].start - 0.05) { if (globalT <= words[k].end + 0.35) i = k; break; } if (i < 0) return;
-  const st = Math.floor(i / max) * max, group = words.slice(st, st + max); const strs = group.map(w => w.word.trim().toUpperCase());
+  const S0 = E._capGroups.starts; let gi = 0; while (gi + 1 < S0.length && S0[gi + 1] <= i) gi++;
+  const st = S0[gi], en = gi + 1 < S0.length ? S0[gi + 1] : words.length, group = words.slice(st, en); const strs = group.map(w => w.word.trim().toUpperCase());
   const w0 = strs.map(s => measure(g, s, size)).reduce((a, b) => a + b, 0) + size * 0.3 * (strs.length - 1);
   const sz = size * Math.min(1, (E.W * 0.88) / w0);   // shrink long phrases to fit the frame
   const gap = sz * 0.3, widths = strs.map(s => measure(g, s, sz)), total = widths.reduce((a, b) => a + b, 0) + gap * (strs.length - 1);

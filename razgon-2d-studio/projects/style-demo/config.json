@@ -7,7 +7,7 @@
  "voiceover": "input/voiceover.wav",
  "script": "input/script.json",
  "duration": 19.33,
- "captions": false,
+ "captions": true,
  "bars": null,
  "fadeIn": 0.5,
  "fadeOut": 0.8,
@@ -19,5 +19,10 @@
   "enabled": true,
   "gainDb": -6
  },
- "loudness": -14
+ "loudness": -14,
+ "captionStyle": {
+  "max": 4,
+  "size": 60,
+  "hi": "#F2A541"
+ }
 }

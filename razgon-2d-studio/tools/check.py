@@ -24,6 +24,7 @@ STYLES = {"dusk", "midnight", "golden", "neon", "storybook"}
 
 cfg = load(os.path.join(P, "config.json"))
 if cfg.get("style") not in STYLES: err.append(f"config.style '{cfg.get('style')}' not one of {sorted(STYLES)}")
+if not cfg.get("captions"): err.append("config.captions must be true (owner wants subtitles on every film)")
 dur = cfg.get("duration", 0)
 if not 110 <= dur <= 200: err.append(f"voiceover {dur:.1f}s (need 110–200 s)")
 
