@@ -94,6 +94,10 @@ razgon-2d-studio/             the Razgon 2D studio (owner's plugin kit, installe
   projects/style-demo/        reference project (time-freeze demo)
   projects/brand/             channel art project
 film/                         the older 3D engine (reference) + history.sh / notify.sh
+documentary/                  one-board documentary films (HTML Canvas, one continuous camera) — runbook docs/DOCUMENTARY.md
+referenslar/                  style reference clips for documentary/ (see documentary/STYLE.md)
+mavzular_tarixi.txt           documentary topic history (never repeat a topic)
+output/                       finished documentary MP4s (YYYY-MM-DD_slug.mp4, not committed)
 ```
 
 ## 5. Environment notes (cloud session)

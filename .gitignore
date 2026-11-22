@@ -13,3 +13,6 @@ razgon-2d-studio/projects/*/input/*.wav
 razgon-2d-studio/projects/*/input/*.mp3
 razgon-2d-studio/examples/*/build/
 docs/brand/*.mp4
+documentary/projects/*/build/
+output/*.mp4
+documentary/_prof.mjs

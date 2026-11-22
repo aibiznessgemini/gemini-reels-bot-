@@ -1,0 +1,505 @@
+{
+ "duration": 153,
+ "errors": [],
+ "beats": [
+  {
+   "line": 0,
+   "start": 0.6,
+   "end": 6.6,
+   "text": "This empty wall turned a quiet portrait into the most famous painting in the world.",
+   "focus": [
+    "wall"
+   ],
+   "onscreen": [],
+   "fx": [
+    "custom@portrait"
+   ],
+   "note": "hook: the empty wall"
+  },
+  {
+   "line": 1,
+   "start": 6.97,
+   "end": 11.29,
+   "text": "It happened on Monday, August 21, 1911.",
+   "focus": [
+    "date"
+   ],
+   "onscreen": [
+    "MONDAY (@\"Monday\")",
+    "AUGUST 21 (@\"August\")",
+    "1911 (@\"1911\")"
+   ],
+   "fx": [
+    "tag@Monday",
+    "label@August",
+    "tag@1911"
+   ],
+   "note": ""
+  },
+  {
+   "line": 2,
+   "start": 11.66,
+   "end": 14.94,
+   "text": "That day, the Louvre was closed to the public.",
+   "focus": [
+    "facade"
+   ],
+   "onscreen": [
+    "CLOSED (@\"closed\")"
+   ],
+   "fx": [
+    "stamp@closed"
+   ],
+   "note": ""
+  },
+  {
+   "line": 3,
+   "start": 15.31,
+   "end": 19.23,
+   "text": "But a man in a white worker's smock was already inside.",
+   "focus": [
+    "smock"
+   ],
+   "onscreen": [
+    "? (@\"inside\")"
+   ],
+   "fx": [
+    "write@inside"
+   ],
+   "note": ""
+  },
+  {
+   "line": 4,
+   "start": 19.6,
+   "end": 24.4,
+   "text": "He walked into the Salon Carré and lifted a small portrait off its hooks.",
+   "focus": [
+    "plan"
+   ],
+   "onscreen": [],
+   "fx": [
+    "circle@Salon"
+   ],
+   "note": ""
+  },
+  {
+   "line": 5,
+   "start": 24.77,
+   "end": 30.21,
+   "text": "It was painted on a wooden panel, just 77 by 53 centimetres.",
+   "focus": [
+    "panel"
+   ],
+   "onscreen": [
+    "77 cm (@\"77\")",
+    "53 cm (@\"53\")"
+   ],
+   "fx": [
+    "dims@77",
+    "dims@53"
+   ],
+   "note": ""
+  },
+  {
+   "line": 6,
+   "start": 30.58,
+   "end": 35.3,
+   "text": "On a service staircase, he stripped away its glass case and frame.",
+   "focus": [
+    "frame"
+   ],
+   "onscreen": [],
+   "fx": [],
+   "note": ""
+  },
+  {
+   "line": 7,
+   "start": 35.67,
+   "end": 39.35,
+   "text": "Then he hid the panel under his smock, and walked out.",
+   "focus": [
+    "plan"
+   ],
+   "onscreen": [],
+   "fx": [
+    "route@walked"
+   ],
+   "note": ""
+  },
+  {
+   "line": 8,
+   "start": 39.72,
+   "end": 42.6,
+   "text": "Nobody noticed. Not that day.",
+   "focus": [
+    "clock"
+   ],
+   "onscreen": [],
+   "fx": [],
+   "note": ""
+  },
+  {
+   "line": 9,
+   "start": 42.97,
+   "end": 47.29,
+   "text": "The next morning, a painter named Louis Béroud came to sketch her.",
+   "focus": [
+    "beroud"
+   ],
+   "onscreen": [],
+   "fx": [],
+   "note": ""
+  },
+  {
+   "line": 10,
+   "start": 47.66,
+   "end": 52.38,
+   "text": "Where the Mona Lisa should have been, he found only four iron pegs.",
+   "focus": [
+    "wall"
+   ],
+   "onscreen": [],
+   "fx": [
+    "circle@four",
+    "circle@four",
+    "circle@four",
+    "circle@four"
+   ],
+   "note": ""
+  },
+  {
+   "line": 11,
+   "start": 52.75,
+   "end": 55.95,
+   "text": "The Louvre shut its doors for a whole week.",
+   "focus": [
+    "week"
+   ],
+   "onscreen": [],
+   "fx": [
+    "xmark@shut",
+    "xmark@shut",
+    "xmark@shut",
+    "xmark@shut",
+    "xmark@shut",
+    "xmark@shut",
+    "xmark@shut"
+   ],
+   "note": ""
+  },
+  {
+   "line": 12,
+   "start": 56.32,
+   "end": 61.12,
+   "text": "And newspapers printed her face again, and again, and again.",
+   "focus": [
+    "news1",
+    "news2",
+    "news3"
+   ],
+   "onscreen": [],
+   "fx": [],
+   "note": ""
+  },
+  {
+   "line": 13,
+   "start": 61.49,
+   "end": 65.01,
+   "text": "Police even arrested the poet Guillaume Apollinaire.",
+   "focus": [
+    "apol"
+   ],
+   "onscreen": [
+    "ARRESTED (@\"arrested\")"
+   ],
+   "fx": [
+    "stamp@arrested"
+   ],
+   "note": ""
+  },
+  {
+   "line": 14,
+   "start": 65.38,
+   "end": 69.78,
+   "text": "They questioned his friend, a young painter called Pablo Picasso.",
+   "focus": [
+    "pica"
+   ],
+   "onscreen": [
+    "? (@\"questioned\")"
+   ],
+   "fx": [
+    "write@questioned"
+   ],
+   "note": ""
+  },
+  {
+   "line": 15,
+   "start": 70.15,
+   "end": 71.99,
+   "text": "Both men were cleared.",
+   "focus": [
+    "apol",
+    "pica"
+   ],
+   "onscreen": [
+    "CLEARED (@\"cleared\")"
+   ],
+   "fx": [
+    "stamp@cleared"
+   ],
+   "note": ""
+  },
+  {
+   "line": 16,
+   "start": 72.36,
+   "end": 77.32,
+   "text": "When the museum reopened, crowds came just to stare at the empty wall.",
+   "focus": [
+    "wall"
+   ],
+   "onscreen": [],
+   "fx": [],
+   "note": ""
+  },
+  {
+   "line": 17,
+   "start": 77.69,
+   "end": 82.01,
+   "text": "Among them was a young writer from Prague: Franz Kafka.",
+   "focus": [
+    "wall"
+   ],
+   "onscreen": [
+    "KAFKA (@\"Kafka\")"
+   ],
+   "fx": [
+    "circle@Kafka",
+    "write@Kafka"
+   ],
+   "note": ""
+  },
+  {
+   "line": 18,
+   "start": 82.38,
+   "end": 86.3,
+   "text": "Meanwhile, detectives knocked on the door of the real thief.",
+   "focus": [
+    "door"
+   ],
+   "onscreen": [],
+   "fx": [
+    "custom@knocked"
+   ],
+   "note": ""
+  },
+  {
+   "line": 19,
+   "start": 86.67,
+   "end": 91.87,
+   "text": "His name was Vincenzo Peruggia, an Italian who had once worked at the Louvre.",
+   "focus": [
+    "card"
+   ],
+   "onscreen": [],
+   "fx": [
+    "highlight@Peruggia",
+    "underline@Louvre"
+   ],
+   "note": ""
+  },
+  {
+   "line": 20,
+   "start": 92.24,
+   "end": 96.32,
+   "text": "He had even helped build the glass case that was meant to protect her.",
+   "focus": [
+    "case"
+   ],
+   "onscreen": [],
+   "fx": [
+    "circle@protect"
+   ],
+   "note": ""
+  },
+  {
+   "line": 21,
+   "start": 96.69,
+   "end": 99.89,
+   "text": "The police believed his alibi, and they left.",
+   "focus": [
+    "report"
+   ],
+   "onscreen": [
+    "ALIBI ACCEPTED (@\"believed\")"
+   ],
+   "fx": [
+    "stamp@believed"
+   ],
+   "note": ""
+  },
+  {
+   "line": 22,
+   "start": 100.26,
+   "end": 104.9,
+   "text": "For two years, the Mona Lisa lay hidden in a trunk in his room.",
+   "focus": [
+    "trunk"
+   ],
+   "onscreen": [
+    "2 YEARS (@\"years\")"
+   ],
+   "fx": [
+    "label@years"
+   ],
+   "note": ""
+  },
+  {
+   "line": 23,
+   "start": 105.27,
+   "end": 110.31,
+   "text": "Then, in late 1913, he wrote to an art dealer in Florence.",
+   "focus": [
+    "map"
+   ],
+   "onscreen": [],
+   "fx": [
+    "route@art",
+    "circle@Florence"
+   ],
+   "note": ""
+  },
+  {
+   "line": 24,
+   "start": 110.68,
+   "end": 115.96,
+   "text": "The dealer, Alfredo Geri, brought the director of the Uffizi Gallery to see it.",
+   "focus": [
+    "geri"
+   ],
+   "onscreen": [
+    "UFFIZI (@\"Uffizi\")"
+   ],
+   "fx": [
+    "highlight@Geri",
+    "stamp@Uffizi"
+   ],
+   "note": ""
+  },
+  {
+   "line": 25,
+   "start": 116.33,
+   "end": 120.57,
+   "text": "They checked the panel, confirmed it was real, and called the police.",
+   "focus": [
+    "check"
+   ],
+   "onscreen": [
+    "AUTHENTIC (@\"real\")"
+   ],
+   "fx": [
+    "stamp@real"
+   ],
+   "note": ""
+  },
+  {
+   "line": 26,
+   "start": 120.94,
+   "end": 124.94,
+   "text": "In December 1913, Peruggia was arrested.",
+   "focus": [
+    "front"
+   ],
+   "onscreen": [
+    "December 1913 (@\"December\")"
+   ],
+   "fx": [
+    "tag@December",
+    "highlight@arrested"
+   ],
+   "note": ""
+  },
+  {
+   "line": 27,
+   "start": 125.31,
+   "end": 128.59,
+   "text": "He said he only wanted to bring her home to Italy.",
+   "focus": [
+    "map"
+   ],
+   "onscreen": [],
+   "fx": [
+    "custom@home"
+   ],
+   "note": ""
+  },
+  {
+   "line": 28,
+   "start": 128.96,
+   "end": 132.96,
+   "text": "The court was lenient. He spent only months in prison.",
+   "focus": [
+    "court"
+   ],
+   "onscreen": [],
+   "fx": [
+    "highlight@lenient"
+   ],
+   "note": ""
+  },
+  {
+   "line": 29,
+   "start": 133.33,
+   "end": 138.13,
+   "text": "In January 1914, the Mona Lisa returned to the Louvre.",
+   "focus": [
+    "wall"
+   ],
+   "onscreen": [
+    "JANUARY 1914 (@\"January\")"
+   ],
+   "fx": [
+    "tag@January"
+   ],
+   "note": ""
+  },
+  {
+   "line": 30,
+   "start": 138.5,
+   "end": 143.22,
+   "text": "Before the theft, she was not even the most visited painting in the museum.",
+   "focus": [
+    "guide"
+   ],
+   "onscreen": [],
+   "fx": [
+    "circle@not"
+   ],
+   "note": ""
+  },
+  {
+   "line": 31,
+   "start": 143.59,
+   "end": 147.51,
+   "text": "Today, she is the most famous painting on Earth.",
+   "focus": [
+    "(wide: whole board)"
+   ],
+   "onscreen": [],
+   "fx": [],
+   "note": ""
+  },
+  {
+   "line": 32,
+   "start": 147.88,
+   "end": 151.48,
+   "text": "All because, for two years, she was missing.",
+   "focus": [
+    "wall"
+   ],
+   "onscreen": [],
+   "fx": [],
+   "note": ""
+  }
+ ]
+}

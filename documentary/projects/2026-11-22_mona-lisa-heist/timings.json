@@ -1,0 +1,2087 @@
+{
+ "duration": 153,
+ "voice": "GoV1V2hQd1doxcYR2SuA",
+ "model": "eleven_v4",
+ "lines": [
+  {
+   "i": 0,
+   "text": "This empty wall turned a quiet portrait into the most famous painting in the world.",
+   "start": 0.6,
+   "end": 6.6,
+   "clipStart": 0.6,
+   "clipEnd": 6.52,
+   "words": [
+    {
+     "w": "This",
+     "start": 0.6,
+     "end": 0.92
+    },
+    {
+     "w": "empty",
+     "start": 1,
+     "end": 1.32
+    },
+    {
+     "w": "wall",
+     "start": 1.4,
+     "end": 1.8
+    },
+    {
+     "w": "turned",
+     "start": 1.96,
+     "end": 2.2
+    },
+    {
+     "w": "a",
+     "start": 2.28,
+     "end": 2.36
+    },
+    {
+     "w": "quiet",
+     "start": 2.44,
+     "end": 2.76
+    },
+    {
+     "w": "portrait",
+     "start": 2.84,
+     "end": 3.4
+    },
+    {
+     "w": "into",
+     "start": 3.48,
+     "end": 3.72
+    },
+    {
+     "w": "the",
+     "start": 3.84,
+     "end": 3.96
+    },
+    {
+     "w": "most",
+     "start": 4.16,
+     "end": 4.36
+    },
+    {
+     "w": "famous",
+     "start": 4.52,
+     "end": 4.92
+    },
+    {
+     "w": "painting",
+     "start": 5,
+     "end": 5.48
+    },
+    {
+     "w": "in",
+     "start": 5.56,
+     "end": 5.64
+    },
+    {
+     "w": "the",
+     "start": 5.68,
+     "end": 5.72
+    },
+    {
+     "w": "world.",
+     "start": 5.88,
+     "end": 6.6
+    }
+   ]
+  },
+  {
+   "i": 1,
+   "text": "It happened on Monday, August 21, 1911.",
+   "start": 6.97,
+   "end": 11.29,
+   "clipStart": 6.97,
+   "clipEnd": 11.21,
+   "words": [
+    {
+     "w": "It",
+     "start": 6.97,
+     "end": 7.13
+    },
+    {
+     "w": "happened",
+     "start": 7.17,
+     "end": 7.53
+    },
+    {
+     "w": "on",
+     "start": 7.61,
+     "end": 7.69
+    },
+    {
+     "w": "Monday,",
+     "start": 7.77,
+     "end": 8.49
+    },
+    {
+     "w": "August",
+     "start": 8.57,
+     "end": 8.97
+    },
+    {
+     "w": "21,",
+     "start": 9.05,
+     "end": 10.01
+    },
+    {
+     "w": "1911.",
+     "start": 10.09,
+     "end": 11.29
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "text": "That day, the Louvre was closed to the public.",
+   "start": 11.66,
+   "end": 14.94,
+   "clipStart": 11.66,
+   "clipEnd": 14.86,
+   "words": [
+    {
+     "w": "That",
+     "start": 11.66,
+     "end": 11.98
+    },
+    {
+     "w": "day,",
+     "start": 12.06,
+     "end": 12.54
+    },
+    {
+     "w": "the",
+     "start": 12.62,
+     "end": 12.7
+    },
+    {
+     "w": "Louvre",
+     "start": 12.78,
+     "end": 13.18
+    },
+    {
+     "w": "was",
+     "start": 13.3,
+     "end": 13.42
+    },
+    {
+     "w": "closed",
+     "start": 13.5,
+     "end": 13.9
+    },
+    {
+     "w": "to",
+     "start": 13.94,
+     "end": 13.98
+    },
+    {
+     "w": "the",
+     "start": 14.06,
+     "end": 14.1
+    },
+    {
+     "w": "public.",
+     "start": 14.14,
+     "end": 14.94
+    }
+   ]
+  },
+  {
+   "i": 3,
+   "text": "But a man in a white worker's smock was already inside.",
+   "start": 15.31,
+   "end": 19.23,
+   "clipStart": 15.31,
+   "clipEnd": 19.15,
+   "words": [
+    {
+     "w": "But",
+     "start": 15.31,
+     "end": 15.55
+    },
+    {
+     "w": "a",
+     "start": 15.59,
+     "end": 15.63
+    },
+    {
+     "w": "man",
+     "start": 15.71,
+     "end": 15.95
+    },
+    {
+     "w": "in",
+     "start": 16.03,
+     "end": 16.11
+    },
+    {
+     "w": "a",
+     "start": 16.19,
+     "end": 16.27
+    },
+    {
+     "w": "white",
+     "start": 16.43,
+     "end": 16.59
+    },
+    {
+     "w": "worker's",
+     "start": 16.67,
+     "end": 17.07
+    },
+    {
+     "w": "smock",
+     "start": 17.15,
+     "end": 17.55
+    },
+    {
+     "w": "was",
+     "start": 17.71,
+     "end": 17.87
+    },
+    {
+     "w": "already",
+     "start": 18.07,
+     "end": 18.27
+    },
+    {
+     "w": "inside.",
+     "start": 18.59,
+     "end": 19.23
+    }
+   ]
+  },
+  {
+   "i": 4,
+   "text": "He walked into the Salon Carré and lifted a small portrait off its hooks.",
+   "start": 19.6,
+   "end": 24.4,
+   "clipStart": 19.6,
+   "clipEnd": 24.32,
+   "words": [
+    {
+     "w": "He",
+     "start": 19.6,
+     "end": 19.76
+    },
+    {
+     "w": "walked",
+     "start": 19.84,
+     "end": 20.08
+    },
+    {
+     "w": "into",
+     "start": 20.16,
+     "end": 20.32
+    },
+    {
+     "w": "the",
+     "start": 20.36,
+     "end": 20.4
+    },
+    {
+     "w": "Salon",
+     "start": 20.48,
+     "end": 20.8
+    },
+    {
+     "w": "Carré",
+     "start": 20.88,
+     "end": 21.44
+    },
+    {
+     "w": "and",
+     "start": 21.52,
+     "end": 21.76
+    },
+    {
+     "w": "lifted",
+     "start": 21.84,
+     "end": 22.16
+    },
+    {
+     "w": "a",
+     "start": 22.24,
+     "end": 22.32
+    },
+    {
+     "w": "small",
+     "start": 22.48,
+     "end": 22.64
+    },
+    {
+     "w": "portrait",
+     "start": 22.8,
+     "end": 23.28
+    },
+    {
+     "w": "off",
+     "start": 23.36,
+     "end": 23.44
+    },
+    {
+     "w": "its",
+     "start": 23.52,
+     "end": 23.6
+    },
+    {
+     "w": "hooks.",
+     "start": 23.68,
+     "end": 24.4
+    }
+   ]
+  },
+  {
+   "i": 5,
+   "text": "It was painted on a wooden panel, just 77 by 53 centimetres.",
+   "start": 24.77,
+   "end": 30.21,
+   "clipStart": 24.77,
+   "clipEnd": 30.13,
+   "words": [
+    {
+     "w": "It",
+     "start": 24.77,
+     "end": 24.93
+    },
+    {
+     "w": "was",
+     "start": 25.01,
+     "end": 25.09
+    },
+    {
+     "w": "painted",
+     "start": 25.17,
+     "end": 25.57
+    },
+    {
+     "w": "on",
+     "start": 25.65,
+     "end": 25.73
+    },
+    {
+     "w": "a",
+     "start": 25.77,
+     "end": 25.81
+    },
+    {
+     "w": "wooden",
+     "start": 25.89,
+     "end": 26.13
+    },
+    {
+     "w": "panel,",
+     "start": 26.21,
+     "end": 26.85
+    },
+    {
+     "w": "just",
+     "start": 26.93,
+     "end": 27.25
+    },
+    {
+     "w": "77",
+     "start": 27.33,
+     "end": 28.05
+    },
+    {
+     "w": "by",
+     "start": 28.21,
+     "end": 28.45
+    },
+    {
+     "w": "53",
+     "start": 28.53,
+     "end": 29.01
+    },
+    {
+     "w": "centimetres.",
+     "start": 29.17,
+     "end": 30.21
+    }
+   ]
+  },
+  {
+   "i": 6,
+   "text": "On a service staircase, he stripped away its glass case and frame.",
+   "start": 30.58,
+   "end": 35.3,
+   "clipStart": 30.58,
+   "clipEnd": 35.22,
+   "words": [
+    {
+     "w": "On",
+     "start": 30.58,
+     "end": 30.74
+    },
+    {
+     "w": "a",
+     "start": 30.78,
+     "end": 30.82
+    },
+    {
+     "w": "service",
+     "start": 30.9,
+     "end": 31.22
+    },
+    {
+     "w": "staircase,",
+     "start": 31.3,
+     "end": 32.18
+    },
+    {
+     "w": "he",
+     "start": 32.26,
+     "end": 32.34
+    },
+    {
+     "w": "stripped",
+     "start": 32.42,
+     "end": 32.74
+    },
+    {
+     "w": "away",
+     "start": 32.9,
+     "end": 33.06
+    },
+    {
+     "w": "its",
+     "start": 33.14,
+     "end": 33.38
+    },
+    {
+     "w": "glass",
+     "start": 33.46,
+     "end": 33.78
+    },
+    {
+     "w": "case",
+     "start": 33.86,
+     "end": 34.26
+    },
+    {
+     "w": "and",
+     "start": 34.34,
+     "end": 34.42
+    },
+    {
+     "w": "frame.",
+     "start": 34.5,
+     "end": 35.3
+    }
+   ]
+  },
+  {
+   "i": 7,
+   "text": "Then he hid the panel under his smock, and walked out.",
+   "start": 35.67,
+   "end": 39.35,
+   "clipStart": 35.67,
+   "clipEnd": 39.27,
+   "words": [
+    {
+     "w": "Then",
+     "start": 35.67,
+     "end": 35.99
+    },
+    {
+     "w": "he",
+     "start": 36.15,
+     "end": 36.31
+    },
+    {
+     "w": "hid",
+     "start": 36.39,
+     "end": 36.55
+    },
+    {
+     "w": "the",
+     "start": 36.63,
+     "end": 36.71
+    },
+    {
+     "w": "panel",
+     "start": 36.91,
+     "end": 37.11
+    },
+    {
+     "w": "under",
+     "start": 37.19,
+     "end": 37.35
+    },
+    {
+     "w": "his",
+     "start": 37.43,
+     "end": 37.59
+    },
+    {
+     "w": "smock,",
+     "start": 37.71,
+     "end": 38.31
+    },
+    {
+     "w": "and",
+     "start": 38.39,
+     "end": 38.47
+    },
+    {
+     "w": "walked",
+     "start": 38.55,
+     "end": 38.79
+    },
+    {
+     "w": "out.",
+     "start": 38.87,
+     "end": 39.35
+    }
+   ]
+  },
+  {
+   "i": 8,
+   "text": "Nobody noticed. Not that day.",
+   "start": 39.72,
+   "end": 42.6,
+   "clipStart": 39.72,
+   "clipEnd": 42.52,
+   "words": [
+    {
+     "w": "Nobody",
+     "start": 39.72,
+     "end": 40.2
+    },
+    {
+     "w": "noticed.",
+     "start": 40.28,
+     "end": 40.92
+    },
+    {
+     "w": "Not",
+     "start": 41.48,
+     "end": 41.64
+    },
+    {
+     "w": "that",
+     "start": 41.72,
+     "end": 41.96
+    },
+    {
+     "w": "day.",
+     "start": 42.12,
+     "end": 42.6
+    }
+   ]
+  },
+  {
+   "i": 9,
+   "text": "The next morning, a painter named Louis Béroud came to sketch her.",
+   "start": 42.97,
+   "end": 47.29,
+   "clipStart": 42.97,
+   "clipEnd": 47.21,
+   "words": [
+    {
+     "w": "The",
+     "start": 42.97,
+     "end": 43.13
+    },
+    {
+     "w": "next",
+     "start": 43.25,
+     "end": 43.37
+    },
+    {
+     "w": "morning,",
+     "start": 43.45,
+     "end": 44.09
+    },
+    {
+     "w": "a",
+     "start": 44.17,
+     "end": 44.25
+    },
+    {
+     "w": "painter",
+     "start": 44.33,
+     "end": 44.73
+    },
+    {
+     "w": "named",
+     "start": 44.81,
+     "end": 45.05
+    },
+    {
+     "w": "Louis",
+     "start": 45.21,
+     "end": 45.45
+    },
+    {
+     "w": "Béroud",
+     "start": 45.53,
+     "end": 46.01
+    },
+    {
+     "w": "came",
+     "start": 46.09,
+     "end": 46.33
+    },
+    {
+     "w": "to",
+     "start": 46.37,
+     "end": 46.41
+    },
+    {
+     "w": "sketch",
+     "start": 46.49,
+     "end": 46.81
+    },
+    {
+     "w": "her.",
+     "start": 46.93,
+     "end": 47.29
+    }
+   ]
+  },
+  {
+   "i": 10,
+   "text": "Where the Mona Lisa should have been, he found only four iron pegs.",
+   "start": 47.66,
+   "end": 52.38,
+   "clipStart": 47.66,
+   "clipEnd": 52.3,
+   "words": [
+    {
+     "w": "Where",
+     "start": 47.66,
+     "end": 47.9
+    },
+    {
+     "w": "the",
+     "start": 47.94,
+     "end": 47.98
+    },
+    {
+     "w": "Mona",
+     "start": 48.06,
+     "end": 48.3
+    },
+    {
+     "w": "Lisa",
+     "start": 48.38,
+     "end": 48.7
+    },
+    {
+     "w": "should",
+     "start": 48.78,
+     "end": 48.94
+    },
+    {
+     "w": "have",
+     "start": 49.02,
+     "end": 49.18
+    },
+    {
+     "w": "been,",
+     "start": 49.34,
+     "end": 49.74
+    },
+    {
+     "w": "he",
+     "start": 49.82,
+     "end": 49.9
+    },
+    {
+     "w": "found",
+     "start": 50.06,
+     "end": 50.22
+    },
+    {
+     "w": "only",
+     "start": 50.3,
+     "end": 50.54
+    },
+    {
+     "w": "four",
+     "start": 50.78,
+     "end": 51.02
+    },
+    {
+     "w": "iron",
+     "start": 51.18,
+     "end": 51.5
+    },
+    {
+     "w": "pegs.",
+     "start": 51.58,
+     "end": 52.38
+    }
+   ]
+  },
+  {
+   "i": 11,
+   "text": "The Louvre shut its doors for a whole week.",
+   "start": 52.75,
+   "end": 55.95,
+   "clipStart": 52.75,
+   "clipEnd": 55.87,
+   "words": [
+    {
+     "w": "The",
+     "start": 52.75,
+     "end": 52.91
+    },
+    {
+     "w": "Louvre",
+     "start": 52.99,
+     "end": 53.39
+    },
+    {
+     "w": "shut",
+     "start": 53.55,
+     "end": 53.71
+    },
+    {
+     "w": "its",
+     "start": 53.79,
+     "end": 53.95
+    },
+    {
+     "w": "doors",
+     "start": 54.03,
+     "end": 54.35
+    },
+    {
+     "w": "for",
+     "start": 54.43,
+     "end": 54.51
+    },
+    {
+     "w": "a",
+     "start": 54.59,
+     "end": 54.67
+    },
+    {
+     "w": "whole",
+     "start": 54.83,
+     "end": 55.07
+    },
+    {
+     "w": "week.",
+     "start": 55.23,
+     "end": 55.95
+    }
+   ]
+  },
+  {
+   "i": 12,
+   "text": "And newspapers printed her face again, and again, and again.",
+   "start": 56.32,
+   "end": 61.12,
+   "clipStart": 56.32,
+   "clipEnd": 61.04,
+   "words": [
+    {
+     "w": "And",
+     "start": 56.32,
+     "end": 56.56
+    },
+    {
+     "w": "newspapers",
+     "start": 56.64,
+     "end": 57.28
+    },
+    {
+     "w": "printed",
+     "start": 57.36,
+     "end": 57.68
+    },
+    {
+     "w": "her",
+     "start": 57.76,
+     "end": 57.84
+    },
+    {
+     "w": "face",
+     "start": 57.92,
+     "end": 58.24
+    },
+    {
+     "w": "again,",
+     "start": 58.52,
+     "end": 59.04
+    },
+    {
+     "w": "and",
+     "start": 59.12,
+     "end": 59.2
+    },
+    {
+     "w": "again,",
+     "start": 59.48,
+     "end": 60.08
+    },
+    {
+     "w": "and",
+     "start": 60.16,
+     "end": 60.24
+    },
+    {
+     "w": "again.",
+     "start": 60.52,
+     "end": 61.12
+    }
+   ]
+  },
+  {
+   "i": 13,
+   "text": "Police even arrested the poet Guillaume Apollinaire.",
+   "start": 61.49,
+   "end": 65.01,
+   "clipStart": 61.49,
+   "clipEnd": 64.93,
+   "words": [
+    {
+     "w": "Police",
+     "start": 61.49,
+     "end": 61.97
+    },
+    {
+     "w": "even",
+     "start": 62.05,
+     "end": 62.29
+    },
+    {
+     "w": "arrested",
+     "start": 62.37,
+     "end": 62.77
+    },
+    {
+     "w": "the",
+     "start": 62.85,
+     "end": 62.93
+    },
+    {
+     "w": "poet",
+     "start": 63.01,
+     "end": 63.41
+    },
+    {
+     "w": "Guillaume",
+     "start": 63.57,
+     "end": 63.89
+    },
+    {
+     "w": "Apollinaire.",
+     "start": 63.97,
+     "end": 65.01
+    }
+   ]
+  },
+  {
+   "i": 14,
+   "text": "They questioned his friend, a young painter called Pablo Picasso.",
+   "start": 65.38,
+   "end": 69.78,
+   "clipStart": 65.38,
+   "clipEnd": 69.7,
+   "words": [
+    {
+     "w": "They",
+     "start": 65.38,
+     "end": 65.62
+    },
+    {
+     "w": "questioned",
+     "start": 65.82,
+     "end": 66.1
+    },
+    {
+     "w": "his",
+     "start": 66.22,
+     "end": 66.34
+    },
+    {
+     "w": "friend,",
+     "start": 66.42,
+     "end": 67.14
+    },
+    {
+     "w": "a",
+     "start": 67.18,
+     "end": 67.22
+    },
+    {
+     "w": "young",
+     "start": 67.3,
+     "end": 67.54
+    },
+    {
+     "w": "painter",
+     "start": 67.7,
+     "end": 68.02
+    },
+    {
+     "w": "called",
+     "start": 68.1,
+     "end": 68.34
+    },
+    {
+     "w": "Pablo",
+     "start": 68.5,
+     "end": 68.82
+    },
+    {
+     "w": "Picasso.",
+     "start": 68.9,
+     "end": 69.78
+    }
+   ]
+  },
+  {
+   "i": 15,
+   "text": "Both men were cleared.",
+   "start": 70.15,
+   "end": 71.99,
+   "clipStart": 70.15,
+   "clipEnd": 71.91,
+   "words": [
+    {
+     "w": "Both",
+     "start": 70.15,
+     "end": 70.47
+    },
+    {
+     "w": "men",
+     "start": 70.55,
+     "end": 70.87
+    },
+    {
+     "w": "were",
+     "start": 70.95,
+     "end": 71.11
+    },
+    {
+     "w": "cleared.",
+     "start": 71.19,
+     "end": 71.99
+    }
+   ]
+  },
+  {
+   "i": 16,
+   "text": "When the museum reopened, crowds came just to stare at the empty wall.",
+   "start": 72.36,
+   "end": 77.32,
+   "clipStart": 72.36,
+   "clipEnd": 77.24,
+   "words": [
+    {
+     "w": "When",
+     "start": 72.36,
+     "end": 72.52
+    },
+    {
+     "w": "the",
+     "start": 72.56,
+     "end": 72.6
+    },
+    {
+     "w": "museum",
+     "start": 72.68,
+     "end": 73.08
+    },
+    {
+     "w": "reopened,",
+     "start": 73.16,
+     "end": 74.12
+    },
+    {
+     "w": "crowds",
+     "start": 74.2,
+     "end": 74.6
+    },
+    {
+     "w": "came",
+     "start": 74.76,
+     "end": 74.92
+    },
+    {
+     "w": "just",
+     "start": 75.08,
+     "end": 75.32
+    },
+    {
+     "w": "to",
+     "start": 75.4,
+     "end": 75.56
+    },
+    {
+     "w": "stare",
+     "start": 75.64,
+     "end": 75.96
+    },
+    {
+     "w": "at",
+     "start": 76.04,
+     "end": 76.12
+    },
+    {
+     "w": "the",
+     "start": 76.2,
+     "end": 76.24
+    },
+    {
+     "w": "empty",
+     "start": 76.28,
+     "end": 76.6
+    },
+    {
+     "w": "wall.",
+     "start": 76.68,
+     "end": 77.32
+    }
+   ]
+  },
+  {
+   "i": 17,
+   "text": "Among them was a young writer from Prague: Franz Kafka.",
+   "start": 77.69,
+   "end": 82.01,
+   "clipStart": 77.69,
+   "clipEnd": 81.93,
+   "words": [
+    {
+     "w": "Among",
+     "start": 77.69,
+     "end": 78.01
+    },
+    {
+     "w": "them",
+     "start": 78.09,
+     "end": 78.33
+    },
+    {
+     "w": "was",
+     "start": 78.49,
+     "end": 78.65
+    },
+    {
+     "w": "a",
+     "start": 78.69,
+     "end": 78.73
+    },
+    {
+     "w": "young",
+     "start": 78.81,
+     "end": 79.05
+    },
+    {
+     "w": "writer",
+     "start": 79.25,
+     "end": 79.45
+    },
+    {
+     "w": "from",
+     "start": 79.53,
+     "end": 79.61
+    },
+    {
+     "w": "Prague:",
+     "start": 79.77,
+     "end": 80.73
+    },
+    {
+     "w": "Franz",
+     "start": 80.81,
+     "end": 81.21
+    },
+    {
+     "w": "Kafka.",
+     "start": 81.29,
+     "end": 82.01
+    }
+   ]
+  },
+  {
+   "i": 18,
+   "text": "Meanwhile, detectives knocked on the door of the real thief.",
+   "start": 82.38,
+   "end": 86.3,
+   "clipStart": 82.38,
+   "clipEnd": 86.22,
+   "words": [
+    {
+     "w": "Meanwhile,",
+     "start": 82.38,
+     "end": 83.18
+    },
+    {
+     "w": "detectives",
+     "start": 83.26,
+     "end": 83.9
+    },
+    {
+     "w": "knocked",
+     "start": 83.98,
+     "end": 84.22
+    },
+    {
+     "w": "on",
+     "start": 84.26,
+     "end": 84.3
+    },
+    {
+     "w": "the",
+     "start": 84.38,
+     "end": 84.46
+    },
+    {
+     "w": "door",
+     "start": 84.54,
+     "end": 84.78
+    },
+    {
+     "w": "of",
+     "start": 84.86,
+     "end": 84.94
+    },
+    {
+     "w": "the",
+     "start": 85.02,
+     "end": 85.1
+    },
+    {
+     "w": "real",
+     "start": 85.26,
+     "end": 85.5
+    },
+    {
+     "w": "thief.",
+     "start": 85.66,
+     "end": 86.3
+    }
+   ]
+  },
+  {
+   "i": 19,
+   "text": "His name was Vincenzo Peruggia, an Italian who had once worked at the Louvre.",
+   "start": 86.67,
+   "end": 91.87,
+   "clipStart": 86.67,
+   "clipEnd": 91.79,
+   "words": [
+    {
+     "w": "His",
+     "start": 86.67,
+     "end": 86.91
+    },
+    {
+     "w": "name",
+     "start": 87.07,
+     "end": 87.23
+    },
+    {
+     "w": "was",
+     "start": 87.31,
+     "end": 87.47
+    },
+    {
+     "w": "Vincenzo",
+     "start": 87.55,
+     "end": 88.11
+    },
+    {
+     "w": "Peruggia,",
+     "start": 88.19,
+     "end": 89.15
+    },
+    {
+     "w": "an",
+     "start": 89.19,
+     "end": 89.23
+    },
+    {
+     "w": "Italian",
+     "start": 89.31,
+     "end": 89.87
+    },
+    {
+     "w": "who",
+     "start": 89.95,
+     "end": 90.11
+    },
+    {
+     "w": "had",
+     "start": 90.19,
+     "end": 90.27
+    },
+    {
+     "w": "once",
+     "start": 90.35,
+     "end": 90.59
+    },
+    {
+     "w": "worked",
+     "start": 90.67,
+     "end": 90.91
+    },
+    {
+     "w": "at",
+     "start": 90.95,
+     "end": 90.99
+    },
+    {
+     "w": "the",
+     "start": 91.07,
+     "end": 91.15
+    },
+    {
+     "w": "Louvre.",
+     "start": 91.27,
+     "end": 91.87
+    }
+   ]
+  },
+  {
+   "i": 20,
+   "text": "He had even helped build the glass case that was meant to protect her.",
+   "start": 92.24,
+   "end": 96.32,
+   "clipStart": 92.24,
+   "clipEnd": 96.24,
+   "words": [
+    {
+     "w": "He",
+     "start": 92.24,
+     "end": 92.4
+    },
+    {
+     "w": "had",
+     "start": 92.52,
+     "end": 92.64
+    },
+    {
+     "w": "even",
+     "start": 92.72,
+     "end": 92.96
+    },
+    {
+     "w": "helped",
+     "start": 93.04,
+     "end": 93.36
+    },
+    {
+     "w": "build",
+     "start": 93.48,
+     "end": 93.6
+    },
+    {
+     "w": "the",
+     "start": 93.68,
+     "end": 93.76
+    },
+    {
+     "w": "glass",
+     "start": 93.96,
+     "end": 94.16
+    },
+    {
+     "w": "case",
+     "start": 94.24,
+     "end": 94.56
+    },
+    {
+     "w": "that",
+     "start": 94.64,
+     "end": 94.72
+    },
+    {
+     "w": "was",
+     "start": 94.8,
+     "end": 94.88
+    },
+    {
+     "w": "meant",
+     "start": 94.96,
+     "end": 95.12
+    },
+    {
+     "w": "to",
+     "start": 95.2,
+     "end": 95.28
+    },
+    {
+     "w": "protect",
+     "start": 95.52,
+     "end": 95.76
+    },
+    {
+     "w": "her.",
+     "start": 95.88,
+     "end": 96.32
+    }
+   ]
+  },
+  {
+   "i": 21,
+   "text": "The police believed his alibi, and they left.",
+   "start": 96.69,
+   "end": 99.89,
+   "clipStart": 96.69,
+   "clipEnd": 99.81,
+   "words": [
+    {
+     "w": "The",
+     "start": 96.69,
+     "end": 96.85
+    },
+    {
+     "w": "police",
+     "start": 96.93,
+     "end": 97.25
+    },
+    {
+     "w": "believed",
+     "start": 97.33,
+     "end": 97.73
+    },
+    {
+     "w": "his",
+     "start": 97.85,
+     "end": 97.97
+    },
+    {
+     "w": "alibi,",
+     "start": 98.05,
+     "end": 98.77
+    },
+    {
+     "w": "and",
+     "start": 98.85,
+     "end": 99.01
+    },
+    {
+     "w": "they",
+     "start": 99.09,
+     "end": 99.17
+    },
+    {
+     "w": "left.",
+     "start": 99.25,
+     "end": 99.89
+    }
+   ]
+  },
+  {
+   "i": 22,
+   "text": "For two years, the Mona Lisa lay hidden in a trunk in his room.",
+   "start": 100.26,
+   "end": 104.9,
+   "clipStart": 100.26,
+   "clipEnd": 104.82,
+   "words": [
+    {
+     "w": "For",
+     "start": 100.26,
+     "end": 100.5
+    },
+    {
+     "w": "two",
+     "start": 100.58,
+     "end": 100.74
+    },
+    {
+     "w": "years,",
+     "start": 100.9,
+     "end": 101.54
+    },
+    {
+     "w": "the",
+     "start": 101.62,
+     "end": 101.66
+    },
+    {
+     "w": "Mona",
+     "start": 101.7,
+     "end": 101.94
+    },
+    {
+     "w": "Lisa",
+     "start": 102.02,
+     "end": 102.42
+    },
+    {
+     "w": "lay",
+     "start": 102.5,
+     "end": 102.74
+    },
+    {
+     "w": "hidden",
+     "start": 102.82,
+     "end": 103.14
+    },
+    {
+     "w": "in",
+     "start": 103.22,
+     "end": 103.3
+    },
+    {
+     "w": "a",
+     "start": 103.34,
+     "end": 103.38
+    },
+    {
+     "w": "trunk",
+     "start": 103.46,
+     "end": 103.86
+    },
+    {
+     "w": "in",
+     "start": 103.94,
+     "end": 104.02
+    },
+    {
+     "w": "his",
+     "start": 104.1,
+     "end": 104.18
+    },
+    {
+     "w": "room.",
+     "start": 104.26,
+     "end": 104.9
+    }
+   ]
+  },
+  {
+   "i": 23,
+   "text": "Then, in late 1913, he wrote to an art dealer in Florence.",
+   "start": 105.27,
+   "end": 110.31,
+   "clipStart": 105.27,
+   "clipEnd": 110.23,
+   "words": [
+    {
+     "w": "Then,",
+     "start": 105.27,
+     "end": 105.91
+    },
+    {
+     "w": "in",
+     "start": 105.99,
+     "end": 106.07
+    },
+    {
+     "w": "late",
+     "start": 106.15,
+     "end": 106.39
+    },
+    {
+     "w": "1913,",
+     "start": 106.47,
+     "end": 107.83
+    },
+    {
+     "w": "he",
+     "start": 107.91,
+     "end": 107.99
+    },
+    {
+     "w": "wrote",
+     "start": 108.03,
+     "end": 108.31
+    },
+    {
+     "w": "to",
+     "start": 108.35,
+     "end": 108.39
+    },
+    {
+     "w": "an",
+     "start": 108.47,
+     "end": 108.63
+    },
+    {
+     "w": "art",
+     "start": 108.75,
+     "end": 108.87
+    },
+    {
+     "w": "dealer",
+     "start": 108.95,
+     "end": 109.19
+    },
+    {
+     "w": "in",
+     "start": 109.27,
+     "end": 109.43
+    },
+    {
+     "w": "Florence.",
+     "start": 109.51,
+     "end": 110.31
+    }
+   ]
+  },
+  {
+   "i": 24,
+   "text": "The dealer, Alfredo Geri, brought the director of the Uffizi Gallery to see it.",
+   "start": 110.68,
+   "end": 115.96,
+   "clipStart": 110.68,
+   "clipEnd": 115.88,
+   "words": [
+    {
+     "w": "The",
+     "start": 110.68,
+     "end": 110.84
+    },
+    {
+     "w": "dealer,",
+     "start": 110.92,
+     "end": 111.56
+    },
+    {
+     "w": "Alfredo",
+     "start": 111.64,
+     "end": 112.12
+    },
+    {
+     "w": "Geri,",
+     "start": 112.16,
+     "end": 112.84
+    },
+    {
+     "w": "brought",
+     "start": 112.92,
+     "end": 113.16
+    },
+    {
+     "w": "the",
+     "start": 113.2,
+     "end": 113.24
+    },
+    {
+     "w": "director",
+     "start": 113.32,
+     "end": 113.8
+    },
+    {
+     "w": "of",
+     "start": 113.88,
+     "end": 113.96
+    },
+    {
+     "w": "the",
+     "start": 114,
+     "end": 114.04
+    },
+    {
+     "w": "Uffizi",
+     "start": 114.12,
+     "end": 114.52
+    },
+    {
+     "w": "Gallery",
+     "start": 114.6,
+     "end": 115.08
+    },
+    {
+     "w": "to",
+     "start": 115.16,
+     "end": 115.24
+    },
+    {
+     "w": "see",
+     "start": 115.32,
+     "end": 115.48
+    },
+    {
+     "w": "it.",
+     "start": 115.6,
+     "end": 115.96
+    }
+   ]
+  },
+  {
+   "i": 25,
+   "text": "They checked the panel, confirmed it was real, and called the police.",
+   "start": 116.33,
+   "end": 120.57,
+   "clipStart": 116.33,
+   "clipEnd": 120.49,
+   "words": [
+    {
+     "w": "They",
+     "start": 116.33,
+     "end": 116.49
+    },
+    {
+     "w": "checked",
+     "start": 116.57,
+     "end": 116.81
+    },
+    {
+     "w": "the",
+     "start": 116.89,
+     "end": 116.97
+    },
+    {
+     "w": "panel,",
+     "start": 117.17,
+     "end": 117.69
+    },
+    {
+     "w": "confirmed",
+     "start": 117.93,
+     "end": 118.17
+    },
+    {
+     "w": "it",
+     "start": 118.21,
+     "end": 118.25
+    },
+    {
+     "w": "was",
+     "start": 118.33,
+     "end": 118.49
+    },
+    {
+     "w": "real,",
+     "start": 118.69,
+     "end": 119.13
+    },
+    {
+     "w": "and",
+     "start": 119.21,
+     "end": 119.29
+    },
+    {
+     "w": "called",
+     "start": 119.37,
+     "end": 119.61
+    },
+    {
+     "w": "the",
+     "start": 119.65,
+     "end": 119.69
+    },
+    {
+     "w": "police.",
+     "start": 119.77,
+     "end": 120.57
+    }
+   ]
+  },
+  {
+   "i": 26,
+   "text": "In December 1913, Peruggia was arrested.",
+   "start": 120.94,
+   "end": 124.94,
+   "clipStart": 120.94,
+   "clipEnd": 124.86,
+   "words": [
+    {
+     "w": "In",
+     "start": 120.94,
+     "end": 121.1
+    },
+    {
+     "w": "December",
+     "start": 121.38,
+     "end": 121.66
+    },
+    {
+     "w": "1913,",
+     "start": 121.74,
+     "end": 123.1
+    },
+    {
+     "w": "Peruggia",
+     "start": 123.18,
+     "end": 123.82
+    },
+    {
+     "w": "was",
+     "start": 123.9,
+     "end": 123.98
+    },
+    {
+     "w": "arrested.",
+     "start": 124.06,
+     "end": 124.94
+    }
+   ]
+  },
+  {
+   "i": 27,
+   "text": "He said he only wanted to bring her home to Italy.",
+   "start": 125.31,
+   "end": 128.59,
+   "clipStart": 125.31,
+   "clipEnd": 128.51,
+   "words": [
+    {
+     "w": "He",
+     "start": 125.31,
+     "end": 125.47
+    },
+    {
+     "w": "said",
+     "start": 125.55,
+     "end": 125.79
+    },
+    {
+     "w": "he",
+     "start": 125.87,
+     "end": 126.11
+    },
+    {
+     "w": "only",
+     "start": 126.19,
+     "end": 126.43
+    },
+    {
+     "w": "wanted",
+     "start": 126.51,
+     "end": 126.75
+    },
+    {
+     "w": "to",
+     "start": 126.79,
+     "end": 126.83
+    },
+    {
+     "w": "bring",
+     "start": 126.91,
+     "end": 127.07
+    },
+    {
+     "w": "her",
+     "start": 127.19,
+     "end": 127.31
+    },
+    {
+     "w": "home",
+     "start": 127.43,
+     "end": 127.55
+    },
+    {
+     "w": "to",
+     "start": 127.63,
+     "end": 127.79
+    },
+    {
+     "w": "Italy.",
+     "start": 128.03,
+     "end": 128.59
+    }
+   ]
+  },
+  {
+   "i": 28,
+   "text": "The court was lenient. He spent only months in prison.",
+   "start": 128.96,
+   "end": 132.96,
+   "clipStart": 128.96,
+   "clipEnd": 132.88,
+   "words": [
+    {
+     "w": "The",
+     "start": 128.96,
+     "end": 129.12
+    },
+    {
+     "w": "court",
+     "start": 129.28,
+     "end": 129.44
+    },
+    {
+     "w": "was",
+     "start": 129.52,
+     "end": 129.68
+    },
+    {
+     "w": "lenient.",
+     "start": 129.76,
+     "end": 130.52
+    },
+    {
+     "w": "He",
+     "start": 130.72,
+     "end": 130.88
+    },
+    {
+     "w": "spent",
+     "start": 131.04,
+     "end": 131.2
+    },
+    {
+     "w": "only",
+     "start": 131.28,
+     "end": 131.52
+    },
+    {
+     "w": "months",
+     "start": 131.68,
+     "end": 132.08
+    },
+    {
+     "w": "in",
+     "start": 132.16,
+     "end": 132.24
+    },
+    {
+     "w": "prison.",
+     "start": 132.28,
+     "end": 132.96
+    }
+   ]
+  },
+  {
+   "i": 29,
+   "text": "In January 1914, the Mona Lisa returned to the Louvre.",
+   "start": 133.33,
+   "end": 138.13,
+   "clipStart": 133.33,
+   "clipEnd": 138.05,
+   "words": [
+    {
+     "w": "In",
+     "start": 133.33,
+     "end": 133.49
+    },
+    {
+     "w": "January",
+     "start": 133.57,
+     "end": 134.05
+    },
+    {
+     "w": "1914,",
+     "start": 134.13,
+     "end": 135.65
+    },
+    {
+     "w": "the",
+     "start": 135.73,
+     "end": 135.77
+    },
+    {
+     "w": "Mona",
+     "start": 135.81,
+     "end": 136.05
+    },
+    {
+     "w": "Lisa",
+     "start": 136.25,
+     "end": 136.45
+    },
+    {
+     "w": "returned",
+     "start": 136.53,
+     "end": 137.09
+    },
+    {
+     "w": "to",
+     "start": 137.17,
+     "end": 137.25
+    },
+    {
+     "w": "the",
+     "start": 137.33,
+     "end": 137.41
+    },
+    {
+     "w": "Louvre.",
+     "start": 137.49,
+     "end": 138.13
+    }
+   ]
+  },
+  {
+   "i": 30,
+   "text": "Before the theft, she was not even the most visited painting in the museum.",
+   "start": 138.5,
+   "end": 143.22,
+   "clipStart": 138.5,
+   "clipEnd": 143.14,
+   "words": [
+    {
+     "w": "Before",
+     "start": 138.5,
+     "end": 138.9
+    },
+    {
+     "w": "the",
+     "start": 138.94,
+     "end": 138.98
+    },
+    {
+     "w": "theft,",
+     "start": 139.14,
+     "end": 139.78
+    },
+    {
+     "w": "she",
+     "start": 139.86,
+     "end": 139.94
+    },
+    {
+     "w": "was",
+     "start": 140.02,
+     "end": 140.1
+    },
+    {
+     "w": "not",
+     "start": 140.22,
+     "end": 140.34
+    },
+    {
+     "w": "even",
+     "start": 140.42,
+     "end": 140.58
+    },
+    {
+     "w": "the",
+     "start": 140.66,
+     "end": 140.74
+    },
+    {
+     "w": "most",
+     "start": 140.86,
+     "end": 140.98
+    },
+    {
+     "w": "visited",
+     "start": 141.14,
+     "end": 141.54
+    },
+    {
+     "w": "painting",
+     "start": 141.62,
+     "end": 142.1
+    },
+    {
+     "w": "in",
+     "start": 142.14,
+     "end": 142.18
+    },
+    {
+     "w": "the",
+     "start": 142.26,
+     "end": 142.3
+    },
+    {
+     "w": "museum.",
+     "start": 142.34,
+     "end": 143.22
+    }
+   ]
+  },
+  {
+   "i": 31,
+   "text": "Today, she is the most famous painting on Earth.",
+   "start": 143.59,
+   "end": 147.51,
+   "clipStart": 143.59,
+   "clipEnd": 147.43,
+   "words": [
+    {
+     "w": "Today,",
+     "start": 143.59,
+     "end": 144.31
+    },
+    {
+     "w": "she",
+     "start": 144.39,
+     "end": 144.55
+    },
+    {
+     "w": "is",
+     "start": 144.63,
+     "end": 144.71
+    },
+    {
+     "w": "the",
+     "start": 144.83,
+     "end": 144.95
+    },
+    {
+     "w": "most",
+     "start": 145.15,
+     "end": 145.35
+    },
+    {
+     "w": "famous",
+     "start": 145.51,
+     "end": 145.91
+    },
+    {
+     "w": "painting",
+     "start": 145.99,
+     "end": 146.47
+    },
+    {
+     "w": "on",
+     "start": 146.55,
+     "end": 146.79
+    },
+    {
+     "w": "Earth.",
+     "start": 146.87,
+     "end": 147.51
+    }
+   ]
+  },
+  {
+   "i": 32,
+   "text": "All because, for two years, she was missing.",
+   "start": 147.88,
+   "end": 151.48,
+   "clipStart": 147.88,
+   "clipEnd": 151.4,
+   "words": [
+    {
+     "w": "All",
+     "start": 147.88,
+     "end": 148.12
+    },
+    {
+     "w": "because,",
+     "start": 148.2,
+     "end": 148.92
+    },
+    {
+     "w": "for",
+     "start": 149,
+     "end": 149.24
+    },
+    {
+     "w": "two",
+     "start": 149.36,
+     "end": 149.48
+    },
+    {
+     "w": "years,",
+     "start": 149.64,
+     "end": 150.28
+    },
+    {
+     "w": "she",
+     "start": 150.36,
+     "end": 150.44
+    },
+    {
+     "w": "was",
+     "start": 150.52,
+     "end": 150.6
+    },
+    {
+     "w": "missing.",
+     "start": 150.68,
+     "end": 151.48
+    }
+   ]
+  }
+ ]
+}

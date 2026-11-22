@@ -1,0 +1,3 @@
+# Mavzular tarixi — har bir hujjatli video uchun bitta qator (sana | slug | mavzu)
+# Yangi mavzu tanlashdan oldin shu ro'yxatni tekshiring: takror yoki juda o'xshash mavzu tanlanmaydi.
+2026-11-22 | mona-lisa-heist | 1911-yil Mona Liza o'g'irlanishi (Vincenzo Peruggia) — bo'sh devor rasmni dunyoga mashhur qildi

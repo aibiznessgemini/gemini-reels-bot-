@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-22",
+  "slug": "mona-lisa-heist",
+  "title": "The Empty Wall: How a Theft Made the Mona Lisa Famous",
+  "format": "16:9, 1920x1080, 30 fps, one continuous camera move",
+  "voice": { "provider": "ElevenLabs", "voice_id": "GoV1V2hQd1doxcYR2SuA", "model": "eleven_v4" },
+  "facts": [
+    "Stolen Monday 21 August 1911 while the Louvre was closed; thief wore a white worker's smock",
+    "Glass case and frame removed on a service staircase; panel hidden under the smock",
+    "Painter Louis Béroud found four iron pegs on 22 August 1911",
+    "Louvre closed for a week; crowds (including Franz Kafka) came to see the empty space",
+    "Apollinaire arrested in September 1911; Picasso questioned; both cleared",
+    "Vincenzo Peruggia, an Italian ex-Louvre worker who helped build the protective case; police accepted his alibi",
+    "Kept the painting about two years (28 months to arrest) in a trunk",
+    "Wrote to Florence dealer Alfredo Geri; Uffizi director Giovanni Poggi authenticated it; arrested December 1913",
+    "Patriotic motive (return it to Italy); sentence 1 year 15 days, served about seven months",
+    "Returned to the Louvre in January 1914; before the theft it was not the most visited work in the museum",
+    "Panel 77 x 53 cm, oil on poplar"
+  ],
+  "sources": [
+    "https://www.smithsonianmag.com/history/the-theft-that-made-the-mona-lisa-a-masterpiece-16406234/",
+    "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+    "https://www.history.com/this-day-in-history/december-12/mona-lisa-recovered-in-florence",
+    "https://www.history.com/this-day-in-history/august-22/theft-of-mona-lisa-is-discovered",
+    "https://en.wikipedia.org/wiki/Vincenzo_Peruggia",
+    "https://en.wikipedia.org/wiki/Louis_B%C3%A9roud",
+    "https://www.npr.org/2011/07/30/138800110/the-theft-that-made-the-mona-lisa-a-masterpiece",
+    "https://www.thecollector.com/man-who-stole-mona-lisa-vincenzo-peruggia/",
+    "https://www.openculture.com/2019/01/when-pablo-picasso-and-guillaume-apollinaire-were-accused-of-stealing-the-mona-lisa-1911.html",
+    "https://content.time.com/time/specials/packages/article/0,28804,2003244_2003246_2003362,00.html",
+    "https://www.historyhit.com/theft-mona-lisa/",
+    "https://www.britannica.com/topic/Mona-Lisa-painting"
+  ],
+  "notes": "Newspaper mastheads and headlines on screen are illustrative, not reproductions of real 1911 front pages. Portraits are stylised drawings, not likenesses."
+}

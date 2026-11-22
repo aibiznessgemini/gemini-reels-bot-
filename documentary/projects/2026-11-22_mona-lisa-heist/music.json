@@ -1,0 +1,6 @@
+[
+ {"start": 0, "end": 61, "mood": "mystery", "intensity": 0.3},
+ {"start": 61, "end": 100, "mood": "tension", "intensity": 0.35},
+ {"start": 100, "end": 133, "mood": "mystery", "intensity": 0.55},
+ {"start": 133, "end": 153, "mood": "wonder", "intensity": 0.45}
+]
