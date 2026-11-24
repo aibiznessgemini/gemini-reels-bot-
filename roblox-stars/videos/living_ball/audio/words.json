@@ -1,0 +1,787 @@
+[
+{
+"word": "Haaland",
+"start": 0.0,
+"end": 0.32
+},
+{
+"word": "kicked",
+"start": 0.37,
+"end": 0.658
+},
+{
+"word": "the",
+"start": 0.677,
+"end": 0.729
+},
+{
+"word": "ball",
+"start": 0.738,
+"end": 0.985
+},
+{
+"word": "as",
+"start": 1.046,
+"end": 1.169
+},
+{
+"word": "hard",
+"start": 1.292,
+"end": 1.477
+},
+{
+"word": "as",
+"start": 1.539,
+"end": 1.6
+},
+{
+"word": "he",
+"start": 1.662,
+"end": 1.723
+},
+{
+"word": "could...",
+"start": 1.846,
+"end": 2.461
+},
+{
+"word": "and",
+"start": 2.492,
+"end": 2.523
+},
+{
+"word": "it",
+"start": 2.585,
+"end": 2.646
+},
+{
+"word": "flew",
+"start": 2.677,
+"end": 2.892
+},
+{
+"word": "straight",
+"start": 3.077,
+"end": 3.262
+},
+{
+"word": "back",
+"start": 3.323,
+"end": 3.385
+},
+{
+"word": "into",
+"start": 3.446,
+"end": 3.569
+},
+{
+"word": "his",
+"start": 3.662,
+"end": 3.754
+},
+{
+"word": "face.",
+"start": 3.816,
+"end": 4.123
+},
+{
+"word": "Bonk!",
+"start": 4.492,
+"end": 4.862
+},
+{
+"word": "You",
+"start": 5.292,
+"end": 5.354
+},
+{
+"word": "see,",
+"start": 5.416,
+"end": 5.846
+},
+{
+"word": "in",
+"start": 5.908,
+"end": 5.97
+},
+{
+"word": "this",
+"start": 6.031,
+"end": 6.154
+},
+{
+"word": "world,",
+"start": 6.215,
+"end": 6.769
+},
+{
+"word": "the",
+"start": 6.831,
+"end": 6.892
+},
+{
+"word": "football",
+"start": 6.953,
+"end": 7.323
+},
+{
+"word": "is",
+"start": 7.507,
+"end": 7.569
+},
+{
+"word": "alive.",
+"start": 7.631,
+"end": 8.123
+},
+{
+"word": "And",
+"start": 8.431,
+"end": 8.492
+},
+{
+"word": "it",
+"start": 8.615,
+"end": 8.8
+},
+{
+"word": "chooses",
+"start": 8.862,
+"end": 9.169
+},
+{
+"word": "who",
+"start": 9.231,
+"end": 9.293
+},
+{
+"word": "scores.",
+"start": 9.354,
+"end": 9.939
+},
+{
+"word": "It",
+"start": 10.154,
+"end": 10.277
+},
+{
+"word": "loves",
+"start": 10.462,
+"end": 10.708
+},
+{
+"word": "Messi.",
+"start": 10.769,
+"end": 11.139
+},
+{
+"word": "It",
+"start": 11.446,
+"end": 11.508
+},
+{
+"word": "follows",
+"start": 11.57,
+"end": 11.785
+},
+{
+"word": "him",
+"start": 11.815,
+"end": 12.0
+},
+{
+"word": "everywhere,",
+"start": 12.062,
+"end": 12.616
+},
+{
+"word": "like",
+"start": 12.677,
+"end": 12.739
+},
+{
+"word": "a",
+"start": 12.759,
+"end": 12.779
+},
+{
+"word": "little",
+"start": 12.8,
+"end": 12.984
+},
+{
+"word": "puppy.",
+"start": 13.015,
+"end": 13.661
+},
+{
+"word": "It",
+"start": 13.754,
+"end": 13.846
+},
+{
+"word": "hates",
+"start": 13.969,
+"end": 14.215
+},
+{
+"word": "Ronaldo's",
+"start": 14.277,
+"end": 14.646
+},
+{
+"word": "free",
+"start": 14.707,
+"end": 14.831
+},
+{
+"word": "kicks.",
+"start": 14.893,
+"end": 15.353
+},
+{
+"word": "Way",
+"start": 15.508,
+"end": 15.692
+},
+{
+"word": "too",
+"start": 15.754,
+"end": 15.815
+},
+{
+"word": "much",
+"start": 15.877,
+"end": 16.0
+},
+{
+"word": "power.",
+"start": 16.062,
+"end": 16.677
+},
+{
+"word": "So",
+"start": 16.708,
+"end": 16.739
+},
+{
+"word": "it",
+"start": 16.769,
+"end": 16.8
+},
+{
+"word": "just",
+"start": 16.861,
+"end": 16.984
+},
+{
+"word": "stops",
+"start": 17.046,
+"end": 17.292
+},
+{
+"word": "in",
+"start": 17.354,
+"end": 17.415
+},
+{
+"word": "mid-air...",
+"start": 17.477,
+"end": 18.216
+},
+{
+"word": "and",
+"start": 18.247,
+"end": 18.277
+},
+{
+"word": "drops.",
+"start": 18.339,
+"end": 19.015
+},
+{
+"word": "Mbapp\u00e9",
+"start": 19.077,
+"end": 19.446
+},
+{
+"word": "tried",
+"start": 19.508,
+"end": 19.692
+},
+{
+"word": "to",
+"start": 19.754,
+"end": 19.815
+},
+{
+"word": "outrun",
+"start": 19.846,
+"end": 20.123
+},
+{
+"word": "it.",
+"start": 20.185,
+"end": 20.616
+},
+{
+"word": "Bad",
+"start": 20.708,
+"end": 20.8
+},
+{
+"word": "idea.",
+"start": 20.861,
+"end": 21.415
+},
+{
+"word": "The",
+"start": 21.477,
+"end": 21.538
+},
+{
+"word": "ball",
+"start": 21.631,
+"end": 21.723
+},
+{
+"word": "ran",
+"start": 21.785,
+"end": 21.969
+},
+{
+"word": "even",
+"start": 22.123,
+"end": 22.277
+},
+{
+"word": "faster,",
+"start": 22.308,
+"end": 22.892
+},
+{
+"word": "the",
+"start": 22.923,
+"end": 22.954
+},
+{
+"word": "other",
+"start": 23.015,
+"end": 23.138
+},
+{
+"word": "way.",
+"start": 23.2,
+"end": 23.692
+},
+{
+"word": "Neymar",
+"start": 23.753,
+"end": 24.123
+},
+{
+"word": "tried",
+"start": 24.154,
+"end": 24.246
+},
+{
+"word": "a",
+"start": 24.307,
+"end": 24.369
+},
+{
+"word": "step-over",
+"start": 24.493,
+"end": 24.8
+},
+{
+"word": "to",
+"start": 24.861,
+"end": 24.923
+},
+{
+"word": "trick",
+"start": 24.985,
+"end": 25.108
+},
+{
+"word": "it.",
+"start": 25.169,
+"end": 25.6
+},
+{
+"word": "The",
+"start": 25.662,
+"end": 25.723
+},
+{
+"word": "ball",
+"start": 25.846,
+"end": 25.969
+},
+{
+"word": "tricked",
+"start": 26.031,
+"end": 26.216
+},
+{
+"word": "him",
+"start": 26.308,
+"end": 26.4
+},
+{
+"word": "back.",
+"start": 26.523,
+"end": 26.892
+},
+{
+"word": "Down",
+"start": 26.984,
+"end": 27.077
+},
+{
+"word": "he",
+"start": 27.138,
+"end": 27.2
+},
+{
+"word": "goes!",
+"start": 27.293,
+"end": 27.877
+},
+{
+"word": "Then",
+"start": 28.031,
+"end": 28.184
+},
+{
+"word": "the",
+"start": 28.215,
+"end": 28.246
+},
+{
+"word": "youngest",
+"start": 28.308,
+"end": 28.615
+},
+{
+"word": "one,",
+"start": 28.677,
+"end": 28.985
+},
+{
+"word": "Yamal,",
+"start": 29.046,
+"end": 29.6
+},
+{
+"word": "walked",
+"start": 29.662,
+"end": 29.846
+},
+{
+"word": "up",
+"start": 29.907,
+"end": 29.969
+},
+{
+"word": "to",
+"start": 30.0,
+"end": 30.031
+},
+{
+"word": "the",
+"start": 30.093,
+"end": 30.154
+},
+{
+"word": "ball...",
+"start": 30.277,
+"end": 30.831
+},
+{
+"word": "and",
+"start": 30.892,
+"end": 30.954
+},
+{
+"word": "smiled.",
+"start": 31.015,
+"end": 31.754
+},
+{
+"word": "And",
+"start": 31.816,
+"end": 31.877
+},
+{
+"word": "it",
+"start": 31.908,
+"end": 31.938
+},
+{
+"word": "rolled",
+"start": 32.0,
+"end": 32.184
+},
+{
+"word": "straight",
+"start": 32.247,
+"end": 32.554
+},
+{
+"word": "to",
+"start": 32.584,
+"end": 32.615
+},
+{
+"word": "his",
+"start": 32.707,
+"end": 32.8
+},
+{
+"word": "feet.",
+"start": 32.862,
+"end": 33.416
+},
+{
+"word": "That's",
+"start": 33.477,
+"end": 33.661
+},
+{
+"word": "when",
+"start": 33.692,
+"end": 33.723
+},
+{
+"word": "I",
+"start": 33.846,
+"end": 33.877
+},
+{
+"word": "noticed",
+"start": 33.908,
+"end": 34.215
+},
+{
+"word": "something.",
+"start": 34.4,
+"end": 34.953
+},
+{
+"word": "The",
+"start": 35.016,
+"end": 35.077
+},
+{
+"word": "ball",
+"start": 35.231,
+"end": 35.384
+},
+{
+"word": "never",
+"start": 35.446,
+"end": 35.693
+},
+{
+"word": "runs",
+"start": 35.815,
+"end": 35.938
+},
+{
+"word": "from",
+"start": 36.03,
+"end": 36.123
+},
+{
+"word": "someone",
+"start": 36.246,
+"end": 36.369
+},
+{
+"word": "who",
+"start": 36.431,
+"end": 36.492
+},
+{
+"word": "is",
+"start": 36.554,
+"end": 36.615
+},
+{
+"word": "smiling.",
+"start": 36.677,
+"end": 37.416
+},
+{
+"word": "So",
+"start": 37.508,
+"end": 37.6
+},
+{
+"word": "all",
+"start": 37.661,
+"end": 37.847
+},
+{
+"word": "seven",
+"start": 37.908,
+"end": 38.092
+},
+{
+"word": "of",
+"start": 38.154,
+"end": 38.215
+},
+{
+"word": "them",
+"start": 38.307,
+"end": 38.4
+},
+{
+"word": "smiled",
+"start": 38.462,
+"end": 38.708
+},
+{
+"word": "at",
+"start": 38.769,
+"end": 38.83
+},
+{
+"word": "it.",
+"start": 38.892,
+"end": 39.261
+},
+{
+"word": "At",
+"start": 39.323,
+"end": 39.384
+},
+{
+"word": "the",
+"start": 39.477,
+"end": 39.57
+},
+{
+"word": "same",
+"start": 39.692,
+"end": 39.815
+},
+{
+"word": "time.",
+"start": 39.877,
+"end": 40.553
+},
+{
+"word": "The",
+"start": 40.584,
+"end": 40.616
+},
+{
+"word": "ball",
+"start": 40.739,
+"end": 40.862
+},
+{
+"word": "spun...",
+"start": 40.923,
+"end": 41.661
+},
+{
+"word": "and",
+"start": 41.723,
+"end": 41.785
+},
+{
+"word": "spun...",
+"start": 41.846,
+"end": 42.769
+},
+{
+"word": "It",
+"start": 42.831,
+"end": 42.893
+},
+{
+"word": "couldn't",
+"start": 42.954,
+"end": 43.138
+},
+{
+"word": "choose.",
+"start": 43.323,
+"end": 43.815
+},
+{
+"word": "So",
+"start": 43.846,
+"end": 43.877
+},
+{
+"word": "it",
+"start": 43.938,
+"end": 44.062
+},
+{
+"word": "kicked",
+"start": 44.123,
+"end": 44.246
+},
+{
+"word": "itself",
+"start": 44.308,
+"end": 44.554
+},
+{
+"word": "into",
+"start": 44.646,
+"end": 44.739
+},
+{
+"word": "the",
+"start": 44.8,
+"end": 44.831
+},
+{
+"word": "net.",
+"start": 44.861,
+"end": 45.323
+},
+{
+"word": "Goal",
+"start": 45.538,
+"end": 45.662
+},
+{
+"word": "of",
+"start": 45.693,
+"end": 45.723
+},
+{
+"word": "the",
+"start": 45.785,
+"end": 45.816
+},
+{
+"word": "season?",
+"start": 45.846,
+"end": 46.216
+},
+{
+"word": "The",
+"start": 46.523,
+"end": 46.584
+},
+{
+"word": "ball.",
+"start": 46.646,
+"end": 46.954
+},
+{
+"word": "Again.",
+"start": 47.261,
+"end": 47.877
+}
+]

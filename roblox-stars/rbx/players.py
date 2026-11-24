@@ -167,6 +167,7 @@ class Player:
 
     # ------------------------------------------------------------ body pose
     def pose(self, t, interp="BEZIER", **kw):
+        kw.pop("face", None)
         for side, s in (("L", 1), ("R", -1)):
             a = kw.get("arm" + side)
             if a is not None:
@@ -355,6 +356,17 @@ class Player:
             t += 1 / rate; k += 1
         if jump and t1 - t0 > 1.0:
             self.jump(t0 + 0.2, 0.35, 0.45)
+        return self
+
+    def fall(self, t, back=True, dur=0.35):
+        """Topple over (pivot at the feet) and land flat; arms flail on the way."""
+        ang = -82 if back else 82
+        self.rotk(t, "Root", self.q("Root", X, 0))
+        self.pose(t, armL=(20, 30), armR=(20, 30))
+        self.rotk(t + dur * 0.6, "Root", self.q("Root", X, ang * 0.7))
+        self.pose(t + dur * 0.6, armL=(120, 60), armR=(120, 60), legL=(25, 0), legR=(10, 0), face=None)
+        self.rotk(t + dur, "Root", self.q("Root", X, ang), "BEZIER")
+        self.pose(t + dur, armL=(90, 70), armR=(90, 70), legL=(10, 8), legR=(0, 8))
         return self
 
     def point(self, t, side="R", up=10):

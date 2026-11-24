@@ -17,6 +17,7 @@ for i in sorted(V.shots):
     S = V.build(i, samples=samples, pct=pct)
     sc = bpy.context.scene
     sc.render.use_motion_blur = False
+    sc.eevee.use_raytracing = False
     sc.render.filepath = os.path.join(out, "")
     sc.render.image_settings.file_format = "PNG"
     cues += [dict(c) for c in CUES]
