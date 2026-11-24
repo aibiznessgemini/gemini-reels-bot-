@@ -15,7 +15,7 @@ TOON_LOOKS = {
     "messi": dict(label="MESSI", num="10", skin="#e2a47c", hair="#2b1a12", beard="#8e4a24",
                   shirt="#1b2a5e", stripe="#a5163a", sleeve="#1b2a5e", trim="#f1bf00", shorts="#1b2a5e",
                   socks="#1b2a5e", sock_stripe="#a5163a", boots="#f2f2f2", sole="#2a6fd6", numc="#f1bf00",
-                  hairstyle="pompadour", armband="#f28c28", nose=1.15, brow_angle=-10),
+                  hairstyle="pompadour", armband="#f28c28", nose=1.15, brow_angle=-10, tattoo=True),
 }
 
 # expression -> (brow tilt deg (+ = angry, inner end down), brow lift, upper-lid close 0..1, mouth (w, h))
@@ -138,6 +138,90 @@ def cut_sphere(name, r, loc, scale, planes, m, parent, coll, seg=64, solid=0.0, 
     return ob
 
 
+def _ss(e0, e1, x):
+    t = max(0.0, min(1.0, (x - e0) / (e1 - e0)))
+    return t * t * (3 - 2 * t)
+
+
+def sculpt(name, planes, radius_fn, m, parent, coll, seg=96, rot=(0, 0, 0), loc=(0, 0, 0)):
+    """Unit sphere cut by planes (clean edges), then every vertex pushed to radius_fn(direction)."""
+    me = D.meshes.new(name)
+    bm = bmesh.new()
+    bmesh.ops.create_uvsphere(bm, u_segments=seg, v_segments=seg // 2, radius=1.0)
+    for co, no in planes:
+        bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:], plane_co=co, plane_no=no,
+                               clear_outer=True)
+    for v in bm.verts:
+        d = v.co.normalized()
+        v.co = d * radius_fn(d)
+    bm.to_mesh(me); bm.free()
+    for p in me.polygons:
+        p.use_smooth = True
+    ob = D.objects.new(name, me)
+    (coll or bpy.context.scene.collection).objects.link(ob)
+    ob.parent = parent; ob.location = loc
+    ob.rotation_euler = [math.radians(a) for a in rot]
+    me.materials.append(m)
+    md = ob.modifiers.new("solid", "SOLIDIFY"); md.thickness = 0.03; md.offset = -1.0
+    return ob
+
+
+def strand_mat(name, col, scale=3.5):
+    """Combed hair: grooves running front-to-back (wave bands across X) + fine noise, with bump."""
+    m = D.materials.get(name)
+    if m:
+        return m
+    m = D.materials.new(name); m.use_nodes = True
+    N, L = m.node_tree.nodes, m.node_tree.links
+    b = next(n for n in N if n.type == "BSDF_PRINCIPLED")
+    b.inputs["Roughness"].default_value = 0.62
+    tc = N.new("ShaderNodeTexCoord")
+    wv = N.new("ShaderNodeTexWave"); wv.wave_type = "BANDS"; wv.bands_direction = "X"
+    wv.inputs["Scale"].default_value = scale; wv.inputs["Distortion"].default_value = 2.0
+    wv.inputs["Detail"].default_value = 3.0; wv.inputs["Detail Scale"].default_value = 1.5
+    L.new(tc.outputs["Object"], wv.inputs["Vector"])
+    nz = N.new("ShaderNodeTexNoise"); nz.inputs["Scale"].default_value = 25; nz.inputs["Detail"].default_value = 4
+    L.new(tc.outputs["Object"], nz.inputs["Vector"])
+    mx = N.new("ShaderNodeMath"); mx.operation = "MULTIPLY"
+    L.new(wv.outputs["Fac"], mx.inputs[0]); L.new(nz.outputs["Fac"], mx.inputs[1])
+    cr = N.new("ShaderNodeValToRGB")
+    c = hexc(col)
+    cr.color_ramp.elements[0].color = (c[0] * 0.45, c[1] * 0.45, c[2] * 0.45, 1)
+    cr.color_ramp.elements[1].position = 0.55
+    cr.color_ramp.elements[1].color = (min(1, c[0] * 1.6), min(1, c[1] * 1.6), min(1, c[2] * 1.6), 1)
+    L.new(mx.outputs[0], cr.inputs[0]); L.new(cr.outputs[0], b.inputs["Base Color"])
+    bp = N.new("ShaderNodeBump"); bp.inputs["Strength"].default_value = 0.35; bp.inputs["Distance"].default_value = 0.02
+    L.new(mx.outputs[0], bp.inputs["Height"]); L.new(bp.outputs[0], b.inputs["Normal"])
+    m.diffuse_color = (*c, 1)
+    return m
+
+
+def tattoo_mat(name, skin, ink="#3b4656"):
+    """Skin with a dense ink sleeve pattern."""
+    m = D.materials.get(name)
+    if m:
+        return m
+    m = skin_mat(name, skin).copy(); m.name = name
+    N, L = m.node_tree.nodes, m.node_tree.links
+    b = next(n for n in N if n.type == "BSDF_PRINCIPLED")
+    tc = N.new("ShaderNodeTexCoord")
+    vo = N.new("ShaderNodeTexVoronoi"); vo.feature = "DISTANCE_TO_EDGE"; vo.inputs["Scale"].default_value = 9.0
+    nz = N.new("ShaderNodeTexNoise"); nz.inputs["Scale"].default_value = 14; nz.inputs["Detail"].default_value = 5
+    L.new(tc.outputs["Object"], vo.inputs["Vector"]); L.new(tc.outputs["Object"], nz.inputs["Vector"])
+    a = N.new("ShaderNodeMath"); a.operation = "LESS_THAN"; a.inputs[1].default_value = 0.06
+    L.new(vo.outputs["Distance"], a.inputs[0])
+    b2 = N.new("ShaderNodeMath"); b2.operation = "GREATER_THAN"; b2.inputs[1].default_value = 0.58
+    L.new(nz.outputs["Fac"], b2.inputs[0])
+    mx = N.new("ShaderNodeMath"); mx.operation = "MAXIMUM"
+    L.new(a.outputs[0], mx.inputs[0]); L.new(b2.outputs[0], mx.inputs[1])
+    k = N.new("ShaderNodeMath"); k.operation = "MULTIPLY"; k.inputs[1].default_value = 0.8
+    L.new(mx.outputs[0], k.inputs[0])
+    mix = N.new("ShaderNodeMix"); mix.data_type = "RGBA"
+    mix.inputs[6].default_value = (*skin, 1); mix.inputs[7].default_value = (*hexc(ink), 1)
+    L.new(k.outputs[0], mix.inputs[0]); L.new(mix.outputs[2], b.inputs["Base Color"])
+    return m
+
+
 def spike(name, base, d, ln, r, m, parent, coll):
     d = Vector(d).normalized()
     c = cyl(name, r, ln, Vector(base) + d * (ln / 2), m, 16, parent=parent, coll=coll, r2=r * 0.15)
@@ -171,15 +255,16 @@ class Toon(chars.Char):
         self.hip = empty(n + "_hip", (0, 0, 2.0), self.root, cl)
         hip = self.hip
         # torso (jersey) + pelvis (shorts)
-        self.torso = sphere(n + "_torso", 1.0, (0, 0, 0.8), Mj, (0.92, 0.6, 1.06), parent=hip, coll=cl, seg=40)
-        sphere(n + "_pelvis", 1.0, (0, 0, -0.06), Msh, (0.8, 0.55, 0.34), parent=hip, coll=cl, seg=32)
+        self.torso = cut_sphere(n + "_torso", 1.0, (0, 0, 0.82), (0.92, 0.6, 1.0),
+                                [((0, 0, -0.62), (0, 0, -1))], Mj, hip, cl, seg=48)
+        sphere(n + "_pelvis", 1.0, (0, 0, -0.02), Msh, (0.74, 0.5, 0.34), parent=hip, coll=cl, seg=32)
         poly_extrude(n + "_vneck", [(-0.3, 0.0), (0.3, 0.0), (0.0, -0.34)], 0.04, (0, -0.53, 1.66), Msl,
                      rot=(78, 0, 0), parent=hip, coll=cl)
         text(n + "_numB", L["num"], (0, 0.6, 0.85), 0.85, mat(n + "_num", hexc(L["numc"]), 0.5),
              rot=(90, 0, 180), extrude=0.02, parent=hip, coll=cl)
         text(n + "_nameB", L["label"], (0, 0.57, 1.42), 0.24, mat(n + "_num", hexc(L["numc"]), 0.5),
              rot=(82, 0, 180), extrude=0.01, parent=hip, coll=cl)
-        text(n + "_numS", L["num"], (0.42, -0.4, -0.08), 0.26, mat(n + "_num", hexc(L["numc"]), 0.5),
+        text(n + "_numS", L["num"], (0.4, -0.375, -0.42), 0.2, mat(n + "_num", hexc(L["numc"]), 0.5),
              rot=(90, 0, 0), extrude=0.01, parent=hip, coll=cl)
         # neck
         cyl(n + "_neckm", 0.26, 0.5, (0, 0.02, 1.78), Ms, 24, parent=hip, coll=cl)
@@ -189,7 +274,11 @@ class Toon(chars.Char):
         for piv, s in ((self.shL, 1), (self.shR, -1)):
             sphere(f"{n}_slv{s}", 0.38, (0, 0, -0.18), Msl, (1, 1, 1.2), parent=piv, coll=cl, seg=24)
             cyl(f"{n}_cuff{s}", 0.33, 0.09, (0, 0, -0.56), Msl, 24, parent=piv, coll=cl)
-            cyl(f"{n}_arm{s}", 0.21, 1.0, (0, 0, -0.95), Ms, 24, parent=piv, coll=cl, r2=0.19)
+            Ma = tattoo_mat(n + "_tattoo", self.skin_c) if (s == -1 and L.get("tattoo")) else Ms
+            cyl(f"{n}_arm{s}", 0.21, 1.0, (0, 0, -0.95), Ma, 24, parent=piv, coll=cl, r2=0.19)
+            sphere(f"{n}_elbow{s}", 0.2, (0, 0.0, -0.98), Ma, parent=piv, coll=cl, seg=16)
+            for k in range(4):
+                sphere(f"{n}_knk{s}{k}", 0.075, ((k - 1.5) * 0.1, -0.2, -1.6), Ms, (1, 1, 0.9), parent=piv, coll=cl, seg=12)
             sphere(f"{n}_fist{s}", 0.27, (0, -0.02, -1.48), Ms, (0.95, 1.05, 1.05), parent=piv, coll=cl, seg=24)
             sphere(f"{n}_thumb{s}", 0.09, (-s * 0.12, -0.17, -1.4), Ms, (1, 1, 1.4), parent=piv, coll=cl, seg=12)
         if L.get("armband"):
@@ -213,7 +302,7 @@ class Toon(chars.Char):
     # ------------------------------------------------------------ head
     def _build_head(self, L):
         n, h, cl, Ms = self.name, self.head, self.coll, self.M_skin
-        sphere(n + "_skull", 0.95, (0, 0, 0), Ms, (0.9, 0.95, 1.08), parent=h, coll=cl, seg=48)
+        sphere(n + "_skull", 0.95, (0, 0, 0), Ms, (0.9, 0.95, 1.1), parent=h, coll=cl, seg=48)
         if not L.get("beard"):
             sphere(n + "_jaw", 0.7, (0, -0.25, -0.5), Ms, (1.0, 0.95, 0.8), parent=h, coll=cl, seg=32)
         for s in (-1, 1):                                   # ears
@@ -223,6 +312,8 @@ class Toon(chars.Char):
         sphere(n + "_nose", 0.17 * ns, (0, -0.98, -0.08), Ms, (0.85, 1.0, 0.9), parent=h, coll=cl, seg=24)
         for s in (-1, 1):
             sphere(f"{n}_nost{s}", 0.08 * ns, (s * 0.12, -0.92, -0.12), Ms, parent=h, coll=cl, seg=12)
+        for s in (-1, 1):                                   # cheekbones
+            sphere(f"{n}_cheek{s}", 0.2, (s * 0.42, -0.58, -0.1), Ms, (1.0, 0.7, 0.65), parent=h, coll=cl, seg=20)
         # eyes
         Mw = mat("eye_white", (0.95, 0.94, 0.92), 0.15, coat=0.6)
         Mi = mat(n + "_iris", hexc(L.get("iris", "#4a2a16")), 0.2, coat=0.8)
@@ -242,7 +333,7 @@ class Toon(chars.Char):
             self.lids.append(lid)
             lo = shell(f"{n}_lidlo{s}", 0.165, (0, 0, 0), (1.06, 1.02, 0.9), lambda co: co.z < -0.1, Ms, c, cl, 32)
             bw = empty(f"{n}_browp{s}", (s * 0.31, -0.84, 0.36), h, cl)
-            sphere(f"{n}_brow{s}", 0.16, (0, 0, 0), fuzzy_mat(n + "_browm", L["hair"], 90), (1.35, 0.35, 0.3),
+            sphere(f"{n}_brow{s}", 0.16, (0, 0, 0), fuzzy_mat(n + "_browm", L["hair"], 90), (1.45, 0.42, 0.36),
                    parent=bw, coll=cl, seg=16)
             self.brows.append(bw)
         # mouth (dark cavity + lip) sits in front of the beard
@@ -265,23 +356,34 @@ class Toon(chars.Char):
 
     def _hair(self, L):
         n, h, cl = self.name, self.head, self.coll
-        M = fuzzy_mat(n + "_hairm", L["hair"], 55)
-        cut_sphere(n + "_hairsh", 0.965, (0, 0.0, 0.0), (0.9, 0.955, 1.085),
-                   [((0, -0.95, 0.42), (0, -0.42, -0.95)),          # forehead line, dropping to the nape
-                    ((0, 0, -0.62), (0, 0, -1))], M, h, cl, solid=0.025)
-        for s in (-1, 1):                                            # temples / sideburn
-            cut_sphere(f"{n}_temple{s}", 0.962, (0, 0.0, 0.0), (0.9, 0.955, 1.085),
-                       [((0, 0, 0.5), (0, 0, 1)), ((0, 0, -0.1), (0, 0, -1)), ((s * 0.72, 0, 0), (-s, 0, 0)),
-                        ((0, -0.45, 0), (0, -1, 0))], M, h, cl, solid=0.02)
-        if L.get("hairstyle") == "pompadour":
-            sphere(n + "_pomp", 0.6, (0, -0.05, 0.9), M, (1.28, 1.42, 0.55), parent=h, coll=cl, seg=32, rot=(-8, 0, 0))
-            rnd = random.Random(5)
-            for row, (y0, z0, ln) in enumerate(((-0.62, 1.0, 0.62), (-0.35, 1.18, 0.62), (-0.05, 1.22, 0.55))):
-                for i in range(9):
-                    x = -0.62 + 1.24 * i / 8 + rnd.uniform(-0.05, 0.05)
-                    base = (x, y0 + abs(x) * 0.35, z0 - x * x * 0.5)
-                    d = (x * 0.25 + rnd.uniform(-0.1, 0.1), 0.85, 0.5 + rnd.uniform(-0.08, 0.12) + (0.15 if row == 0 else 0))
-                    spike(f"{n}_tuft{row}_{i}", base, d, ln + rnd.uniform(-0.08, 0.1), 0.2, M, h, cl)
+        M = strand_mat(n + "_hairm", L["hair"])
+        a, b, c = 0.95 * 0.9, 0.95 * 0.95, 0.95 * 1.1          # skull ellipsoid radii
+
+        def skull_r(d):
+            return 1.0 / math.sqrt((d.x / a) ** 2 + (d.y / b) ** 2 + (d.z / c) ** 2)
+
+        style = L.get("hairstyle", "pompadour")
+
+        def radius(d):
+            top = _ss(0.05, 0.85, d.z)
+            front = _ss(0.3, -0.85, d.y)
+            side = _ss(0.55, 0.9, abs(d.x)) * (1 - _ss(0.35, 0.7, d.z))
+            vol = 0.035 + (0.5 if style == "pompadour" else 0.2) * top * (0.35 + 0.65 * front)
+            quiff = 0.3 * _ss(0.35, 0.75, d.z) * _ss(-0.3, -0.85, d.y)      # forward roll at the hairline
+            return skull_r(d) + vol + quiff - 0.02 * side
+        # hairline: forehead (tilted, rising toward the front), nape, and the face/ear opening on each side
+        planes = [((0, -0.8, 0.6), (0, -0.55, -0.83)), ((0, 0, -0.55), (0, 0, -1))]
+        sculpt(n + "_hair", planes, radius, M, h, cl)
+        if style == "pompadour":                             # textured tufts on the quiff
+            rnd = random.Random(11)
+            for i in range(14):
+                el = math.radians(rnd.uniform(48, 78)); az = math.radians(rnd.uniform(-38, 38))
+                d = Vector((math.sin(az) * math.cos(el), -math.cos(az) * math.cos(el), math.sin(el)))
+                base = d * (radius(d) - 0.12)
+                out = Vector((d.x * 0.6, 0.95 + rnd.uniform(-0.1, 0.15), 0.85)).normalized()
+                spike(f"{n}_tuft{i}", base, out, rnd.uniform(0.38, 0.55), rnd.uniform(0.16, 0.21), M, h, cl)
+        for s in (-1, 1):                                    # neat sideburns down to the beard
+            sphere(f"{n}_sideb{s}", 0.14, (s * 0.8, -0.22, -0.02), M, (0.4, 1.0, 2.0), parent=h, coll=cl, seg=16)
 
     # ------------------------------------------------------------ face animation
     def face(self, t, expr="neutral", eyes=None, mouth=None):
@@ -359,8 +461,8 @@ def toon(key, t0, t1, expr="neutral", loc=(0, 0, 0), rot=0.0, **kw):
 def studio(color=(0.93, 0.93, 0.92)):
     """White cyclorama with soft key/fill/rim, like a product shot."""
     from .core import world, plane, light
-    world(color, 1.0)
-    plane("cyc_floor", 80, 80, (0, 0, 0), mat("cyc", color, 0.8))
+    world(color, 1.5)
+    plane("cyc_floor", 80, 80, (0, 0, 0), mat("cyc", (0.98, 0.98, 0.97), 0.8))
     from .core import mat as _m
     disc = cyl("grass_disc", 2.2, 0.08, (0, 0, 0.04), mat("grass_disc", hexc("#4f8f2f"), 0.9), 48)
     light("key", "AREA", (-5, -7, 9), 1400, (1, 0.96, 0.9), 5, target=(0, 0, 4))
