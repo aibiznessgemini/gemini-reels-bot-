@@ -3,7 +3,7 @@
 //   one TTS call per line with /with-timestamps → per-character timing → words,
 //   then all clips are joined with short pauses into one voiceover.
 //
-//   node tools/eleven_voice.mjs --name <slug> --lines <lines.txt> --title "<title>" [--gap 0.35]
+//   node tools/eleven_voice.mjs --name <slug> --lines <lines.txt> --title "<title>" [--gap 0.12]
 //
 // lines.txt: one narration line per line (a sentence or two). Then it runs
 //   new_project.py (voice + words.json) and parse_script.py, so the project is ready for beats.py.
@@ -16,10 +16,10 @@ const args = {};
 { const a = process.argv.slice(2); for (let i = 0; i < a.length; i++) if (a[i].startsWith('--')) { const k = a[i].slice(2); const v = a[i + 1] && !a[i + 1].startsWith('--') ? a[++i] : true; args[k] = v; } }
 if (!args.name || !args.lines) { console.error('usage: node tools/eleven_voice.mjs --name <slug> --lines <file> [--title t] [--gap 0.35]'); process.exit(1); }
 
-const VOICE = args.voice || 'GoV1V2hQd1doxcYR2SuA'; // Victor
+const VOICE = args.voice || 'S9GPGBaMND8XWwwzxQXp'; // Charles — energetic (owner switched from Victor on 2026-11-25)
 const MODEL = args.model || 'eleven_v4';
-const GAP = +(args.gap ?? 0.35);
-const LEAD = 0.25; // silence before the first word
+const GAP = +(args.gap ?? 0.12); // tight: the owner wants maximum pace
+const LEAD = 0.15; // silence before the first word
 const work = path.resolve('voice_work', args.name);
 fs.mkdirSync(work, { recursive: true });
 const lines = fs.readFileSync(args.lines, 'utf8').split('\n').map(s => s.trim()).filter(Boolean);

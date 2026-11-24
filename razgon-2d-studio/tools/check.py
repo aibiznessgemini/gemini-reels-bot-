@@ -34,7 +34,19 @@ if nw and not 300 <= nw <= 460: warn.append(f"{nw} spoken words (aim 330–420)"
 
 S = load(os.path.join(P, "story", "shots.json"))
 shots = S["shots"]
-if not 30 <= len(shots) <= 80: warn.append(f"{len(shots)} shots (aim 15–25 per minute)")
+# Owner's rule (2026-11-25): MAXIMUM pace — many short shots.
+lens = sorted(s["end"] - s["start"] for s in shots)
+med = lens[len(lens) // 2] if lens else 0
+per_min = len(shots) / (dur / 60) if dur else 0
+if med > 1.8: err.append(f"median shot {med:.2f}s — owner wants max pace: median ≤ 1.8 s (split phrases into 2–3 shots)")
+if per_min < 36: err.append(f"{per_min:.0f} shots per minute — need ≥ 36 (owner: many fast cuts)")
+for s in shots:
+    if s["end"] - s["start"] > 3.5 and s.get("captions", True) is not False:
+        err.append(f"{s.get('id')}: {s['end'] - s['start']:.1f}s long — max 3.5 s (only the title card / end screen may be longer)")
+fast = sum(1 for s in shots if (s.get("in") or {}).get("type") in {"whip", "smash", "flash", "zoom", "dipWhite"})
+if shots and fast / len(shots) < 0.4: warn.append(f"only {fast}/{len(shots)} energetic cuts (whip/smash/flash/zoom) — aim ≥ 40 %")
+nosfx = sum(1 for s in shots if not s.get("sfx"))
+if shots and nosfx / len(shots) > 0.35: warn.append(f"{nosfx}/{len(shots)} shots have no SFX — aim for a sound on almost every cut")
 prev = 0.0
 for s in shots:
     sid = s.get("id", "?")
