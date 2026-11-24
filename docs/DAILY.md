@@ -12,7 +12,8 @@ The reference projects to learn the API from: `examples/reaction-time` and `proj
 If any step fails and you cannot fix it in 2 tries:
 `(cd film && pipeline/notify.sh "❌ Daily film failed at <step>: <short reason>")` and stop.
 
-Time budget: about 2.5 hours in total (final render ≈ 25 min for 150 s).
+Time budget: about 3 hours in total (final render ≈ 25 min for 150 s). With ~100 short shots, keep each
+shot's code small and reuse helpers/sets; build in batches of 15–20.
 
 ## 0. Setup
 ```bash
@@ -31,6 +32,8 @@ Self-test (10 s): `node render.mjs --project examples/reaction-time --sheet --sc
 If `$TODAY` is already in the list, stop (the film was already made today).
 
 ## 2. Researcher — today's idea (must feel NEW)
+**First check the owner's queue at the top of `docs/topics.md`** (right now: CRUSH films until there are
+2 `[CRUSH]` entries in the history). If the queue applies, today's category is the queued one.
 The owner's complaint to avoid: "the topics are starting to look the same". So:
 - Read `docs/topics.md` fully: the **category rotation**, the **already made** list and the
   **scoring table**.
@@ -55,6 +58,8 @@ cold-open hook (2–3 lines, a vivid moment) → the title line ("What if you…
 and the change → escalation with concrete numbers → the cost or twist → climax → resolution →
 "Is any of this real?" short science segment (the facts) → a closing question to the viewer.
 No line longer than ~25 words. Plain spoken English, no symbols the voice would misread.
+**Maximum pace** (owner): short punchy sentences (mostly 4–12 words), a new image every few words,
+no slow intros, a mini cliffhanger every 20–30 s ("But then…"). Lines are joined with only 0.12 s gaps.
 
 ## 4. Voice + project + story
 ```bash
@@ -66,13 +71,15 @@ cp templates/sets/*.js projects/<slug>/scenes/sets/ 2>/dev/null || true   # reus
 **Subtitles are always on**: `eleven_voice.mjs` sets `captions: true` (word-by-word, amber highlight).
 In `shots.json` set `"captions": false` only on the title card and the end screen (they already show text).
 Keep on-screen labels/data cards out of the bottom 25% of the frame so they don't collide with subtitles.
-Voice is Victor (`GoV1V2hQd1doxcYR2SuA`, `eleven_v4`) through the ElevenLabs API; the key is
+Voice is Charles (`S9GPGBaMND8XWwwzxQXp`, energetic, `eleven_v4`) through the ElevenLabs API; the key is
 injected by the network proxy. Clips are cached in `voice_work/<slug>/`, so re-running after a
 line edit only pays for changed lines. Duration must be 110–200 s.
 
 Then follow `references/PIPELINE.md` **stage 4** (story breakdown): `story/bible.md` (start it with
 the 3 scored candidates and today's category), rewrite
-`story/shots.json` (contiguous shots, median 2–3.5 s, 15–25 shots per minute, a concrete
+`story/shots.json` (**owner override of PIPELINE pacing — MAXIMUM PACE:** contiguous shots, median ≤ 1.8 s
+(aim 1.2–1.8), **≥ 36 shots per minute** (≈ 90–120 shots for a 2.5-min film), none over 3.5 s except the
+title card and end screen; split every phrase into 2–3 shots; a concrete
 `scene` per shot, designed transitions, `bars`, `sfx`, `amb`, and the `music` plan).
 The hero is always `YOU` from cast.js; side characters only from cast.js (SAM, DR) or plain
 ink extras. Write `story/meta.json`:
@@ -85,13 +92,19 @@ ink extras. Write `story/meta.json`:
 
 ## 5. Build every shot (stage 6 of PIPELINE.md)
 Read `references/engine-api.md`, `director-pass.md`, `style-bible.md` and the example scenes once.
-Write `scenes/sets/<location>.js` and `scenes/shots/NN_<name>.js` in batches of 8–12 shots.
+Write `scenes/sets/<location>.js` and `scenes/shots/NN_<name>.js` in batches of 15–20 shots.
 After each batch:
 ```bash
 node render.mjs --project projects/<slug> --sheet --scale 0.5
 ```
 Open every `build/sheets/sheet_XX.png` and fix MISSING shots, red error text, empty or
 unreadable frames, faces covered by foregrounds. Use `--stills t1,t2` to check transitions.
+**Dynamics checklist (every shot):** the camera never stands still (punch-in, push, whip-pan, shake on
+impact, dutch tilt); ≥ 40 % of cuts are `whip`/`smash`/`flash`/`zoom`; an SFX on almost every cut
+(whoosh, swish, pop, hit, impact, riser into big moments); vary the framing on each cut (wide → giant
+face → insert → OTS); freeze-frames with labels for jokes; speed lines and smear on fast moves; music
+plan mostly `action`/`playful`/`tension` with a hard stop before the twist. Shots are short, so keep
+each one simple — one idea, one action, big and readable.
 Non-negotiables: rim light on every lit figure, colours from `mood()`/`S()`, a motivated camera
 move in every shot, weight on arrivals, graphics synced with `wordTime()`, no Math.random/Date.now.
 

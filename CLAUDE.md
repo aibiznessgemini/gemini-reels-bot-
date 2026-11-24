@@ -19,7 +19,7 @@ This file is the rule book. Read it fully before doing any work in this repo.
 | Hero | **YOU** — black stick figure, **amber hoodie `#F2A541`, hood up** (`razgon-2d-studio/templates/cast.js`) |
 | Palette | Chosen per topic by the agent; `dusk` is the default |
 | Niche | **"What if…?"** in any field, told to "you" (`docs/topics.md`) |
-| Voice | ElevenLabs API with character timestamps, Victor `GoV1V2hQd1doxcYR2SuA`, `eleven_v4` |
+| Voice | ElevenLabs API with character timestamps, **Charles** `S9GPGBaMND8XWwwzxQXp` (energetic), `eleven_v4` |
 | Length | 2–3 minutes (110–200 s) |
 | Telegram | Owner's personal chat. `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` are environment variables |
 | History | One pinned bot message in the owner's Telegram chat (`film/pipeline/history.sh`) |
@@ -41,6 +41,12 @@ is kept for reference. `film/pipeline/history.sh` and `notify.sh` are still used
   character YOU** (amber hoodie, hood up). Side characters: SAM, DR from cast.js, or ink extras.
 - **Palette:** the agent picks it per topic (dusk default; midnight, golden, neon, storybook).
 - **Format:** 16:9, 1080p, 24 fps, **2–3 minutes**, English narration to "you".
+- **Pace = MAXIMUM** (owner, 2026-11-25: "dinamikani maksimal oshir, kadrlar ko'p va tez"): median shot
+  ≤ 1.8 s, ≥ 36 shots per minute, no shot longer than 3.5 s (title card / end screen excepted), a camera
+  move or punch-in on every beat, whip/smash/flash cuts, an SFX on almost every cut. `tools/check.py` enforces it.
+- **CRUSH films:** the owner asked for "What if your crush…?" stories (`docs/topics.md`, owner's queue).
+  The crush is our own character `CRUSH` from cast.js (teal dress, ponytail, coral hair tie) — never
+  another channel's characters, titles or look. Keep it sweet and funny, PG; no romance content beyond a school/teen crush.
 - **Subtitles on every film:** burned-in, word by word, the spoken word highlighted in amber
   (`config.captions = true`; off only on the title card and end screen).
 - **Thumbnails:** the owner-approved formula in `docs/THUMBNAILS.md` (dark bg, one giant subject,

@@ -4,6 +4,12 @@
 **Every film must feel different from the last ones.** Big, dramatic, visual "what if"s — not
 quiet psychology lectures. The viewer should think "wait, WHAT?" from the title alone.
 
+## Owner's queue (do this BEFORE the rotation)
+**The owner wants the next 2 films to be CRUSH films** ("What if your crush…?" — the kind of story
+that is huge on YouTube right now). Count the `[CRUSH]` entries in the history: **if there are fewer
+than 2, today's film is CRUSH** (ignore the rotation rule for these two; the second one must use a
+different idea, setting and twist than the first). After that, CRUSH joins the normal rotation.
+
 ## Category rotation (mandatory)
 Every idea belongs to ONE category. **Today's category must differ from the categories of the
 last 3 films in the history.** Go round the list; don't pick the same corner twice in a row.
@@ -19,11 +25,17 @@ last 3 films in the history.** Go round the list; don't pick the same corner twi
 | FUTURE | Tech, AI & the future | wonder, a little scary |
 | ANIMAL | Animals & nature | surprising, cute or terrifying |
 | MIND | Your brain & psychology (max 1 in every 8 films) | twist about yourself |
+| CRUSH | Your crush: a crazy what-if about you and the person you like | funny, awkward, sweet, a big twist |
 
 ## Already made (never repeat, never a close variant)
 - 2026-11-21 MIND — What if you could see what people really think of you? (liking gap)
 - 2026-11-22 MIND — What if nobody was actually watching you? (spotlight effect)
 - 2026-11-22 SPACE — What if the Moon disappeared tonight? (first Razgon film)
+- 2026-11-23 BODY — What if you were struck by lightning?
+- 2026-11-24 EARTH — What if Earth stopped spinning for one second?
+- 2026-11-25 POWER — What if you shrank to the size of an ant?
+- Taken by other channels (do NOT copy): crush becomes obsessed with you, crush turns into a zombie,
+  crush feels everything you do, you and your crush in a zombie apocalypse.
 
 ## Score every candidate (pick only if total ≥ 20 / 25 and no score below 4)
 | Test | 5 points when… |
@@ -68,6 +80,17 @@ What if you lived on Mars for a year?
 **ANIMAL** — What if the bees disappeared? · What if you could talk to animals? · What if
 dinosaurs lived in your city? · What if you were bitten by the world's deadliest snake? ·
 What if insects were the size of dogs?
+
+**CRUSH** — a big impossible scenario + real science of attraction, nerves and the brain
+(verify: adrenaline/heart rate, dopamine and the "reward" system, blushing, the "liking gap",
+mere-exposure effect, butterflies = gut nerves, fMRI love studies…). Each needs a visual set-piece:
+What if your crush could hear your thoughts for one day? · What if you swapped bodies with your
+crush? · What if you were stuck in a time loop on the day you meet your crush? · What if your crush
+shrank to 10 cm tall? · What if your crush was an alien studying humans? · What if your crush could
+see your phone screen at all times? · What if every time you blushed you started to glow? · What if
+your crush was a robot and didn't know it? · What if your crush lived 100 years in the future and you
+could only text? · What if you and your crush were the last two people at school during a blizzard?
+· What if your heart rate was shown above your head, and your crush could see it?
 
 **MIND** (rarely) — What if you never felt fear? · What if you remembered everything? ·
 What if you only told the truth for a week?
