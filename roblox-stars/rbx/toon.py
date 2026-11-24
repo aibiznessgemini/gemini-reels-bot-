@@ -12,19 +12,19 @@ from .core import mat, hexc, box, cyl, sphere, empty, poly_extrude, text, F, D, 
 from . import chars
 
 TOON_LOOKS = {
-    "messi": dict(label="MESSI", num="10", skin="#eab696", hair="#35210f", beard="#8a4522",
+    "messi": dict(label="MESSI", num="10", skin="#e2a47e", hair="#2a1a10", beard="#7a3e1e",
                   shirt="#1b2a5e", stripe="#a5163a", sleeve="#1b2a5e", trim="#f1bf00", shorts="#1b2a5e",
                   socks="#1b2a5e", sock_stripe="#a5163a", boots="#f2f2f2", sole="#2a6fd6", numc="#f1bf00",
                   hairstyle="pompadour", armband="#f28c28", nose=1.15, brow_angle=-10, tattoo=True,
                   sculpt=True, iris="#6a4524", blush="#d07a68",
-                  head=dict(eye_az=0.38, width=0.9, depth=0.93, height=1.1, jaw=0.16, chin=0.05, nose=1.15, nose_len=1.1,
-                            brow=0.06, socket=0.06, cheek=0.035)),
+                  head=dict(eye_az=0.33, eye_el=0.1, width=0.84, depth=0.93, height=1.12, jaw=0.12, chin=0.06, nose=1.15,
+                            nose_len=1.15, brow=0.07, socket=0.06, cheek=0.05)),
 }
 
 # expression -> (brow tilt deg (+ = angry, inner end down), brow lift, upper-lid close 0..1, mouth (w, h))
 EXPR = {
-    "neutral": (8, 0.0, 0.3, (1.0, 0.35)), "angry": (24, -0.04, 0.42, (1.0, 0.3)),
-    "determined": (18, -0.03, 0.36, (0.9, 0.3)), "smile": (0, 0.02, 0.3, (1.4, 0.5)),
+    "neutral": (10, 0.0, 0.32, (1.0, 0.35)), "angry": (24, -0.04, 0.42, (1.0, 0.3)),
+    "determined": (16, -0.02, 0.36, (0.9, 0.3)), "smile": (0, 0.02, 0.3, (1.4, 0.5)),
     "happy": (-6, 0.05, 0.25, (1.5, 0.9)), "joy": (-10, 0.07, 0.4, (1.6, 1.3)),
     "grin": (-4, 0.03, 0.35, (1.6, 0.7)), "smug": (12, 0.0, 0.5, (1.2, 0.35)),
     "shock": (-18, 0.12, 0.0, (0.9, 1.4)), "gasp": (-16, 0.1, 0.05, (0.7, 1.2)),
@@ -466,10 +466,12 @@ class Toon(chars.Char):
         return self
 
 
-def toon(key, t0, t1, expr="neutral", loc=(0, 0, 0), rot=0.0, **kw):
+def toon(key, t0, t1, expr="neutral", loc=(0, 0, 0), rot=0.0, blink=True, **kw):
     ch = Toon(key, loc=loc, rot=rot, **kw)
     ch.pose(t0, loc=loc, rot=rot)
-    ch.face(t0, expr); ch.blink(t0, t1); ch.breathe(0.8)
+    ch.face(t0, expr); ch.breathe(0.8)
+    if blink:
+        ch.blink(t0, t1)
     return ch
 
 

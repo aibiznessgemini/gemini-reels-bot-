@@ -40,25 +40,29 @@ class HeadShape:
     def r(self, d):
         P = self.P
         az, el = azel(d)
-        taper = 1 - P["jaw"] * ss(-0.05, -0.85, d.z)                  # jaw narrows toward the chin
-        r = 1.0 / math.sqrt((d.x / (P["width"] * taper)) ** 2 + (d.y / P["depth"]) ** 2 + (d.z / P["height"]) ** 2)
-        front = ss(1.3, 0.2, abs(az))
-        r -= 0.03 * G(az, el, 0, P["eye_el"] + 0.06, 0.1, 0.06)                         # nasion dip
+        a = abs(az)
+        taper = 1 - P["jaw"] * ss(-0.05, -0.85, d.z)                   # jaw narrows toward the chin
+        top = 1 - 0.06 * ss(0.4, 1.0, d.z)                              # slightly narrower crown
+        r = 1.0 / math.sqrt((d.x / (P["width"] * taper * top)) ** 2 + (d.y / P["depth"]) ** 2 + (d.z / P["height"]) ** 2)
+        ee, ea = P["eye_el"], P["eye_az"]
+        r -= 0.045 * G(az, el, 0, ee + 0.05, 0.09, 0.06)               # deep nasion between the eyes
         for s in (-1, 1):
-            r += P["brow"] * G(az, el, s * 0.34, P["eye_el"] + 0.19, 0.28, 0.08)          # brow ridge lobes
-            r -= P["socket"] * G(az, el, s * P["eye_az"], P["eye_el"], 0.17, 0.11)      # eye sockets
-            r += P["cheek"] * G(az, el, s * 0.6, -0.06, 0.2, 0.15)                       # cheekbones
-            r -= 0.03 * G(az, el, s * 0.95, 0.32, 0.25, 0.2)                             # temples
-            r += 0.07 * P["nose"] * G(az, el, s * 0.1, -0.15, 0.06, 0.05)                # nose wings
-            r -= 0.02 * G(az, el, s * 0.24, -0.36, 0.08, 0.1)                            # mouth corners
+            r += P["brow"] * G(az, el, s * 0.32, ee + 0.17, 0.26, 0.07)                 # heavy brow ridge
+            r -= P["socket"] * G(az, el, s * ea, ee - 0.01, 0.15, 0.1)                  # deep-set eyes
+            r += P["cheek"] * G(az, el, s * 0.62, -0.02, 0.18, 0.12)                    # cheekbones
+            r -= 0.025 * G(az, el, s * 0.42, -0.2, 0.14, 0.1)                           # cheek hollow
+            r -= 0.035 * G(az, el, s * 0.95, 0.3, 0.25, 0.2)                            # temples
+            r += 0.09 * P["nose"] * G(az, el, s * 0.12, -0.17, 0.065, 0.055)            # wide nose wings
+            r -= 0.02 * G(az, el, s * 0.25, -0.37, 0.07, 0.09)                          # mouth corners
+            r -= 0.025 * G(az, el, s * 0.16, -0.24, 0.05, 0.09)                         # nasolabial line
         nl = P["nose_len"]
-        r += 0.1 * P["nose"] * G(az, el, 0, -0.0, 0.065, 0.13 * nl)                      # bridge
-        r += 0.17 * P["nose"] * G(az, el, 0, -0.1 * nl, 0.11, 0.085)                     # rounded tip
-        r -= 0.03 * G(az, el, 0, -0.2, 0.06, 0.03)                                       # under the nose
-        r += 0.035 * P["lips"] * G(az, el, 0, -0.33, 0.16, 0.04)                         # upper lip
-        r += 0.04 * P["lips"] * G(az, el, 0, -0.44, 0.15, 0.045)                         # lower lip
-        r -= 0.025 * G(az, el, 0, -0.39, 0.2, 0.018)                                     # lip line
-        r += P["chin"] * G(az, el, 0, -0.68, 0.24, 0.14)                                 # chin
+        r += 0.1 * P["nose"] * G(az, el, 0, -0.02, 0.075, 0.14 * nl)                    # long straight bridge
+        r += 0.17 * P["nose"] * G(az, el, 0, -0.13 * nl, 0.13, 0.09)                   # bulbous tip
+        r -= 0.035 * G(az, el, 0, -0.23, 0.07, 0.03)                                    # under the nose
+        r += 0.03 * P["lips"] * G(az, el, 0, -0.33, 0.17, 0.035)                        # upper lip
+        r += 0.045 * P["lips"] * G(az, el, 0, -0.44, 0.15, 0.045)                       # full lower lip
+        r -= 0.03 * G(az, el, 0, -0.39, 0.21, 0.016)                                    # lip line
+        r += P["chin"] * G(az, el, 0, -0.7, 0.24, 0.14)                                 # chin
         return r
 
     def surf(self, az, el, off=0.0):
@@ -180,13 +184,13 @@ def build_head(ch, L):
     # ears: flattened shells with an inner bowl
     Ms = ch.M_skin
     for s in (-1, 1):
-        p = H.surf(s * 1.55, 0.02, -0.04)
-        e = sphere(f"{n}_ear{s}", 0.23 * H.P["ears"], tuple(p), Ms, (0.32, 0.62, 1.0), parent=h, coll=cl, seg=24,
-                   rot=(0, 0, s * 18))
-        sphere(f"{n}_earin{s}", 0.145 * H.P["ears"], tuple(p + Vector((s * 0.05, -0.03, 0))), mat(n + "_earin", tuple(x * 0.75 for x in ch.skin_c), 0.6),
-               (0.2, 0.5, 0.8), parent=h, coll=cl, seg=16, rot=(0, 0, s * 18))
+        p = H.surf(s * 1.5, 0.0, -0.05)
+        e = sphere(f"{n}_ear{s}", 0.28 * H.P["ears"], tuple(p), Ms, (0.3, 0.6, 1.0), parent=h, coll=cl, seg=28,
+                   rot=(0, 0, s * 30))
+        sphere(f"{n}_earin{s}", 0.18 * H.P["ears"], tuple(p + Vector((s * 0.06, -0.05, 0))), mat(n + "_earin", tuple(x * 0.75 for x in ch.skin_c), 0.6),
+               (0.18, 0.5, 0.8), parent=h, coll=cl, seg=16, rot=(0, 0, s * 30))
     # eyes
-    ER = L.get("eye_r", 0.165)
+    ER = L.get("eye_r", 0.15)
     Mw = mat("eye_white2", (0.93, 0.91, 0.88), 0.12, coat=0.8)
     Mi = iris_mat(n + "_iris", L.get("iris", "#5a3a1c"))
     Mp = mat("eye_pupil", (0.01, 0.01, 0.01), 0.1, coat=0.8)
@@ -215,21 +219,21 @@ def build_head(ch, L):
         cut_sphere(f"{n}_lidlom{s}", ER * 1.08, (0, 0, 0), (1.04, 1.03, 1.0), [((0, 0, -ER * 0.5), (0, 0, 1))],
                    Mskin_flat(ch), lo, cl, 40)
         # brows: wrapped to the ridge (parent yaw), animated child (tilt + lift)
-        bp = H.surf(s * (H.P["eye_az"] + 0.02), H.P["eye_el"] + 0.22, -0.02)
+        bp = H.surf(s * (H.P["eye_az"] + 0.01), H.P["eye_el"] + 0.175, -0.03)
         bwp = empty(f"{n}_browbase{s}", tuple(bp), h, cl, rot=(0, 0, math.degrees(az)))
         bw = empty(f"{n}_browp{s}", (0, 0, 0), bwp, cl)
         Mb = fur_mat(n + "_browm", L["hair"], 60, "X", bump=0.4, light=1.2, dark=0.5)
         for k in range(5):                                   # tapered brow made of 5 blobs
             u = (k - 1.2) / 4.0
-            sphere(f"{n}_brow{s}{k}", 0.07 * (1.25 - 0.45 * abs(u + 0.3)), (s * u * 0.3, 0, -0.015 * u * u),
-                   Mb, (1.7, 0.5, 0.75), parent=bw, coll=cl, seg=12, rot=(0, -s * 8 * u, 0))
+            sphere(f"{n}_brow{s}{k}", 0.075 * (1.2 - 0.4 * abs(u + 0.25)), (s * u * 0.32, 0, -0.012 * u * u),
+                   Mb, (1.6, 0.4, 0.6), parent=bw, coll=cl, seg=14, rot=(0, -s * 6 * u, 0))
         ch.brows.append(bw)
     # mouth: dark cavity + teeth just inside the lip line
     mp = H.surf(0, -0.4, 0.0)
     ch.mouth = empty(n + "_mouthp", tuple(mp), h, cl)
     sphere(n + "_mouthm", 0.12, (0, 0, 0), mat("mouth_dark", hexc("#3a1210"), 0.6), (1.5, 0.3, 0.32),
            parent=ch.mouth, coll=cl, seg=24)
-    sphere(n + "_teeth", 0.1, (0, -0.02, 0.02), mat("teeth", (0.95, 0.93, 0.88), 0.3), (1.35, 0.45, 0.16),
+    sphere(n + "_teeth", 0.1, (0, 0.01, 0.025), mat("teeth", (0.95, 0.93, 0.88), 0.3), (1.35, 0.45, 0.16),
            parent=ch.mouth, coll=cl, seg=16)
     if L.get("beard"):
         build_beard(ch, L, H)
@@ -266,25 +270,114 @@ def iris_mat(name, col):
 
 def build_beard(ch, L, H):
     n, h, cl = ch.name, ch.head, ch.coll
-    T = L.get("beard_t", 0.075)
+    T = L.get("beard_t", 0.042)
 
     def thick(d):
         az, el = azel(d)
         a = abs(az)
         if d.y > 0.25 and a > 1.7:
             return -0.01
-        # upper boundary: low in the middle (under the nose), rising to the sideburns
-        top = -0.28 + 0.08 * ss(0.2, 0.8, a) + 0.27 * ss(1.05, 1.4, a)
-        m = ss(top + 0.03, top - 0.05, el) * ss(1.45, 1.3, a) * ss(-1.45, -1.2, el)
-        t = T * m * (1 + 0.5 * ss(-0.5, -0.95, el))                       # fuller at the chin
-        t *= 1 - G(az, el, 0, -0.42, 0.19, 0.065)                         # lips show
-        t += 0.06 * G(az, el, 0, -0.27, 0.26, 0.045) * ss(0.4, 0.1, a) + 0.05 * G(az, el, 0, -0.27, 0.12, 0.04)  # moustache
+        top = -0.33 + 0.3 * ss(0.2, 1.2, a)                               # diagonal cheek line
+        m = ss(top + 0.025, top - 0.045, el) * ss(1.5, 1.32, a) * ss(-1.5, -1.25, el)
+        t = T * m * (0.8 + 1.1 * ss(-0.45, -1.0, el))                           # longer at the chin
+        t *= 1 - G(az, el, 0, -0.43, 0.18, 0.06)                             # lower lip shows
+        t += 0.05 * G(az, el, 0, -0.28, 0.24, 0.04) * ss(0.45, 0.15, a)      # moustache
         return t - 0.006
     Mbd = fur_mat(n + "_beardm", L["beard"], 45, "Z", rough=0.8, bump=0.7, light=1.4, dark=0.5)
     field_mesh(n + "_beard", lambda d: H.r(d) + thick(d), None, 192, h, cl, Mbd,
                keep=lambda d: d.z < 0.35 and d.y < 0.45)
+    # clumps of beard hair combed downward over the surface
+    rnd = random.Random(5)
+    hb = lambda d: H.r(d) + thick(d)
+    paths = []
+    tries = 0
+    while len(paths) < 170 and tries < 3000:
+        tries += 1
+        az0 = rnd.uniform(-1.4, 1.4); el0 = rnd.uniform(-1.0, 0.1)
+        d0 = dir_of(az0, el0)
+        if thick(d0) < 0.025:
+            continue
+        ln = rnd.uniform(0.14, 0.22) * (1 + 0.6 * ss(-0.5, -0.95, el0))
+        d1 = dir_of(az0 * 0.92, el0 - ln)
+        pts = []
+        for k in range(6):
+            t = k / 5
+            d = (d0 * (1 - t) + d1 * t).normalized()
+            if thick(d) < 0.01:
+                break
+            pts.append(d * (hb(d) - 0.012 + 0.012 * math.sin(math.pi * t)))
+        if len(pts) >= 4:
+            paths.append((pts, rnd.uniform(0.035, 0.05)))
+    from .toonhead import strand_mesh as _sm
+    _sm(n + "_beardstr", paths, Mbd, h, cl, sides=6)
     # soft points of the goatee
-    sphere(n + "_chintip", 0.2, tuple(H.surf(0, -0.8, -0.05)), Mbd, (1.4, 0.8, 1.0), parent=h, coll=cl, seg=20)
+    sphere(n + "_chintip", 0.2, tuple(H.surf(0, -0.85, -0.02)), Mbd, (1.5, 0.85, 1.1), parent=h, coll=cl, seg=24)
+
+
+def tube_tufts(name, specs, m, parent, coll, sides=8, rings=7):
+    """One mesh of tapered curved tubes. specs: (base, dir, length, radius, bend)."""
+    me = D.meshes.new(name)
+    bm = bmesh.new()
+    for base, dr, ln, rad, bend in specs:
+        base, dr, bend = Vector(base), Vector(dr).normalized(), Vector(bend)
+        P0, P1, P2 = base, base + dr * ln * 0.55, base + dr * ln + bend * ln * 0.45
+        prev = None
+        for k in range(rings + 1):
+            t = k / rings
+            pos = (1 - t) ** 2 * P0 + 2 * (1 - t) * t * P1 + t * t * P2
+            tan = (2 * (1 - t) * (P1 - P0) + 2 * t * (P2 - P1)).normalized()
+            ref = Vector((1, 0, 0)) if abs(tan.x) < 0.9 else Vector((0, 1, 0))
+            u = tan.cross(ref).normalized(); v = tan.cross(u)
+            rr = rad * (1 - t) ** 0.85 + 0.002
+            ring = [bm.verts.new(pos + (u * math.cos(a) * 1.25 + v * math.sin(a) * 0.8) * rr)
+                    for a in (i * TAU / sides for i in range(sides))]
+            if prev:
+                for i in range(sides):
+                    bm.faces.new((prev[i], prev[(i + 1) % sides], ring[(i + 1) % sides], ring[i]))
+            prev = ring
+        tip = bm.verts.new(P2 + (P2 - P1).normalized() * rad * 0.2)
+        for i in range(sides):
+            bm.faces.new((prev[i], prev[(i + 1) % sides], tip))
+    bm.normal_update()
+    bm.to_mesh(me); bm.free()
+    for p in me.polygons:
+        p.use_smooth = True
+    ob = D.objects.new(name, me)
+    (coll or bpy.context.scene.collection).objects.link(ob)
+    ob.parent = parent
+    me.materials.append(m)
+    md = ob.modifiers.new("sub", "SUBSURF"); md.levels = 1; md.render_levels = 1
+    return ob
+
+
+def strand_mesh(name, paths, m, parent, coll, sides=7):
+    """Tapered tubes through given point lists (radius tapers to a point at the end)."""
+    me = D.meshes.new(name)
+    bm = bmesh.new()
+    for pts, rad in paths:
+        prev = None
+        nn = len(pts)
+        for k, pos in enumerate(pts):
+            tan = (pts[min(k + 1, nn - 1)] - pts[max(k - 1, 0)]).normalized()
+            up = pos.normalized()
+            u = tan.cross(up).normalized(); v = tan.cross(u)
+            t = k / (nn - 1)
+            rr = rad * (1 - t) ** 0.9 * (0.6 + 0.4 * min(1, t * 4)) + 0.002
+            ring = [bm.verts.new(pos + (u * math.cos(a) * 1.4 + v * math.sin(a) * 0.7) * rr)
+                    for a in (i * TAU / sides for i in range(sides))]
+            if prev:
+                for i in range(sides):
+                    bm.faces.new((prev[i], prev[(i + 1) % sides], ring[(i + 1) % sides], ring[i]))
+            prev = ring
+    bm.normal_update(); bm.to_mesh(me); bm.free()
+    for p in me.polygons:
+        p.use_smooth = True
+    ob = D.objects.new(name, me)
+    (coll or bpy.context.scene.collection).objects.link(ob)
+    ob.parent = parent
+    me.materials.append(m)
+    md = ob.modifiers.new("sub", "SUBSURF"); md.levels = 1; md.render_levels = 1
+    return ob
 
 
 def build_hair(ch, L, H):
@@ -293,21 +386,39 @@ def build_hair(ch, L, H):
     M = fur_mat(n + "_hairm", L["hair"], 40, "Y", rough=0.5, bump=0.5, light=1.7, dark=0.45)
 
     def hairline(a):
-        return 0.5 - 0.12 * ss(0.3, 0.9, a) - 0.25 * ss(1.0, 1.4, a) - 0.95 * ss(1.75, 2.6, a)
+        return 0.52 - 0.09 * ss(0.35, 0.8, a) - 0.18 * ss(1.0, 1.35, a) - 0.85 * ss(1.8, 2.6, a)
 
     def thick(d):
         az, el = azel(d)
         a = abs(az)
         hl = hairline(a)
-        m = ss(hl - 0.03, hl + 0.07, el)
-        side = 0.035
-        top = ss(0.35, 1.2, el)
+        m = ss(hl - 0.02, hl + 0.06, el)
+        top = ss(0.4, 1.2, el)
         front = ss(1.4, 0.0, a)
-        vol = side
-        if style == "pompadour":
-            vol += 0.2 * top * (0.35 + 0.65 * front) + 0.16 * G(az, el, 0, 0.85, 0.5, 0.22)
-            # combed ridges running front-to-back, strongest on the quiff
-            vol += 0.045 * top * (0.4 + 0.6 * front) * (0.5 + 0.5 * math.sin(d.x * 17 + 2.0 * d.y * d.x))
-        sideburn = 0.03 * ss(0.15, 0.05, abs(a - 1.3)) * ss(-0.15, 0.0, el) * ss(0.6, 0.45, el)
+        vol = 0.03 + (0.16 * top * (0.4 + 0.6 * front) + 0.1 * G(az, el, 0, 0.8, 0.6, 0.25) + 0.05 * ss(0.3, 0.6, el) * ss(1.3, 0.9, a) if style == "pompadour" else 0.03 * top)
+        sideburn = 0.028 * ss(0.12, 0.04, abs(a - 1.36)) * ss(-0.08, 0.02, el) * ss(0.5, 0.35, el)
         return max(m * vol, sideburn) - 0.006
     field_mesh(n + "_hair", lambda d: H.r(d) + thick(d), None, 192, h, cl, M, keep=lambda d: d.z > -0.75)
+    if style == "pompadour":
+        rnd = random.Random(21)
+        hr = lambda d: H.r(d) + thick(d)
+        paths = []
+        for i in range(150):
+            az0 = rnd.uniform(-0.8, 0.8)
+            el0 = hairline(abs(az0)) + 0.07 + rnd.uniform(0.0, 0.55) * (1 if i > 40 else 0.25)
+            front = ss(0.95, 0.6, el0) * ss(0.8, 0.0, abs(az0))
+            d0 = dir_of(az0, el0)
+            d1 = dir_of(az0 * 0.55, min(1.45, el0 + rnd.uniform(0.55, 0.85)))
+            quiff = 0.16 * front + 0.05
+            pts = []
+            for k in range(9):
+                t = k / 8
+                d = d0.slerp(d1, t) if hasattr(d0, "slerp") else (d0 * (1 - t) + d1 * t).normalized()
+                d.normalize()
+                lift = quiff * math.sin(math.pi * min(1, t * 1.6)) ** 0.7 * (1 - 0.3 * t) + 0.01
+                pts.append(d * (hr(d) + lift - 0.045 * (1 - min(1, t * 3))))
+            paths.append((pts, rnd.uniform(0.05, 0.075)))
+        strand_mesh(n + "_strands", paths, M, h, cl)
+        specs = []
+        if specs:
+            tube_tufts(n + "_tufts", specs, M, h, cl)
