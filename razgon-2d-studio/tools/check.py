@@ -69,8 +69,10 @@ else:
     if not 6 <= len(m.get("tags", [])) <= 12: err.append("meta.tags: need 6–12")
     if not m.get("pinnedComment"): err.append("meta.pinnedComment missing")
     if not m.get("sources"): warn.append("meta.sources empty (fine only if the film states no facts)")
-    tt = m.get("thumbnailText", "")
-    if not tt or len(tt.split()) > 3: err.append("meta.thumbnailText: 1–3 words")
+    th = m.get("thumb") or {}
+    words = f"{th.get('l1', '')} {th.get('l2', '')}".split()
+    if not th.get("l1") or not 2 <= len(words) <= 5: err.append("meta.thumb: l1 + l2 must be 2–5 words in total (docs/THUMBNAILS.md)")
+    if not th.get("tag") or len(th["tag"].split()) > 4: err.append("meta.thumb.tag: a 1–4 word red-sticker hook")
 
 hist_p = os.path.join("..", "film", "films", "history.json")
 if os.path.exists(hist_p):

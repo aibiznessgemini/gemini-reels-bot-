@@ -79,7 +79,8 @@ ink extras. Write `story/meta.json`:
 ```json
 { "titles": ["5 options, curiosity, no lies"], "description": "2–3 sentences",
   "tags": ["6–12"], "pinnedComment": "one question to the viewers",
-  "thumbnailText": "≤ 3 words", "sources": [{ "title": "…", "url": "…" }] }
+  "thumb": { "l1": "white line", "l2": "yellow key words", "tag": "red sticker hook" },
+  "sources": [{ "title": "…", "url": "…" }] }
 ```
 
 ## 5. Build every shot (stage 6 of PIPELINE.md)
@@ -101,15 +102,19 @@ node render.mjs --project projects/<slug> --crf 22 > build.log 2>&1   # backgrou
 python3 audio/mix.py --project projects/<slug>                  # music + SFX + voice → out/<Title>.mp4
 ```
 
-## 7. QA + thumbnail
+## 7. QA + thumbnail (formula: `docs/THUMBNAILS.md`)
 ```bash
 ffmpeg -loglevel error -y -i projects/<slug>/out/*.mp4 -vf "fps=1/8,scale=480:-1,tile=4x5:padding=4" -frames:v 1 projects/<slug>/build/final_contact.png
-node render.mjs --project projects/<slug> --stills <t of the best bigFace/hero moment> --scale 1
-node tools/thumbnail.mjs --still projects/<slug>/build/stills/<file>.png --text "<meta.thumbnailText>" --out projects/<slug>/out/thumbnail.jpg
+tools/thumb_project.sh <slug>
+# write projects/<slug>-thumb/scenes/shots/thumb.js: registerShot('t001', …) — dark bg, ONE giant subject on the
+# right (exaggerated YOU face or giant thing + tiny YOU), nothing on the left 40%. Examples: projects/thumbs/.
+node render.mjs --project projects/<slug>-thumb --stills 0.6 --scale 1
+node tools/thumbnail2.mjs --still projects/<slug>-thumb/build/stills/0.6s_0.60.png \
+     --l1 "<meta.thumb.l1>" --l2 "<meta.thumb.l2>" --tag "<meta.thumb.tag>" --out projects/<slug>/out/thumbnail.jpg
 python3 tools/check.py <slug> --final
 ```
-Look at `final_contact.png` and `thumbnail.jpg`. If something is clearly broken, fix and
-re-render once.
+Look at `final_contact.png` and `thumbnail.jpg` (is the text readable when tiny? one clear
+subject?). If something is clearly broken, fix and re-render once.
 
 ## 8. Deliver + history
 ```bash
