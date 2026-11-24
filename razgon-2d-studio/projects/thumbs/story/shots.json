@@ -1,0 +1,77 @@
+{
+ "title": "thumbs",
+ "duration": 6.2,
+ "shots": [
+  {
+   "id": "t001",
+   "start": 0.0,
+   "end": 1.2,
+   "line": "t1",
+   "scene": "thumbnail",
+   "set": "void",
+   "in": {
+    "type": "cut"
+   },
+   "bars": "none",
+   "captions": false,
+   "vignette": true
+  },
+  {
+   "id": "t002",
+   "start": 1.2,
+   "end": 2.4,
+   "line": "t2",
+   "scene": "thumbnail",
+   "set": "void",
+   "in": {
+    "type": "cut"
+   },
+   "bars": "none",
+   "captions": false,
+   "vignette": true
+  },
+  {
+   "id": "t003",
+   "start": 2.4,
+   "end": 3.6,
+   "line": "t3",
+   "scene": "thumbnail",
+   "set": "void",
+   "in": {
+    "type": "cut"
+   },
+   "bars": "none",
+   "captions": false,
+   "vignette": true
+  },
+  {
+   "id": "t004",
+   "start": 3.6,
+   "end": 4.8,
+   "line": "t4",
+   "scene": "thumbnail",
+   "set": "void",
+   "in": {
+    "type": "cut"
+   },
+   "bars": "none",
+   "captions": false,
+   "vignette": true
+  },
+  {
+   "id": "t005",
+   "start": 4.8,
+   "end": 6.2,
+   "line": "t5",
+   "scene": "thumbnail",
+   "set": "void",
+   "in": {
+    "type": "cut"
+   },
+   "bars": "none",
+   "captions": false,
+   "vignette": true
+  }
+ ],
+ "music": []
+}

@@ -1,0 +1,30 @@
+{
+ "source": "script:script.json",
+ "words": [
+  {
+   "word": "t1",
+   "start": 0.0,
+   "end": 1.012
+  },
+  {
+   "word": "t2",
+   "start": 1.2,
+   "end": 2.212
+  },
+  {
+   "word": "t3",
+   "start": 2.4,
+   "end": 3.412
+  },
+  {
+   "word": "t4",
+   "start": 3.6,
+   "end": 4.612
+  },
+  {
+   "word": "t5",
+   "start": 4.8,
+   "end": 5.812
+  }
+ ]
+}
