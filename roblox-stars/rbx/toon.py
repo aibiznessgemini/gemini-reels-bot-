@@ -12,17 +12,20 @@ from .core import mat, hexc, box, cyl, sphere, empty, poly_extrude, text, F, D, 
 from . import chars
 
 TOON_LOOKS = {
-    "messi": dict(label="MESSI", num="10", skin="#e2a47c", hair="#2b1a12", beard="#8e4a24",
+    "messi": dict(label="MESSI", num="10", skin="#eab696", hair="#35210f", beard="#8a4522",
                   shirt="#1b2a5e", stripe="#a5163a", sleeve="#1b2a5e", trim="#f1bf00", shorts="#1b2a5e",
                   socks="#1b2a5e", sock_stripe="#a5163a", boots="#f2f2f2", sole="#2a6fd6", numc="#f1bf00",
-                  hairstyle="pompadour", armband="#f28c28", nose=1.15, brow_angle=-10, tattoo=True),
+                  hairstyle="pompadour", armband="#f28c28", nose=1.15, brow_angle=-10, tattoo=True,
+                  sculpt=True, iris="#6a4524", blush="#d07a68",
+                  head=dict(eye_az=0.38, width=0.9, depth=0.93, height=1.1, jaw=0.16, chin=0.05, nose=1.15, nose_len=1.1,
+                            brow=0.06, socket=0.06, cheek=0.035)),
 }
 
 # expression -> (brow tilt deg (+ = angry, inner end down), brow lift, upper-lid close 0..1, mouth (w, h))
 EXPR = {
-    "neutral": (8, 0.0, 0.42, (1.0, 0.35)), "angry": (24, -0.04, 0.42, (1.0, 0.3)),
-    "determined": (18, -0.03, 0.46, (0.9, 0.3)), "smile": (0, 0.02, 0.3, (1.4, 0.5)),
-    "happy": (-6, 0.05, 0.25, (1.5, 0.9)), "joy": (-10, 0.07, 0.55, (1.6, 1.1)),
+    "neutral": (8, 0.0, 0.3, (1.0, 0.35)), "angry": (24, -0.04, 0.42, (1.0, 0.3)),
+    "determined": (18, -0.03, 0.36, (0.9, 0.3)), "smile": (0, 0.02, 0.3, (1.4, 0.5)),
+    "happy": (-6, 0.05, 0.25, (1.5, 0.9)), "joy": (-10, 0.07, 0.4, (1.6, 1.3)),
     "grin": (-4, 0.03, 0.35, (1.6, 0.7)), "smug": (12, 0.0, 0.5, (1.2, 0.35)),
     "shock": (-18, 0.12, 0.0, (0.9, 1.4)), "gasp": (-16, 0.1, 0.05, (0.7, 1.2)),
     "scared": (-22, 0.09, 0.05, (1.1, 0.8)), "worried": (-20, 0.05, 0.25, (0.9, 0.4)),
@@ -302,6 +305,13 @@ class Toon(chars.Char):
     # ------------------------------------------------------------ head
     def _build_head(self, L):
         n, h, cl, Ms = self.name, self.head, self.coll, self.M_skin
+        if L.get("sculpt"):
+            from .toonhead import build_head
+            build_head(self, L)
+            self._brow_base = 0.0
+            self.face(-10.0, "neutral")
+            return
+        self._brow_base = 0.36
         sphere(n + "_skull", 0.95, (0, 0, 0), Ms, (0.9, 0.95, 1.1), parent=h, coll=cl, seg=48)
         if not L.get("beard"):
             sphere(n + "_jaw", 0.7, (0, -0.25, -0.5), Ms, (1.0, 0.95, 0.8), parent=h, coll=cl, seg=32)
@@ -394,8 +404,13 @@ class Toon(chars.Char):
         f = F(t)
         for s, bw in zip((-1, 1), self.brows):
             bw.rotation_euler = (0, math.radians(-s * tilt), 0)
-            bw.location[2] = 0.36 + lift
-            bw.keyframe_insert("rotation_euler", frame=f); bw.keyframe_insert("location", index=2, frame=f)
+            if self._brow_base == 0.0:                        # sculpted head: slide along the forehead
+                bw.location = (0, lift * 0.35, lift * 0.6)
+                bw.keyframe_insert("location", frame=f)
+            else:
+                bw.location[2] = self._brow_base + lift
+                bw.keyframe_insert("location", index=2, frame=f)
+            bw.keyframe_insert("rotation_euler", frame=f)
         self._lid(t, lid)
         self.mouth.scale = (mw, 1, mh)
         self.mouth.keyframe_insert("scale", frame=f)
@@ -461,11 +476,11 @@ def toon(key, t0, t1, expr="neutral", loc=(0, 0, 0), rot=0.0, **kw):
 def studio(color=(0.93, 0.93, 0.92)):
     """White cyclorama with soft key/fill/rim, like a product shot."""
     from .core import world, plane, light
-    world(color, 1.5)
+    world(color, 1.0)
     plane("cyc_floor", 80, 80, (0, 0, 0), mat("cyc", (0.98, 0.98, 0.97), 0.8))
     from .core import mat as _m
     disc = cyl("grass_disc", 2.2, 0.08, (0, 0, 0.04), mat("grass_disc", hexc("#4f8f2f"), 0.9), 48)
-    light("key", "AREA", (-5, -7, 9), 1400, (1, 0.96, 0.9), 5, target=(0, 0, 4))
-    light("fill", "AREA", (7, -6, 5), 500, (0.9, 0.95, 1), 6, target=(0, 0, 4))
-    light("rim", "AREA", (2, 7, 9), 900, (1, 1, 1), 4, target=(0, 0, 5))
+    light("key", "AREA", (-6, -6, 9), 1800, (1, 0.96, 0.9), 5, target=(0, 0, 4))
+    light("fill", "AREA", (7, -6, 5), 220, (0.9, 0.95, 1), 6, target=(0, 0, 4))
+    light("rim", "AREA", (3, 7, 9), 1300, (1, 1, 1), 4, target=(0, 0, 5))
     return disc

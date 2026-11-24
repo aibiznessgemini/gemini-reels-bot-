@@ -24,3 +24,23 @@ def s3():
     studio()
     M = toon("messi", 4.0, 6.0, "happy", rot=160)
     Cam().push(4.0, 6.0, (0, 0, 3.6), 14, 13.5, yaw=0, pitch=6, lens=35)
+
+@V.shot(4, 6.0, 8.0, "3/4 face")
+def s4():
+    studio()
+    M = toon("messi", 6.0, 8.0, "neutral", rot=0)
+    Cam().push(6.0, 8.0, (0, -0.3, 5.6), 6, 5.8, yaw=-45, pitch=3, lens=40)
+
+@V.shot(5, 8.0, 10.0, "profile")
+def s5():
+    studio()
+    M = toon("messi", 8.0, 10.0, "neutral", rot=0)
+    Cam().push(8.0, 10.0, (0, -0.3, 5.6), 6, 5.8, yaw=-90, pitch=3, lens=40)
+V.end = 10.0
+
+@V.shot(6, 10.0, 12.0, "joy 3/4")
+def s6():
+    studio()
+    M = toon("messi", 10.0, 12.0, "joy", rot=0)
+    Cam().push(10.0, 12.0, (0, -0.3, 5.5), 6.5, 6.2, yaw=-28, pitch=4, lens=40)
+V.end = 12.0
