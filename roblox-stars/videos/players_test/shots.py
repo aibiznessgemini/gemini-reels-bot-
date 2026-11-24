@@ -51,3 +51,17 @@ def s6():
         P = player(k, 12.0, 14.0, "smile")
         P.walk(12.0, 14.0, ((i - 1) * 2.4, 3, 0), ((i - 1) * 2.4, -2, 0))
     Cam().push(12.0, 14.0, (0, 0, 2.0), 13, 12, yaw=-25, pitch=8, lens=35)
+
+LIKENESS = False
+FACE_KEYS = ["ronaldo", "mbappe", "vinijr", "haaland", "neymar", "yamal", "messi"]
+for j, k in enumerate(FACE_KEYS):
+    def mk(k=k, j=j):
+        t0 = 14.0 + j * 2.0
+        @V.shot(7 + j, t0, t0 + 2.0, f"face {k}")
+        def s():
+            pitch()
+            P = player(k, t0, t0 + 2.0, "smile", blink=False, rot=-15, likeness=LIKENESS)
+            h = P.head_pos()
+            Cam().push(t0, t0 + 2.0, tuple(h), 3.0, 2.95, yaw=-15, pitch=3, lens=50)
+    mk()
+V.end = 28.0

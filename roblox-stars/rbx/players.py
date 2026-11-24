@@ -23,7 +23,7 @@ X, Y, Z = Vector((1, 0, 0)), Vector((0, 1, 0)), Vector((0, 0, 1))
 
 # expression -> jaw open (deg), smile (0..1), brow (-1 angry .. +1 raised), lid (0 open .. 1 shut)
 EXPR = {
-    "neutral": (0, 0.0, 0.0, 0.1), "smile": (2, 0.8, 0.1, 0.15), "happy": (8, 1.0, 0.3, 0.1),
+    "neutral": (0, 0.0, 0.0, 0.0), "smile": (2, 0.8, 0.15, 0.0), "happy": (8, 1.0, 0.3, 0.1),
     "joy": (16, 1.0, 0.5, 0.45), "grin": (5, 1.0, 0.2, 0.25), "smug": (0, 0.6, -0.3, 0.4),
     "shock": (22, 0.0, 1.0, -0.15), "gasp": (16, 0.0, 0.8, -0.1), "scared": (14, -0.4, 0.9, -0.1),
     "angry": (3, -0.5, -1.0, 0.3), "furious": (18, -0.6, -1.0, 0.25), "shout": (20, 0.0, -0.6, 0.15),
@@ -44,7 +44,7 @@ def _key(pb, path, f, interp="BEZIER"):
 
 
 class Player:
-    def __init__(self, key, name=None, loc=(0, 0, 0), rot=0.0, scale=2.0, keep_ball=False):
+    def __init__(self, key, name=None, loc=(0, 0, 0), rot=0.0, scale=2.0, keep_ball=False, likeness=True):
         key = ALIAS.get(key, key)
         self.key = key
         self.name = name or key.capitalize()
@@ -77,8 +77,16 @@ class Player:
                     c.objects.unlink(o)
             if self.coll not in o.users_collection:
                 self.coll.objects.link(o)
+        self.photo_face = self._fix_photo_face()
+        from . import likeness as _lk
+        if self.photo_face:                         # let the painted nose/lips lead: flatten the sculpted ones
+            _lk.flatten_face(self)
+            _lk.reproject_face_uv(self)
+        elif likeness:
+            _lk.apply(self)
         A = self.arm
         A.name = self.name + "_rig"
+        self.root = A                                 # for Cam.track and other root-based helpers
         A.rotation_mode = "XYZ"
         A.scale = (scale,) * 3
         self.scale = scale
@@ -91,6 +99,48 @@ class Player:
         self._cur = EXPR["neutral"]
         self.pose(-10.0, loc=loc, rot=rot)
         PLAYERS[self.name] = self
+
+    def _fix_photo_face(self):
+        """Photo-face models: the face image is wrongly wired as a normal map too and imported as
+        Non-Color. Unhook the normal map, make it sRGB, and match the neck/ear skin to the photo."""
+        found = False
+        mats = {m for o in self.meshes for m in o.data.materials if m}
+        for m in mats:
+            if not m.use_nodes:
+                continue
+            N, L = m.node_tree.nodes, m.node_tree.links
+            for n in [n for n in N if n.type == "NORMAL_MAP"]:
+                src = [l.from_node for l in n.inputs["Color"].links]
+                if src and src[0].type == "TEX_IMAGE" and src[0].image and "face" in src[0].image.name:
+                    for l in list(n.outputs[0].links):
+                        L.remove(l)
+                    found = True
+            for n in N:
+                if n.type == "TEX_IMAGE" and n.image and "face" in n.image.name:
+                    n.image.colorspace_settings.name = "sRGB"
+                    n.interpolation = "Cubic"
+                    found = True
+                    img = n.image
+                    px = img.pixels[:]                       # sample the skin around the face (corner)
+                    w = img.size[0]
+                    i = (int(img.size[1] * 0.5) * w + int(w * 0.05)) * 4
+                    lin = lambda c: c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+                    skin = tuple(lin(c) for c in px[i:i + 3])
+                    b = next((x for x in N if x.type == "BSDF_PRINCIPLED"), None)
+                    if b:
+                        b.inputs["Specular IOR Level"].default_value = 0.3
+                        try:
+                            b.inputs["Subsurface Weight"].default_value = 0.15
+                        except KeyError:
+                            pass
+                    self._photo_skin = skin
+        if found and getattr(self, "_photo_skin", None):
+            for m in mats:
+                if m.name.startswith("Skin_Mat") and m.use_nodes:
+                    b = next((x for x in m.node_tree.nodes if x.type == "BSDF_PRINCIPLED"), None)
+                    if b and not b.inputs["Base Color"].is_linked:
+                        b.inputs["Base Color"].default_value = (*self._photo_skin, 1)
+        return found
 
     # ------------------------------------------------------------ low level
     def q(self, bone, axis, deg):
@@ -152,7 +202,10 @@ class Player:
             self.arm.keyframe_insert("location", frame=f)
             set_interp(self.arm, "location", f, interp)
         if "rot" in kw:
-            self.arm.rotation_euler[2] = math.radians(kw["rot"])
+            r = kw["rot"]
+            cur = math.degrees(self.arm.rotation_euler[2])
+            r += 360 * round((cur - r) / 360)            # shortest turn from the last keyed yaw
+            self.arm.rotation_euler[2] = math.radians(r)
             self.arm.keyframe_insert("rotation_euler", index=2, frame=f)
             set_interp(self.arm, "rotation_euler", f, interp)
         return self
