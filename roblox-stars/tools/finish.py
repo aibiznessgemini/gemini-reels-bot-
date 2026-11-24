@@ -87,7 +87,11 @@ for i, w in enumerate(words):
         continue
     s = 0.0 if i == 0 else w["start"] + LAG
     e = (words[i + 1]["start"] + LAG) if i + 1 < len(words) else w["end"] + 0.4
-    lines.append(f"Dialogue: 0,{ts(s)},{ts(e)},Word,,0,0,0,,{{\\pos(540,1607)}}{txt}")
+    HOT = {"HAALAND", "MESSI", "RONALDO'S", "RONALDO", "MBAPPÉ", "MBAPPE", "NEYMAR", "YAMAL", "BONK", "GOAL", "ALIVE", "SEVEN", "AGAIN", "SMILED", "SMILING"}
+    col = "\\c&H0000E1FF&" if txt in HOT else ""
+    rz = (-4, 3, -2, 4, -3, 2)[i % 6]
+    pop = f"\\fscx55\\fscy55\\frz{rz}\\t(0,90,\\fscx118\\fscy118)\\t(90,170,\\fscx100\\fscy100)"
+    lines.append(f"Dialogue: 0,{ts(s)},{ts(e)},Word,,0,0,0,,{{\\pos(540,1607){pop}{col}}}{txt}")
 head = head.replace("{FONT}", kit.caption_font(CFG))
 open(os.path.join(vdir, "captions.ass"), "w", encoding="utf-8").write(head + "\n".join(lines) + "\n")
 
