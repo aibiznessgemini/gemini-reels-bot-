@@ -1,0 +1,119 @@
+{
+ "audio": "audio.m4a",
+ "words": "words.json",
+ "size": [
+  2160,
+  3840
+ ],
+ "fps": 30,
+ "style": "akvarel-qishloq",
+ "hero": "a middle-aged Uzbek man in a white doʻppi skullcap, plain green jacket and grey trousers",
+ "look": {
+  "paper": true,
+  "vignette": 0.18
+ },
+ "captions": {
+  "mode": "frosted"
+ },
+ "defaults": {
+  "transition": "cut",
+  "xfade": 0.6
+ },
+ "shots": [
+  {
+   "id": "s01",
+   "start": 0,
+   "end": 2.83,
+   "says": "Mana hozir har joydan",
+   "image": "images/s01.png",
+   "prompt": "hand-drawn watercolor and ink illustration on textured paper, thin dark ink outlines, soft transparent washes, muted earthy palette of sand, ochre, sage green and dusty peach sky, rural Uzbekistan village, poplar trees and distant hills, calm and sincere storybook mood, gentle natural light, a small village mosque with a teal dome seen from the road, white cars arriving with headlights on, a few men walking into the yard, wide establishing shot from low eye level, vertical 9:16 composition, main subject in the upper two thirds, quiet lower third, no text, no letters, no watermark, no logo",
+   "move": "push_in",
+   "fx": [
+    "dust"
+   ]
+  },
+  {
+   "id": "s02",
+   "start": 2.83,
+   "end": 4.9,
+   "says": "keldinglar-a,",
+   "image": "images/s02.png",
+   "prompt": "hand-drawn watercolor and ink illustration on textured paper, thin dark ink outlines, soft transparent washes, muted earthy palette of sand, ochre, sage green and dusty peach sky, rural Uzbekistan village, poplar trees and distant hills, calm and sincere storybook mood, gentle natural light, the same mosque yard from higher up, cars parking in a row in front of the mosque, people walking in, wide shot, vertical 9:16 composition, main subject in the upper two thirds, quiet lower third, no text, no letters, no watermark, no logo",
+   "move": "pan_right"
+  },
+  {
+   "id": "s03",
+   "start": 4.9,
+   "end": 8.0,
+   "says": "kim adirdan keldi, kim boshqa yerdan keldi.",
+   "image": "images/s03.png",
+   "prompt": "hand-drawn watercolor and ink illustration on textured paper, thin dark ink outlines, soft transparent washes, muted earthy palette of sand, ochre, sage green and dusty peach sky, rural Uzbekistan village, poplar trees and distant hills, calm and sincere storybook mood, gentle natural light, a single white car driving along a winding dirt road through soft rolling hills, cypress trees along the road, aerial wide shot, vertical 9:16 composition, main subject in the upper two thirds, quiet lower third, no text, no letters, no watermark, no logo",
+   "move": "crane_down",
+   "fx": [
+    "birds"
+   ]
+  },
+  {
+   "id": "s04",
+   "start": 8.0,
+   "end": 12.6,
+   "says": "Piyoda ketishni tasavvur qiling-da hozir.",
+   "image": "images/s04.png",
+   "prompt": "hand-drawn watercolor and ink illustration on textured paper, thin dark ink outlines, soft transparent washes, muted earthy palette of sand, ochre, sage green and dusty peach sky, rural Uzbekistan village, poplar trees and distant hills, calm and sincere storybook mood, gentle natural light, a middle-aged Uzbek man in a white doʻppi skullcap, plain green jacket and grey trousers, seen from behind, walking alone on a long empty hot road through dry steppe, pale sun overhead, heat haze, wide shot, vertical 9:16 composition, main subject in the upper two thirds, quiet lower third, no text, no letters, no watermark, no logo",
+   "move": "pull_out",
+   "fx": [
+    "heat",
+    "sun_rays"
+   ],
+   "grade": "golden"
+  },
+  {
+   "id": "s05",
+   "start": 12.6,
+   "end": 17.5,
+   "says": "Mashinaning neʼmatligini",
+   "image": "images/s05.png",
+   "prompt": "hand-drawn watercolor and ink illustration on textured paper, thin dark ink outlines, soft transparent washes, muted earthy palette of sand, ochre, sage green and dusty peach sky, rural Uzbekistan village, poplar trees and distant hills, calm and sincere storybook mood, gentle natural light, a middle-aged Uzbek man in a white doʻppi skullcap, plain green jacket and grey trousers, seen from the side, washing his old white car with a cloth in front of a mud-brick wall on a village street, a metal bucket beside the wheel, medium shot, vertical 9:16 composition, main subject in the upper two thirds, quiet lower third, no text, no letters, no watermark, no logo",
+   "move": "push_in_slow"
+  },
+  {
+   "id": "s06",
+   "start": 17.5,
+   "end": 21.6,
+   "says": "esdan chiqarib qoʻyganmiz.",
+   "image": "images/s06.png",
+   "prompt": "hand-drawn watercolor and ink illustration on textured paper, thin dark ink outlines, soft transparent washes, muted earthy palette of sand, ochre, sage green and dusty peach sky, rural Uzbekistan village, poplar trees and distant hills, calm and sincere storybook mood, gentle natural light, the same man and car from a slightly different angle, closer, he keeps wiping the window, trees behind the wall, medium close shot, vertical 9:16 composition, main subject in the upper two thirds, quiet lower third, no text, no letters, no watermark, no logo",
+   "move": "drift"
+  },
+  {
+   "id": "s07",
+   "start": 21.6,
+   "end": 25.6,
+   "says": "Yo toʻgʻri aytyapmanmi?",
+   "image": "images/s07.png",
+   "prompt": "hand-drawn watercolor and ink illustration on textured paper, thin dark ink outlines, soft transparent washes, muted earthy palette of sand, ochre, sage green and dusty peach sky, rural Uzbekistan village, poplar trees and distant hills, calm and sincere storybook mood, gentle natural light, close-up of the clean car windscreen reflecting a blue sky with soft white clouds and a tree branch, vertical 9:16 composition, main subject in the upper two thirds, quiet lower third, no text, no letters, no watermark, no logo",
+   "move": "tilt_up"
+  },
+  {
+   "id": "s08",
+   "start": 25.6,
+   "end": 28.0,
+   "says": "Toʻppa-toʻgʻri aytyapman.",
+   "image": "images/s08.png",
+   "prompt": "hand-drawn watercolor and ink illustration on textured paper, thin dark ink outlines, soft transparent washes, muted earthy palette of sand, ochre, sage green and dusty peach sky, rural Uzbekistan village, poplar trees and distant hills, calm and sincere storybook mood, gentle natural light, the same windscreen a little wider, a soft light glint across the glass, vertical 9:16 composition, main subject in the upper two thirds, quiet lower third, no text, no letters, no watermark, no logo",
+   "move": "push_in",
+   "fx": [
+    "light_leak"
+   ]
+  },
+  {
+   "id": "s09",
+   "start": 28.0,
+   "end": 30.0,
+   "says": "Chiqsangiz oyoq kiyim turganligi",
+   "image": "images/s09.png",
+   "prompt": "hand-drawn watercolor and ink illustration on textured paper, thin dark ink outlines, soft transparent washes, muted earthy palette of sand, ochre, sage green and dusty peach sky, rural Uzbekistan village, poplar trees and distant hills, calm and sincere storybook mood, gentle natural light, inside a mosque entrance, a long wooden shoe rack with rows of shoes, a few pairs on the floor, arched window above, frontal medium shot, vertical 9:16 composition, main subject in the upper two thirds, quiet lower third, no text, no letters, no watermark, no logo",
+   "move": "pan_left"
+  }
+ ]
+}
